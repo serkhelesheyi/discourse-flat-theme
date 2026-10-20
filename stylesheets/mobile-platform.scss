@@ -92,7 +92,8 @@ html.mobile-view {
       }
 
       // Neither TOC nor translation: progress is a single chip on the right.
-      &:not(:has(.d-toc-mini)):not(
+      &:not(
+          :has(.d-toc-mini),
           :has(.btn-toggle-localized-content),
           :has(.topic-content-language-preferences)
         )
@@ -149,14 +150,22 @@ html.mobile-view {
   .user-main .details .controls > ul > li.chat-button,
   .user-main .details .controls > ul > li:has(.chat-direct-message-btn),
   .user-summary-page .details .controls > ul > li.chat-button,
-  .user-summary-page .details .controls > ul > li:has(.chat-direct-message-btn) {
+  .user-summary-page
+    .details
+    .controls
+    > ul
+    > li:has(.chat-direct-message-btn) {
     flex: 1 1 100% !important;
     order: 2 !important;
     width: 100% !important;
   }
 
   .user-main .details .controls > ul > li:has(.user-notifications-dropdown),
-  .user-summary-page .details .controls > ul > li:has(.user-notifications-dropdown) {
+  .user-summary-page
+    .details
+    .controls
+    > ul
+    > li:has(.user-notifications-dropdown) {
     order: 3 !important;
   }
 
@@ -183,7 +192,11 @@ html.mobile-view {
     min-height: 42px !important;
   }
 
-  .user-main .details .controls .user-notifications-dropdown .select-kit-collection,
+  .user-main
+    .details
+    .controls
+    .user-notifications-dropdown
+    .select-kit-collection,
   .user-main .details .controls .select-kit-collection {
     display: block !important;
     width: 100% !important;
@@ -208,7 +221,11 @@ html.mobile-view {
   }
 
   .user-main .details .controls > ul > li:has(.user-notifications-dropdown),
-  .user-summary-page .details .controls > ul > li:has(.user-notifications-dropdown) {
+  .user-summary-page
+    .details
+    .controls
+    > ul
+    > li:has(.user-notifications-dropdown) {
     flex: 0 0 auto !important;
     min-width: auto !important;
     width: auto !important;
@@ -228,7 +245,11 @@ html.mobile-view {
   }
 
   .user-main .details .controls .user-notifications-dropdown .select-kit-header,
-  .user-main .details .controls .user-notifications-dropdown .select-kit-header-wrapper {
+  .user-main
+    .details
+    .controls
+    .user-notifications-dropdown
+    .select-kit-header-wrapper {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -246,7 +267,11 @@ html.mobile-view {
   }
 
   .user-main .details .controls .user-notifications-dropdown .angle-icon,
-  .user-main .details .controls .user-notifications-dropdown .d-icon-angle-down {
+  .user-main
+    .details
+    .controls
+    .user-notifications-dropdown
+    .d-icon-angle-down {
     display: inline-block !important;
     flex: 0 0 auto !important;
     visibility: visible !important;

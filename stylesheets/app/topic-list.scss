@@ -193,6 +193,7 @@
       float: left !important;
       display: inline-flex !important;
       align-items: center;
+
       // Only occupy the first line of float space so wrapped title lines
       // continue flush left under the icons (no hanging indent).
       height: 1.3em;
@@ -630,22 +631,67 @@ html.desktop-view .suggested-topics-wrapper,
 }
 
 // Flat theme list layout must not fight Topic List Thumbnails card modes.
-.desktop-view .list-container .topic-list.topic-thumbnails-grid .topic-list-item,
-.desktop-view .list-container .topic-list.topic-thumbnails-masonry .topic-list-item,
-.desktop-view .list-container .topic-list.topic-thumbnails-minimal .topic-list-item,
-.desktop-view .list-container .topic-list.topic-thumbnails-blog-style-grid .topic-list-item,
-.desktop-view .list-container .topic-list.topic-thumbnails-grid .topic-list-item.selected,
-.desktop-view .list-container .topic-list.topic-thumbnails-masonry .topic-list-item.selected,
-.desktop-view .list-container .topic-list.topic-thumbnails-minimal .topic-list-item.selected,
-.desktop-view .list-container .topic-list.topic-thumbnails-blog-style-grid .topic-list-item.selected,
+.desktop-view
+  .list-container
+  .topic-list.topic-thumbnails-grid
+  .topic-list-item,
+.desktop-view
+  .list-container
+  .topic-list.topic-thumbnails-masonry
+  .topic-list-item,
+.desktop-view
+  .list-container
+  .topic-list.topic-thumbnails-minimal
+  .topic-list-item,
+.desktop-view
+  .list-container
+  .topic-list.topic-thumbnails-blog-style-grid
+  .topic-list-item,
+.desktop-view
+  .list-container
+  .topic-list.topic-thumbnails-grid
+  .topic-list-item.selected,
+.desktop-view
+  .list-container
+  .topic-list.topic-thumbnails-masonry
+  .topic-list-item.selected,
+.desktop-view
+  .list-container
+  .topic-list.topic-thumbnails-minimal
+  .topic-list-item.selected,
+.desktop-view
+  .list-container
+  .topic-list.topic-thumbnails-blog-style-grid
+  .topic-list-item.selected,
 .mobile-view .list-container .topic-list.topic-thumbnails-grid .topic-list-item,
-.mobile-view .list-container .topic-list.topic-thumbnails-masonry .topic-list-item,
-.mobile-view .list-container .topic-list.topic-thumbnails-minimal .topic-list-item,
-.mobile-view .list-container .topic-list.topic-thumbnails-blog-style-grid .topic-list-item,
-.mobile-view .list-container .topic-list.topic-thumbnails-grid .topic-list-item.selected,
-.mobile-view .list-container .topic-list.topic-thumbnails-masonry .topic-list-item.selected,
-.mobile-view .list-container .topic-list.topic-thumbnails-minimal .topic-list-item.selected,
-.mobile-view .list-container .topic-list.topic-thumbnails-blog-style-grid .topic-list-item.selected {
+.mobile-view
+  .list-container
+  .topic-list.topic-thumbnails-masonry
+  .topic-list-item,
+.mobile-view
+  .list-container
+  .topic-list.topic-thumbnails-minimal
+  .topic-list-item,
+.mobile-view
+  .list-container
+  .topic-list.topic-thumbnails-blog-style-grid
+  .topic-list-item,
+.mobile-view
+  .list-container
+  .topic-list.topic-thumbnails-grid
+  .topic-list-item.selected,
+.mobile-view
+  .list-container
+  .topic-list.topic-thumbnails-masonry
+  .topic-list-item.selected,
+.mobile-view
+  .list-container
+  .topic-list.topic-thumbnails-minimal
+  .topic-list-item.selected,
+.mobile-view
+  .list-container
+  .topic-list.topic-thumbnails-blog-style-grid
+  .topic-list-item.selected {
   display: grid !important;
   grid-template-columns: auto minmax(0, 1fr) auto !important;
   grid-template-rows: unset !important;
@@ -1191,7 +1237,9 @@ html.desktop-view .suggested-topics-wrapper,
   }
 
   .topic-item-metadata .main-link > .event-date-container,
-  .topic-item-metadata .main-link > .header-topic-title-suffix-outlet.event-date-container {
+  .topic-item-metadata
+    .main-link
+    > .header-topic-title-suffix-outlet.event-date-container {
     clear: both;
     display: flex;
     align-items: center;
@@ -1266,13 +1314,34 @@ html.desktop-view .suggested-topics-wrapper,
 // Mobile flat archetype must not override Topic List Thumbnails card modes.
 // This block comes AFTER the mobile list rules so it wins the cascade.
 .mobile-view .list-container .topic-list.topic-thumbnails-grid .topic-list-item,
-.mobile-view .list-container .topic-list.topic-thumbnails-masonry .topic-list-item,
-.mobile-view .list-container .topic-list.topic-thumbnails-minimal .topic-list-item,
-.mobile-view .list-container .topic-list.topic-thumbnails-blog-style-grid .topic-list-item,
-.mobile-view .list-container .topic-list.topic-thumbnails-grid .topic-list-item.selected,
-.mobile-view .list-container .topic-list.topic-thumbnails-masonry .topic-list-item.selected,
-.mobile-view .list-container .topic-list.topic-thumbnails-minimal .topic-list-item.selected,
-.mobile-view .list-container .topic-list.topic-thumbnails-blog-style-grid .topic-list-item.selected {
+.mobile-view
+  .list-container
+  .topic-list.topic-thumbnails-masonry
+  .topic-list-item,
+.mobile-view
+  .list-container
+  .topic-list.topic-thumbnails-minimal
+  .topic-list-item,
+.mobile-view
+  .list-container
+  .topic-list.topic-thumbnails-blog-style-grid
+  .topic-list-item,
+.mobile-view
+  .list-container
+  .topic-list.topic-thumbnails-grid
+  .topic-list-item.selected,
+.mobile-view
+  .list-container
+  .topic-list.topic-thumbnails-masonry
+  .topic-list-item.selected,
+.mobile-view
+  .list-container
+  .topic-list.topic-thumbnails-minimal
+  .topic-list-item.selected,
+.mobile-view
+  .list-container
+  .topic-list.topic-thumbnails-blog-style-grid
+  .topic-list-item.selected {
   display: grid !important;
   grid-template-columns: auto minmax(0, 1fr) auto !important;
   grid-template-rows: auto auto auto !important;

@@ -711,14 +711,22 @@ table.category-list th,
   .user-main .details .controls > ul > li.chat-button,
   .user-main .details .controls > ul > li:has(.chat-direct-message-btn),
   .user-summary-page .details .controls > ul > li.chat-button,
-  .user-summary-page .details .controls > ul > li:has(.chat-direct-message-btn) {
+  .user-summary-page
+    .details
+    .controls
+    > ul
+    > li:has(.chat-direct-message-btn) {
     flex: 1 1 100% !important;
     order: 2 !important;
     width: 100% !important;
   }
 
   .user-main .details .controls > ul > li:has(.user-notifications-dropdown),
-  .user-summary-page .details .controls > ul > li:has(.user-notifications-dropdown) {
+  .user-summary-page
+    .details
+    .controls
+    > ul
+    > li:has(.user-notifications-dropdown) {
     order: 3 !important;
   }
 
@@ -753,7 +761,11 @@ table.category-list th,
   }
 
   // Keep notification dropdown vertical; do not inherit the controls row flex.
-  .user-main .details .controls .user-notifications-dropdown .select-kit-collection,
+  .user-main
+    .details
+    .controls
+    .user-notifications-dropdown
+    .select-kit-collection,
   .user-main .details .controls .select-kit-collection,
   .user-summary-page .details .controls .select-kit-collection {
     display: block !important;
@@ -785,7 +797,11 @@ table.category-list th,
   }
 
   .user-main .details .controls > ul > li:has(.user-notifications-dropdown),
-  .user-summary-page .details .controls > ul > li:has(.user-notifications-dropdown) {
+  .user-summary-page
+    .details
+    .controls
+    > ul
+    > li:has(.user-notifications-dropdown) {
     flex: 0 0 auto !important;
     min-width: auto !important;
     width: auto !important;
@@ -805,8 +821,16 @@ table.category-list th,
     z-index: 40 !important;
   }
 
-  .user-main .details .controls .user-notifications-dropdown > .select-kit-header,
-  .user-main .details .controls .user-notifications-dropdown .select-kit-header {
+  .user-main
+    .details
+    .controls
+    .user-notifications-dropdown
+    > .select-kit-header,
+  .user-main
+    .details
+    .controls
+    .user-notifications-dropdown
+    .select-kit-header {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -816,7 +840,11 @@ table.category-list th,
     padding-inline: 12px !important;
   }
 
-  .user-main .details .controls .user-notifications-dropdown .select-kit-header-wrapper {
+  .user-main
+    .details
+    .controls
+    .user-notifications-dropdown
+    .select-kit-header-wrapper {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -827,7 +855,12 @@ table.category-list th,
   }
 
   .user-main .details .controls .user-notifications-dropdown .selected-name,
-  .user-main .details .controls .user-notifications-dropdown .selected-name .name,
+  .user-main
+    .details
+    .controls
+    .user-notifications-dropdown
+    .selected-name
+    .name,
   .user-main .details .controls .user-notifications-dropdown .name {
     display: inline-flex !important;
     align-items: center !important;
@@ -838,7 +871,11 @@ table.category-list th,
   }
 
   .user-main .details .controls .user-notifications-dropdown .angle-icon,
-  .user-main .details .controls .user-notifications-dropdown .d-icon-angle-down {
+  .user-main
+    .details
+    .controls
+    .user-notifications-dropdown
+    .d-icon-angle-down {
     display: inline-block !important;
     flex: 0 0 auto !important;
     opacity: 1 !important;
@@ -1321,7 +1358,9 @@ body.archetype-regular .suggested-topics .topic-list {
 // Match their breakpoint exactly and override logo track + padding.
 @media (width < 48rem) {
   .d-header:has(.extra-info-wrapper) {
-    grid-template-columns: max-content max-content repeat(5, 0) minmax(0, 1fr) repeat(5, max-content) !important;
+    grid-template-columns:
+      max-content max-content repeat(5, 0) minmax(0, 1fr)
+      repeat(5, max-content) !important;
     gap: 0 !important;
 
     .home-logo-wrapper-outlet {
@@ -1396,4 +1435,3 @@ body:not(.archetype-private_message) .topic-map,
   width: auto !important;
   flex: 0 0 auto !important;
 }
-

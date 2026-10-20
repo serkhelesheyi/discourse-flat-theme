@@ -830,21 +830,36 @@
   .user-main .details .controls > ul > li.chat-button,
   .user-main .details .controls > ul > li:has(.chat-direct-message-btn),
   .user-summary-page .details .controls > ul > li.chat-button,
-  .user-summary-page .details .controls > ul > li:has(.chat-direct-message-btn) {
+  .user-summary-page
+    .details
+    .controls
+    > ul
+    > li:has(.chat-direct-message-btn) {
     flex: 1 1 100% !important;
     order: 2 !important;
     width: 100% !important;
   }
 
   .user-main .details .controls > ul > li:has(.user-notifications-dropdown),
-  .user-summary-page .details .controls > ul > li:has(.user-notifications-dropdown) {
+  .user-summary-page
+    .details
+    .controls
+    > ul
+    > li:has(.user-notifications-dropdown) {
     order: 3 !important;
   }
 
   .user-main > .about .details .controls > ul > li > .btn,
   .user-main > .about .details .controls > ul > li > a.btn,
   .user-main > .about .details .controls > ul > li > .select-kit,
-  .user-main > .about .details .controls > ul > li > .select-kit > .select-kit-header,
+  .user-main
+    > .about
+    .details
+    .controls
+    > ul
+    > li
+    > .select-kit
+    > .select-kit-header,
   .user-main .details .controls > ul > li > .btn,
   .user-main .details .controls > ul > li > a.btn,
   .user-main .details .controls > ul > li > .select-kit,
@@ -876,7 +891,11 @@
     white-space: nowrap;
   }
 
-  .user-main .details .controls .user-notifications-dropdown .select-kit-collection,
+  .user-main
+    .details
+    .controls
+    .user-notifications-dropdown
+    .select-kit-collection,
   .user-main .details .controls .select-kit-collection {
     display: block !important;
     width: 100% !important;
@@ -899,7 +918,11 @@
   }
 
   .user-main .details .controls > ul > li:has(.user-notifications-dropdown),
-  .user-summary-page .details .controls > ul > li:has(.user-notifications-dropdown) {
+  .user-summary-page
+    .details
+    .controls
+    > ul
+    > li:has(.user-notifications-dropdown) {
     flex: 0 0 auto !important;
     min-width: auto !important;
     width: auto !important;
@@ -907,8 +930,16 @@
     z-index: 20;
   }
 
-  .user-main .details .controls > ul > li:has(.user-notifications-dropdown.is-expanded),
-  .user-summary-page .details .controls > ul > li:has(.user-notifications-dropdown.is-expanded) {
+  .user-main
+    .details
+    .controls
+    > ul
+    > li:has(.user-notifications-dropdown.is-expanded),
+  .user-summary-page
+    .details
+    .controls
+    > ul
+    > li:has(.user-notifications-dropdown.is-expanded) {
     z-index: 30;
   }
 

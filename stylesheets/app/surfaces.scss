@@ -188,6 +188,7 @@
   .select-kit-body {
     display: flex !important;
     flex-direction: column !important;
+
     // Core uses center; that leaves empty top/left space when the body is
     // wider/taller than the collection (period-chooser and many dropdowns).
     align-items: stretch !important;
@@ -206,6 +207,7 @@
     min-height: 0 !important;
     max-height: min(320px, 52vh);
     margin: 0 !important;
+
     // Beat period-chooser / other choosers that add a second padding layer.
     padding: 0 !important;
     background: transparent;
