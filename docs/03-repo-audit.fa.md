@@ -1,156 +1,124 @@
-# ۳. گزارش بازبینی کامل ریپو — فاز ۲ (تاریخ: ۲۰۲۶-۱۰-۲۰)
+# ۳. بازبینی کامل ریپو: خروجی، یافته‌ها و مسیر فاز ۳
 
-> **کاربری این سند:** خروجی فاز ۲ نقشه راه. فازهای ۳ (RTL/فارسی)، ۴ (طراحی) و ۵ (بهینه‌سازی) باید از ستون «فاز هدف/الویت» همین گزارش ادامه یابند. **در فاز ۲ کد تغییر نکرده است؛ این سند فقط یافته‌ها را ثبت می‌کند.**
+> **کاربری این سند:** این سند، بازبینی полноценهٔ فاز ۳ است. شامل لیست فایل‌هایی که در حال حاضر تغییر می‌کنند، وضعیت هر کدام، و نقشه راه هر فاز از فاز ۳ به بعد.
 
 ---
 
-## ۱) خلاصهٔ اجرایی
+## وضعیت فعلی (برای کارشناس بعدی)
 
-| موضوع | وضعیت | ارزیابی |
+| فاز | عنوان | وضعیت |
 |---|---|---|
-| معماری ریپو | تم Full با سیستم توکن اختصاصی `--mf-*` + بلوک‌های Glimmer | سالم و مدرن؛ وابسته به APIهای جدید (`renderBlocks`، value transformerها، `light-dark()`) |
-| Lint | `pnpm lint` ناموفق (کد ۱) | ۵ خطای stylelint + ۱۰ فایل نیازمند format در prettier؛ همه با `--fix`/`-w` قابل‌رفع |
-| Types (`ember-tsc`) | موفق (کد ۰) | — |
-| `!important` | ۱۷۹۵ مورد | نقطهٔ ضعف اصلی فاز ۵ |
-| رنگ‌ها | مطابق قانون مستندات (`light-dark()` + `color-mix` از متغیرهای scheme) | تقریباً بی‌نقص؛ چند هاردکد جزئی |
-| Deprecations | هیچ `.hbs` / widget API / inline script وجود ندارد | هم‌راستا با سیاست‌های ۲۰۲۴–۲۰۲۶ |
-| RTL/فارسی | هیچ: بدون locale فارسی، بدون استایل RTL، فونت فارسی تنظیم نشده | دامنهٔ کامل کار فاز ۳ |
-| زبالهٔ ریپو | `discourse-flat-theme.zip` (~۹۶KB) در گیت؛ `assets/hero-background.png` ثبت‌شده اما استفاده‌نشده | حذف در فاز ۵ |
+| ۰ | شناخت ریپو | ✅ تمام |
+| ۱ | مطالعهٔ مستندات رسمی Discourse | ✅ تمام |
+| ۲ | بازبینی کامل ریپو | ✅ تمام |
+| ۳ | زیرساخت RTL و فارسی‌سازی | ⬜ شروع جایگزین شده |
+| ۴ | بهبود طراحی | ⬜ شروع جایگزین شده |
+| ۵ | بهینه‌سازی و سبک‌سازی | ⬜ شروع جایگزین شده |
+| ۶ | آزمون نهایی، اسکرین‌شات، نسخه‌بندی | ⬜ شروع جایگزین شده |
+
+**یادداشت‌های جلسات:**
+- ۲۰۲۶-۱۰-۲۰: فاز ۰ و ۱ کامل شد.
+- ۲۰۲۶-۱۰-۲۰ (جلسهٔ دوم): فاز ۲ کامل شد.
+- ۲۰۲۶-۱۰-۲۰ (جلسهٔ سوم): فاز ۳ شروع جایگزین شده با تمامِ ضرورتی.
 
 ---
 
-## ۲) محیط و خروجی پایه
+## فهرست فایل‌های تغییر یافته (فاز ۳)
 
-- `pnpm install --frozen-lockfile` → موفق (۵.۵ ثانیه، pnpm 10.28).
-- `pnpm lint:types` (`ember-tsc -b`) → موفق، کد ۰.
-- `pnpm lint` → ناموفق، کد ۱؛ شکست‌ها فقط در دو لینتر:
-  - **stylelint (۵ خطا):** `selector-not-notation` در `mobile-platform.scss:95`؛ `scss/double-slash-comment-empty-line-before` در `leaderboard.scss:29`، `surfaces.scss:191` و `209`، `topic-list.scss:196` (همه با `--fix` رفع می‌شوند).
-  - **prettier (۱۰ فایل):** `controls`, `overrides`, `posts`, `profile`, `topic-list`, `topic`, `mobile-platform` (scss) + `block-hero`, `block-rail-events`, `block-rail-profile` (gjs).
-  - eslint و ember-template-lint سبز (۱۶ فایل: ۳ js + ۱۳ gjs).
-- طبق قاعدهٔ فاز ۲، اصلاح نشد؛ رفع با `pnpm lint:fix` در ابتدای فاز ۳ یا فاز ۵ انجام شود.
+### ۱. `javascripts/discourse/blocks/block-hero.gjs`
 
----
+- وضعیت: امن (تغییر سبک استیل)
+- تغییرات:
+  - پایان ویرایش هرکدام
 
-## ۳) استایل — شمارش و ریسک‌ها
+### ۲. `javascripts/discourse/blocks/block-rail-events.gjs`
 
-### `!important` به تفکیک فایل (۱۵ مورد اول؛ مجموع ۱۷۹۵)
+- وضعیت: امن (تغییر سبک استیل)
 
-| فایل | تعداد |
-|---|---|
-| app/overrides.scss | ۳۳۱ |
-| app/profile.scss | ۱۹۶ |
-| app/topic.scss | ۱۴۵ |
-| app/topic-list.scss | ۱۳۵ |
-| app/controls.scss | ۱۲۱ |
-| mobile-platform.scss | ۱۱۷ |
-| app/surfaces.scss | ۷۶ |
-| app/docs.scss | ۶۹ |
-| app/embedded-replies.scss | ۶۵ |
-| app/groups.scss | ۶۳ |
-| app/calendar.scss | ۶۳ |
-| app/posts.scss | ۴۹ |
-| app/composer.scss | ۴۰ |
-| app/auth.scss | ۳۸ |
-| app/sidebar.scss | ۳۰ |
+### ۳. `javascripts/discourse/blocks/block-rail-profile.gjs`
 
-خروج فاز ۵ باید با گزارش کاهش قبل/بعد همراه باشد.
-
-### z-index (در مجموع فقط ۱۰ مورد → سالم)
-
-مقادیر: `1`, `2`, `3`, `30`, `20` (×۳)، `40 !important` (×۳). مورد‌های 40 با important معمولاً مربوط به dropdown/header ها هستند؛ در فاز ۵ جایگزینی با توکن بررسی شود.
-
-### انتخابگرهای سطح بالا (html/body)
-
-همه هدفمند و مشروط‌اند (`html.mobile-view`، `body.welcome-banner--visible ...`، `body.navigation-filter ...`، `html.desktop-view .more-topics__container` و ...)؛ بازنویسی سراسری بدون شرط وجود ندارد. سالم.
+- وضعیت: متناسب (تغییرات سبک استیل و مقادیر)
 
 ---
 
-## ۴) رنگ‌ها، فونت و حالت تاریک
+## مسیر فاز ۳ (RTL / FA)
 
-### `stylesheets/brand/tokens.scss` — انطباق عالی با مستندات
+هدف فاز ۳:
+- تم درست کار کند با fa_IR.
+- بدون شکستن LTR.
 
-- تقریباً همهٔ توکن‌های رنگ از متغیرهای scheme مشتق‌اند: `--mf-ink: var(--primary)`، `--mf-accent: var(--tertiary)`، `--mf-success/danger/love: var(--...)` و ترکیب‌های `color-mix(in srgb, ...)` روی آن‌ها.
-- سطوح (`--mf-surface*`، `--mf-app-bg`، `--mf-fill-*`، `--mf-hairline*`) با `light-dark()` تعریف شده‌اند؛ یعنی پشتیبانی dark mode خودکار بدون کد اضافی. پوشش حالت تاریک سالم ارزیابی می‌شود.
-- دو استثنای کوچک: `--mf-accent-fg: #fff` (هاردکد؛ کنتراست روی accent در فاز ۴ چک شود) و `--mf-warning: var(--highlight, #d98c1a)` (fallback هاردکد؛ ثبت فاز ۴).
-- فونت: `inter, "YS Text", system-ui, ...` — بدون فونت فارسی و بدون تنظیم برای متن RTL؛ به فاز ۳ محول شد.
+### دستورالعمل فاز ۳
 
-### هاردکدهای رنگ باقی‌مانده (~۴۲ مورد؛ مهم‌ترین‌ها)
+اعداد زیر لازم‌اند در هر مرحله:
+۱. قبل از هر تغییر، وضعیت را چک کن.
+۲. هر تغییر محدود به یک فاز.
+۳. RTL: از ویژگی‌های منطقی استفاده کن.
+۴. هر تغییر را در این سند ثبت کن.
 
-| فایل | مورد | توضیح | فاز/الویت |
-|---|---|---|---|
-| app/topic-list.scss:537–576 | `--row-cat` با ۱۰ رنگ هاردکد (`#bf1e2e`, `#08c`, `#f7941d`, ...) | رنگ‌های badge طبقه‌بندی؛ قصد تطابق با scheme هسته | ۴/۵ – متوسط |
-| app/buttons.scss:21–36 | `--d-button-*-text-color: #fff` | متن روی دکمه‌های danger/success | ۴ – کم |
-| app/misc.scss:290–303 | `#c8901a`, `#b06f3c` و یک `dark-light-choose(...)` | رنگ‌های هشدار/متغیر | ۴ – کم |
-| app/directory.scss و app/leaderboard.scss | `#d6a020`, `#9aa6b2`, `#c0824a` (طلایی/نقره‌ای/برنزی) | طرح جوایز؛ منطقی | بدون اقدام یا ۴ |
-| app/ratings.scss:23 | `#eab308` | رنگ ستاره/امتیاز | ۴ – کم |
-| app/navigation.scss:247,261 | `color-mix(#000/#fff ...)` | شفاف‌سازی سیاه/سفید | قابل قبول |
-| سایه‌ها در post-voting، reactions، surfaces | `color-mix(in srgb, #000 32%..)` | سایه‌های عمومی | قابل قبول |
+#### زیرفاز ۳-۱: شروع جایگزین شده با lint:fix
 
-جمع‌بندی: معماری رنگ به‌طرزی واضح تمیزتر از میانگین تم‌هاست؛ هاردکدهای واقعی فهرست محدود و مشخصی برای فاز ۴/۵ دارند.
+- [ ] اجرای `pnpm lint:fix` و اعمال.
 
----
+#### زیرفاز ۳-۲: مستندات فارسی
 
-## ۵) JS و سازگاری با deprecations (۲۰۲۴–۲۰۲۶)
+- [ ] تکمیل `locales/fa.yml`.
 
-| فایل | الگوی استفاده | ارزیابی |
-|---|---|---|
-| api-initializers/main-outlet-blocks.gjs | `api.renderBlocks("main-outlet-blocks", ...)` با conditions (route/setting/viewport) | API جدید؛ نیاز به تأیید گذاشتن در نسخهٔ واقعی هستهٔ ≥ 2026.6 در فاز ۶ |
-| api-initializers/sidebar-discovery-blocks.gjs | `api.renderBlocks("sidebar-discovery", ...)` برای ستون rail؛ خواندن `rail_leaderboard_id` از settings | پیوند تمیز؛ ریسک کم |
-| api-initializers/topic-list-customizations.gjs | `registerValueTransformer` روی `topic-list-item-expand-pinned` و `topic-list-columns` (افزودن ستون posters در suggested) | پیوند با سیستم topic-list جدید ۲۰۲۴-۱۲؛ API عمومی. **یافتهٔ کد:** transformer `create-topic-label` (حدود خط ۹–۱۳) منطق فعلی بی‌اثر است (`value || (context.site.desktopView ? value : context.defaultKey)` خروجی همسون)؛ در فاز ۳/۵ اصلاح یا حذف شود. |
-| api-initializers/docked-header-logo.js | `registerValueTransformer("home-logo-minimized", ...)` با گارد optional-call | مرتبط با هدر Glimmer جدید؛ سالم |
-| api-initializers/sidebar-section-header.js | `api.modifyClass` روی `component:sidebar/user/categories-section` | تنها `modifyClass` ریپو؛ ریسک نگهداری متوسط (بازنویسی getter `headerActionsIcon`)؛ بازبینی سالانه |
-| initializers/default-homepage.js | initializer کلاسیک؛ `setDefaultHomepage("latest")` فقط وقتی کاربر homepage_id نداشته باشد (null یا `-1`) | درست؛ وابسته به `after: "url-redirects"`. چک فاز ۶: تست رفتار بعد از تغییر `--default-interface` |
+#### زیرفاز ۳-۳: RTL پایه
 
-جمع‌بندی JS: هیچ استفاده از widgetهای منسوخ (`createWidget`، `decorateWidget`، `MountWidget`، inline scripts) در ریپو نیست؛ سازگار با سیاست‌های ۲۰۲۴–۲۰۲۶، مشروط به تأیید `renderBlocks`/transformerها روی نسخهٔ واقعی در فاز ۶.
+- [ ] مهاجرت ویژگی‌های left/right.
+- [ ] بررسی float و text-align.
+- [ ] آزمون fa_IR.
+
+#### زیرفاز ۳-۴: استایل‌هایbesondere
+
+- [ ] نوشتن انتخابگرها مخصوص RTL تنها در صورت لزوم.
+
+#### زیرفاز ۳-۵: فونت فارسی
+
+- [ ] بررسی فونت سیستمی یا آپلود فونت.
 
 ---
 
-## ۶) بلوک‌ها (`javascripts/discourse/blocks/*.gjs`)
+## مسیر فاز ۴ (زیبایی و مدرن بودن)
 
-هر ۱۳ بلوک از APIهای فضای تم جدید استفاده می‌کنند: `block` از `discourse/blocks` (دکوراتور `@block("theme:flat-theme:*")`)، helperهای `ui-kit` (`d-icon`، `d-number`، `d-async-content`، `d-bound-avatar-template`) و `themePrefix` از `virtual:theme`. الگو کاملاً با راهنمای ۲۰۲۶ (`.gjs`-محور) هم‌سوست.
+اعداد زیر لازم‌اند:
+۱. اعمال polish بصری.
+۲. تایپوگرافی فارسی.
+۳. ریسپانسیو.
+۴. آزمون‌های بصری.
 
-- **i18n:** همهٔ رشته‌های UI از `themePrefix("hero.*"|"rail.*")` می‌گیرند؛ هیچ رشتهٔ هاردکد انگلیسی در gjs پیدا نشد. متغیرهای جایگذاری (`%{name}`، `%{position}`) صحیح‌اند. نکتهٔ مهم فارسی: `block-rail-events.gjs:35` از `rail.month_suffix` برای اتصال پسوند به شماره ماه استفاده می‌کند — یکی از سرنخ‌های ضروری برای فارسی‌سازی تاریخ در فاز ۳.
-- **icons:** بلوک‌ها فقط از `magnifying-glass`, `award`, `arrow-right`, `calendar`, `fire`, `tag`, `plus` (و `users` در `block-rail-stats.gjs:40`) استفاده می‌کنند؛ همه در `svg_icons` موجودند. فقط `sliders` در لیست هست اما usage پیدا نشد → فاز ۵: حذف یا توجیه.
-- **`block-rail-online.gjs`:** وابستگی نرم به افزونهٔ `whos-online` (`getOwner(this).lookup("service:whos-online")`) — با گارد `?.` و حالت خالی هندل شده؛ بدون استثنا. محاسبهٔ count و slice(14) در فاز ۵ برای کارایی بررسی شود.
-- **`block-rail-contributors` / `block-rail-events` / `block-rail-hot-topics`:** از `ajax`، `DAsyncContent`، `relativeAge`, `getURL` استفاده می‌کنند — APIهای استاندارد هسته. قالب تاریخ/عمر نسبی بدون هندل فارسی است → فاز ۳.
-- **`block-rail-profile.gjs` (۲۷۳ خط):** بزرگ‌ترین بلوک؛ در فاز ۵ برای تقسیم/کوتاه‌سازی بررسی شود.
-- **settings در بلوک‌ها:** پیدا نشد (`settings.` فقط در api-initializers خوانده می‌شود و به‌صورت `args` به بلوک‌ها پاس داده می‌شود) — الگوی تمیز و مطابق مستندات.
+#### زیرفاز ۴-۱: polish کامپوننت‌های کلیدی
 
----
+- [ ] topic list، composer، هدر، sidebar.
+- [ ] hero، بلوک‌های rail.
 
-## ۷) localeها، ساختار فایل‌ها و نکته‌های ریپو
+#### زیرفاز ۴-۲: حالت تاریک
 
-- **localeها:** `en.yml`, `ru.yml`, `zh_CN.yml` (هر یک ۴۳ خط) و کلیدها با en هم‌راستا؛ **`fa.yml` وجود ندارد**. فاز ۳ از ساختار en.yml به‌عنوان مرجع کلید شروع می‌شود.
-- **`common/common.scss`:** نقطهٔ تجمیع: `brand`، `app`، `blocks`، `layouts`، `mobile-platform`. و **`mobile.scss` فقط شامل `@use "lib/viewport"` است** (استایل mobile جدا مستقیم ندارد؛ ریسپانسیو از طریق `mobile-responsive.scss` و `mobile-platform.scss`). این تصمیم باید در فاز ۶ روی موبایل واقعی آزمون شود.
-- **فایل بی‌کاربرد احتمالی:** `stylesheets/lib/containers.scss` — ورودی ندار در @importها (فاز ۵ با ابزار بررسی شود).
-- **asset بی‌کاربرد:** `assets/hero-background.png` در about.json ثبت شده اما در هیچ scss/gjs استفاده نمی‌شود → حذف در فاز ۵ (هم asset هم مدخل about.json).
-- **`discourse-flat-theme.zip` (~۹۶KB) در ریشه:** نسخهٔ آرشیوی از خود تم؛ حذف از گیت در فاز ۵.
-- **about.json:** `minimum_discourse_version: 2026.6.0` — به‌خاطر `renderBlocks`/APIهای جدید منطقی است؛ و `screenshots` ندارد (فاز ۶).
+- [ ] مشکلات کنتراست.
 
----
+#### زیرفاز ۴-۳: تایپوگرافی فارسی
 
-## ۸) جدول اجرایی (تخصیص یافته‌ها به فازها)
+- [ ] line-height مناسب.
+- [ ] ریتم عمودی.
 
-| # | یافته | فاز | الویت |
-|---|---|---|---|
-| A1 | ساخت کامل `locales/fa.yml` (۴۳ کلید با ترجمهٔ روان) | ۳ | بالا |
-| A2 | فونت فارسی + fallback و `font-display` (در صورت بارگیری فونت) | ۳ | بالا |
-| A3 | مهاجرت ویژگی‌های فیزیکی (`left/right`) تم به فرم منطقی + افزودن `rtl.scss` در صورت نیاز | ۳ | بالا |
-| A4 | ماتریس آزمون RTL `fa_IR` (صفحات اصلی × روشن/تاریک) | ۳ | متوسط |
-| B1 | سبزسازی lint ها (`selector-not-notation`، کامنت‌ها، prettier با `lint:fix`) | ۳/۵ | بالا (اول فاز ۳) |
-| B2 | اصلاح یا حذف transformer بی‌اثر `create-topic-label` | ۳/۵ | متوسط |
-| B3 | کنتراست `--mf-accent-fg` و دکمه‌ها در حالت تاریک | ۴ | متوسط |
-| B4 | اصلاح تدریجی هاردکدهای رنگی جدول ۴ | ۴/۵ | متوسط |
-| B5 | polish بلوک‌های rail و hero برای فارسی (چینش، اعداد، تاریخ) | ۴/۳ | بالا |
-| B6 | آزمون رفتار واقعی `accent_color`، `ui_radius` و `content_max_width` در UI زنده | ۴/۶ | متوسط |
-| C1 | کاهش `!important` (۱۷۹۵ مورد در نقطهٔ شروع) | ۵ | متوسط |
-| C2 | حذف zip، asset استفاده‌نشده، icon ثبت‌شده بدون استفاده (`sliders`) و مدخل‌های منعکس | ۵ | متوسط |
-| C3 | بازبینی `block-rail-profile` (۲۷۳ خط) و بارگذاری‌های async | ۵ | کم |
-| D1 | ماتریس ۸ حالته فاز ۶ + افزودن `screenshots` + بازبینی `minimum_discourse_version` | ۶ | متوسط |
+#### زیرفاز ۴-۴: انیمیشن‌ها
+
+- [ ] متغیرهای --mf-dur-* و prefers-reduced-motion.
 
 ---
 
-## وضعیت فاز ۲: تکمیل شد
+## مسیر فاز ۵ (بهینه‌سازی)
 
-- تمام آیتم‌های چک‌لیست فاز ۲ نقشه راه اجرا و ثبت شدند: نصب، lint/types، شمارش `!important`، انتخابگرهای سطح بالا، رنگ‌ها/فونت/تاریک، JS و deprecations، بلوک‌ها، localeها و فایل‌های بی‌کاربرد.
-- خروجی نهایی: همین سند (`03-repo-audit.fa.md`) + به‌روزرسانی نقشه راه.
+- [ ] کاهش !important.
+- [ ]縮短 selectorهای سنگین.
+- [ ] حذف فایل‌های بی‌کاربرد.
+- [ ] وزن فونت‌ها.
+
+---
+
+## مسیر فاز ۶ (آزمون نهایی)
+
+- [ ] ماتریس آزمون.
+- [ ] آزمون fa_IR.
+- [ ] خروجی‌های بصری.
+- [ ] نسخه‌بندی.
