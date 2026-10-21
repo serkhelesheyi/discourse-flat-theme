@@ -58,7 +58,7 @@
     }
 
     .controls {
-      margin-left: auto;
+      margin-inline-start: auto;
       display: flex;
       flex-wrap: wrap;
       gap: var(--mf-space-2);
@@ -1058,7 +1058,7 @@
     font-weight: var(--mf-weight-medium) !important;
     line-height: 1.4 !important;
     letter-spacing: 0 !important;
-    text-align: left !important;
+    text-align: start !important;
     text-transform: none !important;
   }
 
@@ -1075,7 +1075,7 @@
     font-weight: var(--mf-weight-semibold) !important;
     line-height: 1.4 !important;
     letter-spacing: normal;
-    text-align: left !important;
+    text-align: start !important;
     text-overflow: unset;
     white-space: normal;
   }

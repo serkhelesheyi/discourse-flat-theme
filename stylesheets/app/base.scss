@@ -19,6 +19,25 @@ body {
   line-height: var(--mf-leading-normal);
 }
 
+// Persian (fa_IR): a Persian-capable stack, no negative tracking (it breaks the
+// joined script) and taller leading for diacritics. Scoped by language so LTR
+// locales keep the default typography.
+:lang(fa) {
+  font-family: var(--mf-font-fa);
+  letter-spacing: normal;
+  line-height: var(--mf-leading-relaxed);
+}
+
+:lang(fa) :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--mf-font-fa);
+  letter-spacing: normal;
+  line-height: var(--mf-leading-snug);
+}
+
+:lang(fa) :is(input, textarea, select, button, .btn, .select-kit-header) {
+  font-family: var(--mf-font-fa);
+}
+
 #main-outlet-wrapper,
 .posts-wrapper,
 .container.posts {
@@ -40,6 +59,10 @@ h6 {
 
 h1 {
   letter-spacing: -0.03em;
+
+  &:lang(fa) {
+    letter-spacing: normal;
+  }
 }
 
 a {

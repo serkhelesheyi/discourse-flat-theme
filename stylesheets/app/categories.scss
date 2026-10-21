@@ -16,7 +16,7 @@
     break-inside: avoid;
     -webkit-column-break-inside: avoid;
     border: 0;
-    border-left: 3px solid var(--category-badge-color, var(--mf-accent));
+    border-inline-start: 3px solid var(--category-badge-color, var(--mf-accent));
     border-radius: var(--mf-radius-lg);
     background: var(--mf-surface);
     padding: 0;
@@ -26,7 +26,7 @@
 
     &:hover {
       background: var(--mf-surface-2);
-      border-left-color: var(--category-badge-color, var(--mf-accent));
+      border-inline-start-color: var(--category-badge-color, var(--mf-accent));
     }
 
     .category-box-inner {
@@ -34,7 +34,7 @@
       background: transparent;
       padding: var(--mf-space-4);
       height: auto;
-      text-align: left;
+      text-align: start;
       display: flex;
       flex-direction: column;
       gap: var(--mf-space-3);
@@ -42,7 +42,7 @@
 
     .category-box-heading {
       margin-bottom: 6px;
-      text-align: left !important;
+      text-align: start !important;
       justify-content: flex-start !important;
 
       .category-title-link,
@@ -51,7 +51,7 @@
       h4,
       .category-name {
         justify-content: flex-start !important;
-        text-align: left !important;
+        text-align: start !important;
       }
 
       h3,
@@ -170,7 +170,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    text-align: left;
+    text-align: start;
   }
 
   .category-box-heading .category-logo.aspect-image,

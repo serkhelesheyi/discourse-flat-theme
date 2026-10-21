@@ -26,7 +26,7 @@
 }
 
 .d-header .title {
-  padding-right: var(--mf-space-4);
+  padding-inline-end: var(--mf-space-4);
 
   img#site-logo,
   .logo-big,
@@ -203,7 +203,7 @@
     .indicator {
       width: 6px;
       height: 6px;
-      margin-right: 4px;
+      margin-inline-end: 4px;
       background: var(--mf-success, var(--success));
       border-radius: var(--mf-radius-pill);
     }
@@ -225,7 +225,7 @@
   }
 
   .d-header .contents:has(.extra-info-wrapper) .extra-info-wrapper {
-    padding-left: 0 !important;
-    margin-left: 0 !important;
+    padding-inline-start: 0 !important;
+    margin-inline-start: 0 !important;
   }
 }

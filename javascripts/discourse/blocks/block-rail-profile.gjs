@@ -192,7 +192,8 @@ export default class BlockRailProfile extends Component {
                     >{{model.secondaryName}}</span>
                   {{/if}}
                   {{#if model.title}}
-                    <span class="block-rail-profile__secondary"
+                    <span
+                      class="block-rail-profile__secondary"
                     >{{model.title}}</span>
                   {{/if}}
                 </div>
@@ -226,7 +227,8 @@ export default class BlockRailProfile extends Component {
                       class="block-rail-profile__stat"
                       href={{concat "/u/" model.user.username "/followers"}}
                     >
-                      <span class="block-rail-profile__stat-value"
+                      <span
+                        class="block-rail-profile__stat-value"
                       >{{model.followers}}</span>
                       <span class="block-rail-profile__stat-label">{{i18n
                           (themePrefix "rail.followers")
@@ -235,7 +237,8 @@ export default class BlockRailProfile extends Component {
                   {{/if}}
                   {{#if model.points}}
                     <span class="block-rail-profile__stat">
-                      <span class="block-rail-profile__stat-value"
+                      <span
+                        class="block-rail-profile__stat-value"
                       >{{model.points}}</span>
                       <span class="block-rail-profile__stat-label">{{i18n
                           (themePrefix "rail.points")

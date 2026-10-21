@@ -41,7 +41,7 @@ body.archetype-regular {
 @include viewport.from(md) {
   .desktop-view body.archetype-regular .topic-navigation.with-timeline {
     width: auto;
-    margin-left: var(--mf-space-4);
+    margin-inline-start: var(--mf-space-4);
 
     .timeline-container.timeline-docked {
       width: 100%;
@@ -106,7 +106,7 @@ body.archetype-regular {
         position: absolute;
         top: 0;
         bottom: 0;
-        left: 1px;
+        inset-inline-start: 1px;
         width: 4px;
         background: var(--mf-surface-3);
         border-radius: var(--mf-radius-pill);
@@ -117,7 +117,7 @@ body.archetype-regular {
 
     .timeline-scroller {
       width: calc(100% + 2px);
-      margin-left: 0;
+      margin-inline-start: 0;
       background: var(--mf-panel-strong, var(--mf-surface-2));
       border-radius: var(--mf-radius-lg);
       box-shadow: none;
@@ -127,7 +127,7 @@ body.archetype-regular {
     .timeline-handle {
       width: 6px;
       min-height: 0;
-      margin-left: 0;
+      margin-inline-start: 0;
       background: var(--mf-accent);
       border-radius: var(--mf-radius-pill);
       box-shadow: 0 0 0 3px var(--mf-accent-tint);
@@ -139,7 +139,7 @@ body.archetype-regular {
       justify-content: center;
       gap: 1px;
       height: 100%;
-      padding-left: 14px;
+      padding-inline-start: 14px;
       box-sizing: border-box;
     }
 
@@ -247,7 +247,7 @@ body.archetype-regular {
 
     #d-toc {
       max-height: calc(100vh - 4.5em - var(--header-offset));
-      border-left: 0;
+      border-inline-start: 0;
       overflow: auto;
       scrollbar-color: var(--mf-surface-3) transparent;
       scrollbar-width: thin;
@@ -259,7 +259,7 @@ body.archetype-regular {
 
       li.d-toc-item {
         margin: 0;
-        padding-left: 10px;
+        padding-inline-start: 10px;
         line-height: 1.5;
 
         > a {

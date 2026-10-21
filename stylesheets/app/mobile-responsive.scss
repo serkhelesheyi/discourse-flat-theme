@@ -204,7 +204,7 @@
     .more-topics__list .topic-item-stats > .num.activity.last,
     #suggested-topics .topic-item-stats > .num.activity.last {
       min-width: 0;
-      margin-left: 0;
+      margin-inline-start: 0;
     }
   }
 }

@@ -184,7 +184,7 @@
       content: "";
       position: absolute;
       top: 50%;
-      left: 2px;
+      inset-inline-start: 2px;
       width: 3px;
       height: 16px;
       background: var(--mf-accent);

@@ -168,7 +168,7 @@
     .check-display {
       position: absolute;
       top: var(--mf-space-3);
-      right: var(--mf-space-3);
+      inset-inline-end: var(--mf-space-3);
       display: inline-flex;
       align-items: center;
       justify-content: center;

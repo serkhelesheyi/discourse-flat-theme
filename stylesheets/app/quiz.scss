@@ -15,7 +15,7 @@
 
   &.is-docked:not(.is-minimized) {
     background: var(--mf-surface);
-    border-left: 0;
+    border-inline-start: 0;
   }
 
   &.is-mobile {

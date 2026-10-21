@@ -302,7 +302,7 @@
       color: var(--mf-ink-faint);
       font-size: var(--mf-text-2xs);
       font-variant-numeric: tabular-nums;
-      text-align: right;
+      text-align: end;
       background: var(--mf-surface);
       border-radius: var(--mf-radius-pill);
     }
@@ -803,7 +803,7 @@ body.archetype-docs-topic {
 
       .topic-item-stats .activity {
         flex: 0 0 auto;
-        margin-left: auto;
+        margin-inline-start: auto;
       }
     }
   }

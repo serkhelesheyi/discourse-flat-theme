@@ -86,8 +86,8 @@ body.archetype-regular {
     flex: 0 0 auto;
     align-items: center;
     gap: 4px;
-    margin-left: auto;
-    padding-left: var(--mf-space-2);
+    margin-inline-start: auto;
+    padding-inline-start: var(--mf-space-2);
   }
 
   .post-stream > .topic-post .post-infos .post-info,
@@ -246,7 +246,7 @@ body.archetype-regular {
     flex: 0 0 auto;
     align-items: center;
     gap: 1px;
-    margin-left: auto;
+    margin-inline-start: auto;
   }
 
   .post-stream > .topic-post .post-controls .actions .btn {
@@ -426,7 +426,7 @@ body.archetype-regular {
     }
 
     .post-stream > .topic-post .topic-map.--op {
-      padding-left: calc(
+      padding-inline-start: calc(
         var(--mf-post-avatar-size) + var(--mf-post-column-gap)
       );
     }
@@ -450,13 +450,13 @@ body.archetype-regular {
     .post-stream > .topic-post .topic-avatar {
       width: var(--mf-post-avatar-size);
       min-width: var(--mf-post-avatar-size);
-      margin-right: 8px;
+      margin-inline-end: 8px;
       padding: 0;
     }
 
     .post-stream > .topic-post .topic-meta-data:not(.embedded-reply) {
       min-height: var(--mf-post-avatar-size);
-      margin-left: calc(var(--mf-post-avatar-size) + 8px);
+      margin-inline-start: calc(var(--mf-post-avatar-size) + 8px);
     }
 
     .post-stream > .topic-post .post-avatar,
@@ -466,7 +466,7 @@ body.archetype-regular {
     }
 
     .post-stream > .topic-post .post-infos {
-      padding-left: 6px;
+      padding-inline-start: 6px;
     }
 
     .post-stream > .topic-post > article > .post__row .topic-body > .cooked,

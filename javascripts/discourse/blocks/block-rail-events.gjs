@@ -55,7 +55,9 @@ export default class BlockRailEvents extends Component {
                 <li>
                   <a class="block-rail-events__item" href={{event.href}}>
                     <span class="block-rail-events__date">
-                      <span class="block-rail-events__month">{{event.month}}</span>
+                      <span
+                        class="block-rail-events__month"
+                      >{{event.month}}</span>
                       <span class="block-rail-events__day">{{event.day}}</span>
                     </span>
                     <span class="block-rail-events__name">{{event.title}}</span>

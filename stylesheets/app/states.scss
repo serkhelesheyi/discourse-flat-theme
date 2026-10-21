@@ -106,19 +106,19 @@ aside.quote {
   .quote,
   aside.quote,
   blockquote {
-    border-left: 2px solid var(--mf-hairline-strong);
+    border-inline-start: 2px solid var(--mf-hairline-strong);
     background: transparent;
     border-radius: 0;
     margin-top: var(--mf-space-2);
   }
 
   blockquote {
-    padding-left: var(--mf-space-3);
+    padding-inline-start: var(--mf-space-3);
   }
 }
 
 .cooked blockquote blockquote {
-  border-left-color: var(--mf-hairline);
+  border-inline-start-color: var(--mf-hairline);
   background: transparent;
 }
 
@@ -247,13 +247,13 @@ aside.onebox {
     border-radius: 0;
 
     &:first-child {
-      border-top-left-radius: var(--mf-radius-sm);
-      border-bottom-left-radius: var(--mf-radius-sm);
+      border-start-start-radius: var(--mf-radius-sm);
+      border-end-start-radius: var(--mf-radius-sm);
     }
 
     &:last-child {
-      border-top-right-radius: var(--mf-radius-sm);
-      border-bottom-right-radius: var(--mf-radius-sm);
+      border-start-end-radius: var(--mf-radius-sm);
+      border-end-end-radius: var(--mf-radius-sm);
     }
   }
 }

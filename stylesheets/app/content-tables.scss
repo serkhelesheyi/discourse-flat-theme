@@ -34,7 +34,7 @@ body.archetype-regular .post-stream .cooked,
     > :is(thead, tbody, tfoot) > tr > th {
       color: var(--mf-ink-muted, var(--mf-ink-2));
       font-weight: var(--mf-weight-semibold);
-      text-align: left;
+      text-align: start;
       overflow-wrap: normal;
       word-break: normal;
       background: var(--mf-surface-2);

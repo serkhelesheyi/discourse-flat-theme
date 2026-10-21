@@ -19,18 +19,21 @@ html.mobile-view {
         display: none !important;
       }
 
-      // Pin translation + TOC + progress as one chip group on the right.
+      // Pin translation + TOC + progress as one chip group at the inline end.
       .btn-toggle-localized-content,
       .topic-content-language-preferences {
         order: 2;
         align-self: stretch;
-        margin-left: auto;
+        margin-inline-start: auto;
         height: 100%;
         min-height: 36px;
         padding: 0 10px;
         border: 1px solid var(--mf-hairline);
-        border-right: 0;
-        border-radius: var(--mf-radius-md) 0 0 var(--mf-radius-md);
+        border-inline-end: 0;
+        border-start-start-radius: var(--mf-radius-md);
+        border-start-end-radius: 0;
+        border-end-end-radius: 0;
+        border-end-start-radius: var(--mf-radius-md);
         background: var(--mf-surface);
         box-shadow: none;
       }
@@ -41,7 +44,7 @@ html.mobile-view {
         display: flex;
         align-self: stretch;
         align-items: stretch;
-        margin-left: 0;
+        margin-inline-start: 0;
       }
 
       .d-toc-mini {
@@ -55,7 +58,7 @@ html.mobile-view {
         min-height: 36px;
         padding: 0 10px;
         border: 1px solid var(--mf-hairline);
-        border-right: 0;
+        border-inline-end: 0;
         border-radius: 0;
         background: var(--mf-surface);
         box-shadow: none;
@@ -64,41 +67,51 @@ html.mobile-view {
       #topic-progress {
         order: 4;
         min-width: 72px;
-        margin-left: 0 !important;
+        margin-inline-start: 0 !important;
         border: 1px solid var(--mf-hairline);
-        border-radius: 0 var(--mf-radius-md) var(--mf-radius-md) 0;
+        border-start-start-radius: 0;
+        border-start-end-radius: var(--mf-radius-md);
+        border-end-end-radius: var(--mf-radius-md);
+        border-end-start-radius: 0;
       }
 
-      // No TOC: translation still leads the right-side chip; progress keeps right radius.
+      // No TOC: translation still leads the chip at the inline end; progress
+      // keeps its end radius.
       &:not(:has(.d-toc-mini)) {
         .btn-toggle-localized-content,
         .topic-content-language-preferences {
-          margin-left: auto;
+          margin-inline-start: auto;
         }
 
         #topic-progress {
-          margin-left: 0 !important;
-          border-radius: 0 var(--mf-radius-md) var(--mf-radius-md) 0;
+          margin-inline-start: 0 !important;
+          border-start-start-radius: 0;
+          border-start-end-radius: var(--mf-radius-md);
+          border-end-end-radius: var(--mf-radius-md);
+          border-end-start-radius: 0;
         }
       }
 
-      // No translation: TOC keeps the left radius of the chip group.
+      // No translation: TOC keeps the inline-start radius of the chip group.
       &:not(
           :has(.btn-toggle-localized-content),
           :has(.topic-content-language-preferences)
         )
         .d-toc-mini__button {
-        border-radius: var(--mf-radius-md) 0 0 var(--mf-radius-md);
+        border-start-start-radius: var(--mf-radius-md);
+        border-start-end-radius: 0;
+        border-end-end-radius: 0;
+        border-end-start-radius: var(--mf-radius-md);
       }
 
-      // Neither TOC nor translation: progress is a single chip on the right.
+      // Neither TOC nor translation: progress is a single chip at the inline end.
       &:not(
           :has(.d-toc-mini),
           :has(.btn-toggle-localized-content),
           :has(.topic-content-language-preferences)
         )
         #topic-progress {
-        margin-left: auto !important;
+        margin-inline-start: auto !important;
         border-radius: var(--mf-radius-md);
       }
     }
@@ -328,7 +341,7 @@ html.mobile-view {
     font-size: var(--mf-text-sm) !important;
     font-weight: var(--mf-weight-semibold) !important;
     line-height: 1.4 !important;
-    text-align: left !important;
+    text-align: start !important;
     text-overflow: unset;
     white-space: normal;
   }

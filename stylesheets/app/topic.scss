@@ -144,7 +144,7 @@
 aside.quote,
 blockquote,
 .cooked .quote {
-  border-left: 3px solid var(--mf-accent-line);
+  border-inline-start: 3px solid var(--mf-accent-line);
   background: var(--mf-surface-2);
   border-radius: var(--mf-radius-md);
   margin: var(--mf-space-4) 0;
@@ -161,7 +161,7 @@ blockquote,
   }
 
   blockquote {
-    border-left-color: var(--mf-hairline-strong);
+    border-inline-start-color: var(--mf-hairline-strong);
     background: transparent;
   }
 }
@@ -245,7 +245,6 @@ aside.onebox {
   // Keep AI Summarize flush to the right of the topic-map row.
   .topic-map__additional-contents.toggle-summary {
     margin-inline-start: auto !important;
-    margin-left: auto !important;
     display: flex !important;
     justify-content: flex-end !important;
     width: auto !important;
@@ -633,7 +632,7 @@ body.archetype-regular {
   .post-stream > .topic-post .post-menu-area {
     min-height: 28px;
     margin: 6px 0 0;
-    padding-left: 0;
+    padding-inline-start: 0;
   }
 
   .post-stream > .topic-post .post__actions {
@@ -831,7 +830,7 @@ body.archetype-regular {
   }
 
   body.archetype-regular .topic-map.--bottom {
-    padding-left: 57px;
+    padding-inline-start: 57px;
   }
 }
 
@@ -870,7 +869,7 @@ body.archetype-regular {
     > :has(> .container.posts)
     > .container.posts
     > .topic-navigation {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 
   html.desktop-view
@@ -939,7 +938,7 @@ body.archetype-regular {
 
     .post-stream > .topic-post .post-menu-area {
       margin-top: 4px;
-      padding-left: 0;
+      padding-inline-start: 0;
     }
 
     .topic-map,
@@ -1075,15 +1074,16 @@ body.archetype-regular {
         max-width: 100%;
         min-width: 0;
         box-sizing: border-box;
-        padding-right: 0 !important;
+        padding-inline-end: 0 !important;
       }
 
       .topic-item-metadata .main-link > .topic-statuses {
-        float: left !important;
+        float: inline-start !important;
         display: inline-flex !important;
         align-items: center;
         height: 1.35em;
-        margin: 0 4px 0 0;
+        margin-block: 0;
+        margin-inline-end: 4px;
         padding-top: 0.2em;
         overflow: visible;
       }

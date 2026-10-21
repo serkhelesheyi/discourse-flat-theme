@@ -297,11 +297,17 @@ body.admin-interface {
     }
 
     tbody td:first-child {
-      border-radius: var(--mf-radius-md) 0 0 var(--mf-radius-md);
+      border-start-start-radius: var(--mf-radius-md);
+      border-start-end-radius: 0;
+      border-end-end-radius: 0;
+      border-end-start-radius: var(--mf-radius-md);
     }
 
     tbody td:last-child {
-      border-radius: 0 var(--mf-radius-md) var(--mf-radius-md) 0;
+      border-start-start-radius: 0;
+      border-start-end-radius: var(--mf-radius-md);
+      border-end-end-radius: var(--mf-radius-md);
+      border-end-start-radius: 0;
     }
   }
 

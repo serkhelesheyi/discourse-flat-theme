@@ -1,0 +1,68 @@
+// Direction-specific fixes that CSS logical properties cannot express.
+//
+// Discourse sets `dir="rtl"` on <html> for right-to-left locales (fa_IR, ar, he)
+// and core mirrors its own stylesheets with rtlcss. Theme stylesheets are *not*
+// mirrored, so everything below is the small remainder that inline-start/end
+// cannot cover: floats, directional glyphs and motion nudges.
+//
+// We never declare `direction` ourselves — that stays core's decision.
+html[dir="rtl"] {
+  // Floats have no widely supported logical value yet.
+  .topic-list .main-link .topic-statuses,
+  .topic-list .main-link > .topic-statuses,
+  .topic-list .topic-item-metadata .main-link > .topic-statuses,
+  .topic-list .link-top-line .topic-statuses {
+    float: right !important;
+  }
+
+  // "Read more" affordances point the other way.
+  .block-rail-panel__more .d-icon-arrow-right,
+  .block-rail-links__item .d-icon-arrow-right,
+  .block-rail-cta .d-icon-arrow-right {
+    transform: scaleX(-1);
+  }
+
+  // Chevrons choose the mirrored side so paging still reads "forward".
+  .d-icon-chevron-right,
+  .d-icon-angle-right,
+  .d-toc-mini .d-icon-angle-right {
+    transform: scaleX(-1);
+  }
+
+  .d-icon-chevron-left,
+  .d-icon-angle-left {
+    transform: scaleX(-1);
+  }
+
+  // Hover nudges that imply LTR forward motion.
+  .block-rail-panel__more:hover .d-icon-arrow-right,
+  .block-rail-links__item:hover .d-icon-arrow-right {
+    transform: scaleX(-1) translateX(-2px);
+  }
+
+  .sidebar-section-link:hover .d-icon,
+  .block-rail-links a:hover .d-icon {
+    transform: translateX(-2px);
+  }
+
+  // The login page offset mirrors the two-column grid, which rtlcss swaps.
+  .login-fullpage > .alert {
+    transform: translateX(
+      calc((var(--mf-login-total-width) - var(--mf-login-primary-width)) / 2)
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[dir="rtl"] {
+    .block-rail-panel__more:hover .d-icon-arrow-right,
+    .block-rail-links__item:hover .d-icon-arrow-right {
+      transform: scaleX(-1);
+    }
+
+    .sidebar-section-link:hover .d-icon,
+    .block-rail-links a:hover .d-icon {
+      transform: none;
+    }
+  }
+}

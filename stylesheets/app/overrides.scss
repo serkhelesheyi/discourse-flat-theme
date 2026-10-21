@@ -601,7 +601,7 @@
   .description,
   .category-description {
     align-items: flex-start;
-    text-align: left !important;
+    text-align: start !important;
   }
 }
 
@@ -920,7 +920,7 @@ table.category-list th,
     font-weight: var(--mf-weight-medium) !important;
     line-height: 1.4 !important;
     letter-spacing: 0 !important;
-    text-align: left !important;
+    text-align: start !important;
     text-transform: none !important;
   }
 
@@ -933,7 +933,7 @@ table.category-list th,
     font-size: var(--mf-text-sm) !important;
     font-weight: var(--mf-weight-semibold) !important;
     line-height: 1.4 !important;
-    text-align: left !important;
+    text-align: start !important;
     text-overflow: unset;
     white-space: normal;
   }
@@ -1003,8 +1003,7 @@ table.category-list th,
     .modal-inner-container,
     .d-modal__footer,
     .modal-footer {
-      padding-left: var(--mf-space-4);
-      padding-right: var(--mf-space-4);
+      padding-inline: var(--mf-space-4);
     }
 
     .d-modal__container {
@@ -1070,8 +1069,7 @@ tr.topic-list-item-separator,
 
 body.archetype-regular .post-stream > .topic-post {
   border-top: 0 !important;
-  border-right: 0 !important;
-  border-left: 0 !important;
+  border-inline: 0 !important;
   border-bottom: 1px solid var(--mf-hairline-strong) !important;
 }
 
@@ -1349,12 +1347,12 @@ body.archetype-regular .suggested-topics .topic-list {
 
   .extra-info-wrapper {
     margin: 0 !important;
-    padding-left: 6px !important;
+    padding-inline-start: 6px !important;
   }
 }
 
 // Mobile (<48rem): Custom Header Links rebuilds header as CSS grid.
-// Measured gap ≈ flex gap 16px + extra-info padding-left 8px.
+// Measured gap ≈ flex gap 16px + extra-info inline-start padding (8px).
 // Match their breakpoint exactly and override logo track + padding.
 @media (width < 48rem) {
   .d-header:has(.extra-info-wrapper) {
@@ -1410,7 +1408,7 @@ body.archetype-regular .suggested-topics .topic-list {
     .header-title .topic-link,
     .topic-statuses:empty {
       margin: 0 !important;
-      padding-left: 0 !important;
+      padding-inline-start: 0 !important;
     }
   }
 }
@@ -1427,9 +1425,8 @@ body:not(.archetype-private_message) .topic-map,
 
 .topic-map__additional-contents.toggle-summary,
 .topic-map .toggle-summary {
-  margin-left: auto !important;
   margin-inline-start: auto !important;
-  margin-right: 0 !important;
+  margin-inline-end: 0 !important;
   display: flex !important;
   justify-content: flex-end !important;
   width: auto !important;

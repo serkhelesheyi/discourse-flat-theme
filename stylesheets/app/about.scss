@@ -109,7 +109,7 @@ body.about-page {
     color: var(--mf-ink-2);
     font-size: var(--mf-text-sm);
     font-weight: var(--mf-weight-medium);
-    text-align: left;
+    text-align: start;
     border: 0 !important;
     border-radius: var(--mf-radius-lg);
 
@@ -260,7 +260,7 @@ body.about-page {
       justify-content: flex-start;
       min-height: 0;
       padding: 10px 12px;
-      text-align: left;
+      text-align: start;
     }
 
     .about__admins,

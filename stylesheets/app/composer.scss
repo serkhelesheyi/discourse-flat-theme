@@ -13,8 +13,8 @@
     overflow: visible;
     background: var(--mf-surface);
     border: 0 !important;
-    border-top-left-radius: var(--mf-radius-2xl);
-    border-top-right-radius: var(--mf-radius-2xl);
+    border-start-start-radius: var(--mf-radius-2xl);
+    border-start-end-radius: var(--mf-radius-2xl);
     box-shadow: 0 -14px 44px rgb(0 0 0 / 16%);
   }
 
@@ -397,7 +397,7 @@
   }
 
   .d-editor-preview-wrapper {
-    margin-left: 8px;
+    margin-inline-start: 8px;
     padding: 0;
     background: var(--mf-surface-2);
     border: 0;
