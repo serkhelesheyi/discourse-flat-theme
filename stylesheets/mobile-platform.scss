@@ -1,0 +1,389 @@
+html.mobile-view {
+  max-width: 100%;
+
+  body {
+    max-width: 100%;
+    overscroll-behavior-x: none;
+  }
+
+  .topic-navigation {
+    #topic-progress-wrapper {
+      display: flex;
+      justify-content: flex-start;
+      align-items: stretch;
+      width: 100%;
+      min-width: 0;
+      gap: 0;
+
+      .topic-admin-menu-trigger {
+        display: none !important;
+      }
+
+      // Pin translation + TOC + progress as one chip group at the inline end.
+      .btn-toggle-localized-content,
+      .topic-content-language-preferences {
+        order: 2;
+        align-self: stretch;
+        margin-inline-start: auto;
+        height: 100%;
+        min-height: 36px;
+        padding: 0 10px;
+        border: 1px solid var(--mf-hairline);
+        border-inline-end: 0;
+        border-start-start-radius: var(--mf-radius-md);
+        border-start-end-radius: 0;
+        border-end-end-radius: 0;
+        border-end-start-radius: var(--mf-radius-md);
+        background: var(--mf-surface);
+        box-shadow: none;
+      }
+
+      > :has(.d-toc-mini),
+      > .d-toc-mini {
+        order: 3;
+        display: flex;
+        align-self: stretch;
+        align-items: stretch;
+        margin-inline-start: 0;
+      }
+
+      .d-toc-mini {
+        display: flex;
+        align-self: stretch;
+        align-items: stretch;
+      }
+
+      .d-toc-mini__button {
+        height: 100%;
+        min-height: 36px;
+        padding: 0 10px;
+        border: 1px solid var(--mf-hairline);
+        border-inline-end: 0;
+        border-radius: 0;
+        background: var(--mf-surface);
+        box-shadow: none;
+      }
+
+      #topic-progress {
+        order: 4;
+        min-width: 72px;
+        margin-inline-start: 0 !important;
+        border: 1px solid var(--mf-hairline);
+        border-start-start-radius: 0;
+        border-start-end-radius: var(--mf-radius-md);
+        border-end-end-radius: var(--mf-radius-md);
+        border-end-start-radius: 0;
+      }
+
+      // No TOC: translation still leads the chip at the inline end; progress
+      // keeps its end radius.
+      &:not(:has(.d-toc-mini)) {
+        .btn-toggle-localized-content,
+        .topic-content-language-preferences {
+          margin-inline-start: auto;
+        }
+
+        #topic-progress {
+          margin-inline-start: 0 !important;
+          border-start-start-radius: 0;
+          border-start-end-radius: var(--mf-radius-md);
+          border-end-end-radius: var(--mf-radius-md);
+          border-end-start-radius: 0;
+        }
+      }
+
+      // No translation: TOC keeps the inline-start radius of the chip group.
+      &:not(
+          :has(.btn-toggle-localized-content),
+          :has(.topic-content-language-preferences)
+        )
+        .d-toc-mini__button {
+        border-start-start-radius: var(--mf-radius-md);
+        border-start-end-radius: 0;
+        border-end-end-radius: 0;
+        border-end-start-radius: var(--mf-radius-md);
+      }
+
+      // Neither TOC nor translation: progress is a single chip at the inline end.
+      &:not(
+          :has(.d-toc-mini),
+          :has(.btn-toggle-localized-content),
+          :has(.topic-content-language-preferences)
+        )
+        #topic-progress {
+        margin-inline-start: auto !important;
+        border-radius: var(--mf-radius-md);
+      }
+    }
+  }
+
+  // Mobile profile controls: Message + Chat full-width; Follow / 常规 auto-width.
+  .user-main .details .controls > ul,
+  .user-summary-page .details .controls > ul {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: var(--mf-space-2) !important;
+    width: 100% !important;
+  }
+
+  .user-main .details .controls > ul > li,
+  .user-main .details .controls > ul > span,
+  .user-summary-page .details .controls > ul > li,
+  .user-summary-page .details .controls > ul > span {
+    display: flex !important;
+    flex: 0 0 auto !important;
+    order: 10 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .user-main .details .controls > ul > li:empty,
+  .user-summary-page .details .controls > ul > li:empty {
+    display: none !important;
+    flex: 0 0 0 !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+  }
+
+  .user-main .details .controls > ul > li:has(.compose-pm),
+  .user-summary-page .details .controls > ul > li:has(.compose-pm) {
+    flex: 1 1 100% !important;
+    order: 1 !important;
+    width: 100% !important;
+  }
+
+  .user-main .details .controls > ul > li.chat-button,
+  .user-main .details .controls > ul > li:has(.chat-direct-message-btn),
+  .user-summary-page .details .controls > ul > li.chat-button,
+  .user-summary-page
+    .details
+    .controls
+    > ul
+    > li:has(.chat-direct-message-btn) {
+    flex: 1 1 100% !important;
+    order: 2 !important;
+    width: 100% !important;
+  }
+
+  .user-main .details .controls > ul > li:has(.user-notifications-dropdown),
+  .user-summary-page
+    .details
+    .controls
+    > ul
+    > li:has(.user-notifications-dropdown) {
+    order: 3 !important;
+  }
+
+  .user-main .details .controls > ul > li > .btn,
+  .user-main .details .controls > ul > li > a.btn,
+  .user-main .details .controls > ul > li > .select-kit,
+  .user-main .details .controls > ul > li > .select-kit > .select-kit-header,
+  .user-summary-page .details .controls > ul > li > .btn,
+  .user-summary-page .details .controls > ul > li > a.btn {
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 40px !important;
+    justify-content: center !important;
+    padding-inline: 12px !important;
+  }
+
+  .user-main .details .controls > ul > li:has(.compose-pm) > .btn,
+  .user-main .details .controls > ul > li:has(.compose-pm) > a.btn,
+  .user-main .details .controls > ul > li:has(.chat-direct-message-btn) .btn,
+  .user-main .details .controls > ul > li:has(.chat-direct-message-btn) a.btn,
+  .user-main .details .controls > ul > li.chat-button .btn,
+  .user-main .details .controls > ul > li.chat-button a.btn {
+    width: 100% !important;
+    min-height: 42px !important;
+  }
+
+  .user-main
+    .details
+    .controls
+    .user-notifications-dropdown
+    .select-kit-collection,
+  .user-main .details .controls .select-kit-collection {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown .select-kit-body {
+    width: min(320px, calc(100vw - 24px)) !important;
+    min-width: min(280px, calc(100vw - 24px)) !important;
+    overflow: auto !important;
+  }
+
+  .user-main .details .controls .select-kit-collection > .select-kit-row {
+    display: flex !important;
+    flex: none !important;
+    width: 100% !important;
+    min-height: 56px !important;
+  }
+
+  .user-main .details .controls,
+  .user-main .details .controls > ul {
+    overflow: visible !important;
+  }
+
+  .user-main .details .controls > ul > li:has(.user-notifications-dropdown),
+  .user-summary-page
+    .details
+    .controls
+    > ul
+    > li:has(.user-notifications-dropdown) {
+    flex: 0 0 auto !important;
+    min-width: auto !important;
+    width: auto !important;
+    overflow: visible !important;
+    z-index: 20;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown .select-kit-body {
+    max-height: min(70vh, 360px) !important;
+    z-index: 40 !important;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown,
+  .user-summary-page .details .controls .user-notifications-dropdown {
+    width: auto !important;
+    overflow: visible !important;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown .select-kit-header,
+  .user-main
+    .details
+    .controls
+    .user-notifications-dropdown
+    .select-kit-header-wrapper {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    width: auto !important;
+    overflow: visible !important;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown .selected-name,
+  .user-main .details .controls .user-notifications-dropdown .name {
+    max-width: none !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    white-space: nowrap !important;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown .angle-icon,
+  .user-main
+    .details
+    .controls
+    .user-notifications-dropdown
+    .d-icon-angle-down {
+    display: inline-block !important;
+    flex: 0 0 auto !important;
+    visibility: visible !important;
+  }
+
+  .user-main > .about.no-background .user-profile-image,
+  .user-main > .about:not(.has-background) .user-profile-image {
+    display: none !important;
+    height: 0 !important;
+  }
+
+  .user-main > .about.has-background .user-profile-image {
+    display: block !important;
+    height: 120px !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .user-main > .about .secondary dl {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: baseline !important;
+    gap: 6px 14px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+  }
+
+  .user-main > .about .secondary dl > div,
+  .user-main > .about .secondary .follow-statistic {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: baseline !important;
+    gap: 4px 6px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+
+  .user-main > .about .secondary dt {
+    color: var(--mf-ink-faint) !important;
+    font-size: var(--mf-text-sm) !important;
+    font-weight: var(--mf-weight-medium) !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+  }
+
+  .user-main > .about .secondary dd {
+    overflow: visible;
+    color: var(--mf-ink) !important;
+    font-size: var(--mf-text-sm) !important;
+    font-weight: var(--mf-weight-semibold) !important;
+    line-height: 1.4 !important;
+    text-align: start !important;
+    text-overflow: unset;
+    white-space: normal;
+  }
+
+  .user-main > .about .secondary dl > div:has(> dt.groups) {
+    grid-column: auto;
+    flex: 1 1 auto;
+    max-width: 100%;
+  }
+
+  .user-main .stats-section > ul,
+  #user-summary .stats-section > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 4px 16px !important;
+  }
+
+  .user-main .stats-section > ul > li,
+  #user-summary .stats-section > ul > li {
+    min-height: 0 !important;
+    padding: 8px 2px !important;
+  }
+
+  .user-main .stats-section .user-stat,
+  #user-summary .stats-section .user-stat {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: baseline !important;
+    gap: 6px !important;
+  }
+
+  .user-main .stats-section .user-stat .value,
+  #user-summary .stats-section .user-stat .value {
+    font-size: var(--mf-text-md) !important;
+    font-weight: var(--mf-weight-bold) !important;
+    line-height: 1.25 !important;
+  }
+
+  .user-main .stats-section .user-stat .label,
+  #user-summary .stats-section .user-stat .label {
+    margin-top: 0 !important;
+    color: var(--mf-ink-3) !important;
+    font-size: var(--mf-text-sm) !important;
+  }
+}

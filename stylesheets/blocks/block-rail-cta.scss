@@ -1,0 +1,18 @@
+.block-rail-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: var(--mf-space-4);
+  background: var(--mf-surface);
+  border-radius: var(--mf-radius-xl);
+
+  &__button,
+  .btn-primary {
+    width: 100%;
+    min-height: 40px;
+    justify-content: center;
+    gap: 6px;
+    font-weight: var(--mf-weight-semibold);
+    border-radius: var(--mf-radius-md) !important;
+  }
+}

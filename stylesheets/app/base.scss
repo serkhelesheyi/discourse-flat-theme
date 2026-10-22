@@ -1,0 +1,164 @@
+html {
+  font-size: 100%;
+}
+
+html,
+body {
+  background: var(--mf-app-bg);
+  color: var(--mf-ink);
+  font-family: var(--mf-font);
+  font-feature-settings:
+    "cv05" 1,
+    "cv09" 1,
+    "ss03" 1,
+    "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+  letter-spacing: var(--mf-tracking-normal);
+  line-height: var(--mf-leading-normal);
+}
+
+// Persian (fa_IR): a Persian-capable stack, no negative tracking (it breaks the
+// joined script) and taller leading for diacritics. Scoped by language so LTR
+// locales keep the default typography.
+:lang(fa) {
+  font-family: var(--mf-font-fa);
+  letter-spacing: normal;
+  line-height: var(--mf-leading-relaxed);
+}
+
+:lang(fa) :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--mf-font-fa);
+  letter-spacing: normal;
+  line-height: var(--mf-leading-snug);
+}
+
+:lang(fa) :is(input, textarea, select, button, .btn, .select-kit-header) {
+  font-family: var(--mf-font-fa);
+}
+
+// Several components set their own tracking for uppercase Latin labels (rail
+// titles at 0.04em, table headers at 0.05em) or display headings (-0.03em),
+// and 60 of those rules outrank a language-scoped reset. Tracking spaces out or
+// collides the joined Persian letterforms, so this is the one place where the
+// reset has to win outright: this single important declaration replaces ~60
+// component overrides, and every existing important tracking value is 0.
+html:lang(fa) * {
+  letter-spacing: normal !important;
+}
+
+// Reading surface: post bodies set a Latin-tuned 1.55 leading in posts.scss,
+// which overrides the language leading on <body>. Persian needs a taller line
+// box for diacritics and descenders; the selector below matches the deepest
+// existing rule so the relaxed token wins without an important flag.
+:lang(fa) .cooked,
+:lang(fa) .d-editor-preview,
+:lang(fa) .post-stream > .topic-post .cooked {
+  line-height: var(--mf-leading-relaxed);
+}
+
+:lang(fa) .cooked :is(h1, h2, h3, h4, h5, h6),
+:lang(fa) .post-stream > .topic-post .cooked :is(h1, h2, h3, h4, h5, h6) {
+  line-height: var(--mf-leading-snug);
+}
+
+#main-outlet-wrapper,
+.posts-wrapper,
+.container.posts {
+  background: var(--mf-app-bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--mf-font);
+  color: var(--mf-ink);
+  letter-spacing: var(--mf-tracking-tight);
+  line-height: var(--mf-leading-tight);
+  font-weight: var(--mf-weight-semibold);
+}
+
+h1 {
+  letter-spacing: -0.03em;
+
+  &:lang(fa) {
+    letter-spacing: normal;
+  }
+}
+
+a {
+  color: var(--mf-accent);
+  text-decoration: none;
+  text-underline-offset: 2px;
+  transition: color var(--mf-dur-fast) var(--mf-ease);
+
+  &:hover {
+    color: var(--mf-accent-hover);
+    text-decoration: none;
+  }
+}
+
+.topic-list .main-link a.title,
+.latest-topic-list-item .main-link a,
+a.title.raw-link,
+.names a,
+.sidebar-section-link {
+  color: var(--mf-ink);
+}
+
+::selection {
+  background: var(--mf-accent-tint);
+  color: var(--mf-ink);
+}
+
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.select-kit-header:focus-visible {
+  outline: 2px solid var(--mf-accent);
+  outline-offset: 2px;
+  border-radius: var(--mf-radius-xs);
+}
+
+code,
+pre,
+kbd,
+tt,
+.d-editor-input {
+  font-family: var(--mf-font-mono);
+  font-feature-settings: normal;
+}
+
+:not(pre) > code {
+  background: var(--mf-surface-2);
+  border: 0;
+  border-radius: var(--mf-radius-xs);
+  padding: 0.12em 0.4em;
+  font-size: 0.88em;
+}
+
+pre {
+  background: var(--mf-surface-2);
+  border: 0;
+  border-radius: var(--mf-radius-md);
+  padding: var(--mf-space-4);
+}
+
+hr {
+  border: none;
+  border-top: 0;
+}
+
+.cooked img:not(.emoji, .avatar),
+.d-editor-preview img:not(.emoji, .avatar) {
+  border-radius: var(--mf-radius-md);
+}

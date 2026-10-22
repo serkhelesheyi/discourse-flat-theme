@@ -1,0 +1,199 @@
+#main-outlet:has(.discovery-layout) {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.discovery-layout {
+  display: contents;
+}
+
+.discovery-layout__navigation {
+  order: -1;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent;
+  border-radius: 0 !important;
+
+  .list-controls,
+  .list-controls .container {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  // Flush with content below: shared panel top + hairline divider (meta-style).
+  .list-controls .navigation-container {
+    margin: 0 !important;
+    padding: 8px 12px;
+    background: var(--mf-surface) !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--mf-hairline) !important;
+    border-radius: var(--mf-radius-xl) var(--mf-radius-xl) 0 0 !important;
+    box-shadow: none !important;
+  }
+}
+
+// Topic list continues the same panel under navigation.
+.discovery-layout__content {
+  margin-top: 0 !important;
+
+  .list-container .topic-list,
+  .list-container .category-list,
+  .list-container .categories-list,
+  .contents .category-list,
+  .contents .categories-list {
+    border-radius: 0 0 var(--mf-radius-xl) var(--mf-radius-xl);
+  }
+}
+
+// Drop empty discovery chrome so it cannot create a flex gap.
+.discovery-layout__category-header:not(:has(.category-read-only-banner)),
+.discovery-layout__above-navigation:not(:has(*)) {
+  display: contents;
+}
+
+#main-container:not(:has(:not(:empty))) {
+  display: none;
+}
+
+// With the hero visible, place discovery filters under the search card.
+#main-outlet:has(.block-hero) {
+  gap: 0 !important;
+
+  .main-outlet-blocks {
+    order: 0;
+    margin: 0 0 var(--mf-space-3) !important;
+    padding: 0 !important;
+  }
+
+  .main-outlet-blocks__container,
+  .main-outlet-blocks__layout,
+  .main-outlet-blocks__block,
+  .main-outlet-blocks__block--hero {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .block-hero {
+    margin: 0 !important;
+    border-radius: var(--mf-radius-xl) !important;
+  }
+
+  .discovery-layout__navigation {
+    order: 1;
+  }
+
+  .discovery-layout__category-header,
+  .discovery-layout__above-navigation,
+  #main-container,
+  .discourse-banner-wrapper,
+  .discourse-banner,
+  .welcome-banner,
+  .admin-onboarding-banner,
+  .above-main-container-outlet {
+    order: 2;
+  }
+
+  .discovery-layout__content {
+    order: 3;
+  }
+
+  #user-card,
+  .user-card,
+  #group-card,
+  .group-card,
+  .card-cloak {
+    order: 4;
+  }
+}
+
+@include viewport.until(md) {
+  #main-outlet:has(.block-hero) {
+    .block-hero {
+      border-radius: var(--mf-radius-lg) !important;
+    }
+
+    .discovery-layout__navigation .list-controls .navigation-container {
+      border-radius: var(--mf-radius-lg) var(--mf-radius-lg) 0 0;
+    }
+  }
+
+  .discovery-layout__content {
+    .list-container .topic-list,
+    .list-container .category-list,
+    .list-container .categories-list,
+    .contents .category-list,
+    .contents .categories-list {
+      border-radius: 0 0 var(--mf-radius-lg) var(--mf-radius-lg);
+    }
+  }
+}
+
+@include viewport.until(sm) {
+  #main-outlet:has(.block-hero) {
+    .main-outlet-blocks {
+      margin-bottom: var(--mf-space-3) !important;
+    }
+  }
+}
+
+.discovery-layout__content:has(.sidebar-discovery) {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(var(--mf-discovery-rail-min), var(--mf-discovery-rail-width));
+  column-gap: var(--mf-discovery-gap);
+}
+
+.sidebar-discovery,
+.sidebar-discovery__container {
+  min-width: 0;
+  height: 100%;
+}
+
+.sidebar-discovery__layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mf-space-3);
+  position: sticky;
+  top: calc(var(--d-header-height, 56px) + var(--mf-space-4));
+  max-height: calc(100dvh - var(--d-header-height, 56px) - var(--mf-space-8));
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 2px 0 0;
+  background: transparent;
+  border-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--mf-accent-line) transparent;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--mf-accent-line);
+    border-radius: var(--mf-radius-pill);
+  }
+}
+
+.sidebar-discovery__block-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mf-space-3);
+}
+
+// Each rail module is its own card widget.
+.sidebar-discovery {
+  .block-rail-panel,
+  .block-rail-online,
+  .block-rail-cta {
+    padding: var(--mf-space-4);
+    background: var(--mf-surface);
+    border-radius: var(--mf-radius-xl);
+  }
+}
