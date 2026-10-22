@@ -4,6 +4,7 @@ import BlockRailContributors from "../blocks/block-rail-contributors";
 import BlockRailCta from "../blocks/block-rail-cta";
 import BlockRailEvents from "../blocks/block-rail-events";
 import BlockRailHotTopics from "../blocks/block-rail-hot-topics";
+import BlockRailLinks from "../blocks/block-rail-links";
 import BlockRailOnline from "../blocks/block-rail-online";
 import BlockRailProfile from "../blocks/block-rail-profile";
 import BlockRailTags from "../blocks/block-rail-tags";
@@ -39,6 +40,10 @@ export default apiInitializer((api) => {
           },
         },
         { block: BlockRailTags },
+        {
+          block: BlockRailLinks,
+          args: { links: settings.rail_links ?? [] },
+        },
         { block: BlockRailOnline },
       ],
     },
