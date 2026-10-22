@@ -213,3 +213,12 @@
 
 - تمام آیتم‌های چک‌لیست فاز ۲ نقشه راه اجرا و ثبت شدند: نصب، lint/types، شمارش `!important`، انتخابگرهای سطح بالا، رنگ‌ها/فونت/تاریک، JS و deprecations، بلوک‌ها، localeها و فایل‌های بی‌کاربرد.
 - خروجی نهایی: همین سند (`03-repo-audit.fa.md`) + به‌روزرسانی نقشه راه.
+
+---
+
+## ۱۱) پیوست فاز ۵ — تصحیح دو یافتهٔ این گزارش (۲۰۲۶-۱۰-۲۲)
+
+- **`stylesheets/lib/containers.scss` مرده نیست:** این فایل با `@use "lib/containers" as container` در `blocks/block-hero.scss` مصرف می‌شود و باید بماند. (بند ۷ همین سند خلاف این را گفته بود.)
+- **`assets/hero-background.png` و `discourse-flat-theme.zip` حذف شدند** (جمعاً ۱٬۹۰۰٬۷۱۷ بایت) و کلید `assets` و آیکن `sliders` هم از `about.json` برداشته شد.
+- **`sliders`** هیچ مصرف‌کننده‌ای نداشت و حذف شد.
+- وضعیت جدید `!important` و سنجه‌های سبک‌سازی در `docs/05-optimization-log.fa.md` ثبت شده است.
