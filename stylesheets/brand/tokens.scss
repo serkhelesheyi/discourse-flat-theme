@@ -155,7 +155,6 @@
   // the 30% --mf-accent-line stays reserved for decorative borders.
   --shadow-focus: 0 0 0 3px
     color-mix(in srgb, var(--mf-accent) 78%, transparent);
-  --shadow-focus-danger: 0 0 0 3px var(--mf-danger-tint);
   --d-border-radius: var(--mf-radius-md);
   --d-border-radius-large: var(--mf-radius-lg);
   --d-tag-border-radius: var(--mf-radius-sm);

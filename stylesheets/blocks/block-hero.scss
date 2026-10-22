@@ -62,17 +62,20 @@ body.welcome-banner--visible .above-main-container-outlet {
     width: min(100%, 520px);
     min-height: 48px;
     padding: 6px 16px;
-    background: var(--mf-surface-2) !important;
-    border: 1px solid transparent !important;
-    border-radius: var(--mf-radius-lg) !important;
-    box-shadow: none !important;
+
+    // Theme-owned class names: core never styles these, so the plain cascade
+    // already wins and no !important is needed.
+    background: var(--mf-surface-2);
+    border: 1px solid transparent;
+    border-radius: var(--mf-radius-lg);
+    box-shadow: none;
     transition:
       background var(--mf-dur) var(--mf-ease),
       box-shadow var(--mf-dur) var(--mf-ease);
 
     &:focus-within {
-      background: var(--mf-surface-3) !important;
-      box-shadow: var(--shadow-focus) !important;
+      background: var(--mf-surface-3);
+      box-shadow: var(--shadow-focus);
     }
   }
 
@@ -95,10 +98,10 @@ body.welcome-banner--visible .above-main-container-outlet {
     padding: 0;
     color: var(--mf-ink);
     font-size: var(--mf-text-base);
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    outline: 0 !important;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    outline: 0;
 
     &::placeholder {
       color: var(--mf-ink-faint);
@@ -131,7 +134,7 @@ body.welcome-banner--visible .above-main-container-outlet {
 
     &__search {
       min-height: 46px;
-      border-radius: var(--mf-radius-md) !important;
+      border-radius: var(--mf-radius-md);
     }
   }
 }

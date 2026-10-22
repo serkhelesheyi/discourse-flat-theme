@@ -17,7 +17,7 @@ html[dir="rtl"] {
 
   // "Read more" affordances point the other way.
   .block-rail-panel__more .d-icon-arrow-right,
-  .block-rail-links__item .d-icon-arrow-right,
+  .block-rail-links .d-icon-arrow-right,
   .block-rail-cta .d-icon-arrow-right {
     transform: scaleX(-1);
   }
@@ -35,14 +35,15 @@ html[dir="rtl"] {
   }
 
   // Hover nudges that imply LTR forward motion.
-  .block-rail-panel__more:hover .d-icon-arrow-right,
-  .block-rail-links__item:hover .d-icon-arrow-right {
-    transform: scaleX(-1) translateX(-2px);
-  }
-
   .sidebar-section-link:hover .d-icon,
   .block-rail-links a:hover .d-icon {
     transform: translateX(-2px);
+  }
+
+  // Arrow glyphs stay mirrored while they nudge.
+  .block-rail-panel__more:hover .d-icon-arrow-right,
+  .block-rail-links a:hover .d-icon-arrow-right {
+    transform: scaleX(-1) translateX(-2px);
   }
 
   // The login page offset mirrors the two-column grid, which rtlcss swaps.
@@ -55,14 +56,14 @@ html[dir="rtl"] {
 
 @media (prefers-reduced-motion: reduce) {
   html[dir="rtl"] {
-    .block-rail-panel__more:hover .d-icon-arrow-right,
-    .block-rail-links__item:hover .d-icon-arrow-right {
-      transform: scaleX(-1);
-    }
-
     .sidebar-section-link:hover .d-icon,
     .block-rail-links a:hover .d-icon {
       transform: none;
+    }
+
+    .block-rail-panel__more:hover .d-icon-arrow-right,
+    .block-rail-links a:hover .d-icon-arrow-right {
+      transform: scaleX(-1);
     }
   }
 }

@@ -538,14 +538,10 @@ aside.onebox {
 }
 
 body.archetype-regular {
+  // Separator and last-child rule live in app/posts.scss with the post grid.
   .post-stream > .topic-post {
     margin-bottom: 0;
     padding: 10px 0;
-    border-bottom: 1px solid var(--mf-hairline-strong) !important;
-  }
-
-  .post-stream > .topic-post:last-child {
-    border-bottom: 0 !important;
   }
 
   .post-stream > .topic-post > article.boxed > .post__row {
@@ -608,25 +604,13 @@ body.archetype-regular {
     margin-block: 8px;
   }
 
+  // The quote title/body resets live in app/posts.scss, which owns `.cooked`.
   .post-stream > .topic-post .cooked > aside.quote {
     overflow: hidden;
     background: var(--mf-surface-2) !important;
     border: 0 !important;
     border-radius: var(--mf-radius-lg);
     box-shadow: none !important;
-
-    > .title {
-      background: transparent !important;
-      border: 0 !important;
-      box-shadow: none !important;
-    }
-
-    > blockquote,
-    .post__contents-cooked-quote {
-      background: transparent !important;
-      border: 0 !important;
-      box-shadow: none !important;
-    }
   }
 
   .post-stream > .topic-post .post-menu-area {
@@ -834,6 +818,9 @@ body.archetype-regular {
   }
 }
 
+// 925px is content-derived, not a device breakpoint: it is the narrowest width
+// where the avatar + reading measure + timeline still fit side by side, so it
+// intentionally stays outside the lib/viewport scale.
 @media screen and (width >= 925px) {
   // Keep suggested topics on the same fluid posts column as `.container.posts > .row`.
   html.desktop-view

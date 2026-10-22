@@ -647,36 +647,9 @@ table.category-list th,
   }
 }
 
+// Profile header stacking at <md lives in app/profile.scss; keep it in one place.
 @include viewport.until(md) {
-  .user-main > .about .details .primary .user-profile-names,
-  .user-main > .about .details .primary .featured-topic,
-  .user-main > .about .details .primary .user-profile__featured-topic,
-  .user-main > .about .details .primary .bio,
-  .user-main > .about .details .primary .public-user-fields {
-    text-align: center !important;
-  }
-
-  .user-main > .about .details .primary .user-profile__location-and-website,
-  .user-main > .about .details .primary .location-and-website {
-    justify-content: center !important;
-  }
-
-  .user-main > .about.no-background .user-profile-image,
-  .user-main > .about:not(.has-background) .user-profile-image {
-    display: none !important;
-    height: 0 !important;
-    min-height: 0 !important;
-  }
-
-  .user-main > .about.has-background .user-profile-image {
-    display: block !important;
-    height: 120px !important;
-    background-position: center !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-  }
-
-  // Message + Chat full-width stacked; Follow / 常规 auto-width below.
+  // Message + Chat full-width stacked; Follow / regular auto-width below.
   .user-main .details .controls > ul,
   .user-summary-page .details .controls > ul {
     display: flex !important;
@@ -882,72 +855,8 @@ table.category-list th,
     visibility: visible !important;
   }
 
-  .user-main > .about .secondary dl {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    align-items: baseline !important;
-    gap: 6px 14px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: 0 !important;
-    background: transparent !important;
-    border-radius: 0 !important;
-  }
-
-  .user-main > .about .secondary dl > div,
-  .user-main > .about .secondary .follow-statistic {
-    display: inline-flex !important;
-    flex-direction: row !important;
-    align-items: baseline !important;
-    justify-content: flex-start !important;
-    flex-wrap: wrap !important;
-    gap: 4px 6px !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: 0 !important;
-    background: transparent !important;
-  }
-
-  .user-main > .about .secondary dt,
-  .user-main > .about .secondary .follow-statistic > span:first-child {
-    display: inline !important;
-    margin: 0 !important;
-    color: var(--mf-ink-faint) !important;
-    font-size: var(--mf-text-sm) !important;
-    font-weight: var(--mf-weight-medium) !important;
-    line-height: 1.4 !important;
-    letter-spacing: 0 !important;
-    text-align: start !important;
-    text-transform: none !important;
-  }
-
-  .user-main > .about .secondary dd,
-  .user-main > .about .secondary .follow-statistic > span:last-child {
-    display: inline !important;
-    margin: 0 !important;
-    overflow: visible;
-    color: var(--mf-ink) !important;
-    font-size: var(--mf-text-sm) !important;
-    font-weight: var(--mf-weight-semibold) !important;
-    line-height: 1.4 !important;
-    text-align: start !important;
-    text-overflow: unset;
-    white-space: normal;
-  }
-
-  .user-main > .about .secondary dd.groups {
-    display: inline-flex !important;
-    flex-wrap: wrap;
-  }
-
-  .user-main > .about .secondary dl > div:has(> dt.groups) {
-    grid-column: auto;
-    flex: 1 1 auto;
-    max-width: 100%;
-  }
+  // Compact profile metadata styles live in app/profile.scss; this file used to
+  // repeat the same selectors byte-for-byte, which made every value ambiguous.
 }
 
 @include viewport.until(sm) {
@@ -1070,11 +979,6 @@ tr.topic-list-item-separator,
 body.archetype-regular .post-stream > .topic-post {
   border-top: 0 !important;
   border-inline: 0 !important;
-  border-bottom: 1px solid var(--mf-hairline-strong) !important;
-}
-
-body.archetype-regular .post-stream > .topic-post:last-child {
-  border-bottom: 0 !important;
 }
 
 @media (hover: hover) {
@@ -1351,10 +1255,10 @@ body.archetype-regular .suggested-topics .topic-list {
   }
 }
 
-// Mobile (<48rem): Custom Header Links rebuilds header as CSS grid.
+// Mobile: Custom Header Links rebuilds header as CSS grid.
 // Measured gap ≈ flex gap 16px + extra-info inline-start padding (8px).
-// Match their breakpoint exactly and override logo track + padding.
-@media (width < 48rem) {
+// Match their breakpoint exactly (md) and override logo track + padding.
+@include viewport.until(md) {
   .d-header:has(.extra-info-wrapper) {
     grid-template-columns:
       max-content max-content repeat(5, 0) minmax(0, 1fr)
