@@ -109,6 +109,27 @@
   box-shadow: none !important;
 }
 
+// Rows are flat cards, so without a hairline the list reads as one block and
+// only the hover state hints where one topic ends. The separator is inset past
+// the rounded corners instead of using a border that would hug them. Thumbnail
+// card modes already draw their own borders, so they are excluded.
+.topic-list:not(
+    .topic-thumbnails-grid,
+    .topic-thumbnails-masonry,
+    .topic-thumbnails-minimal,
+    .topic-thumbnails-blog-style-grid
+  )
+  .topic-list-item
+  + .topic-list-item::before {
+  position: absolute;
+  inset-inline: 14px;
+  top: 0;
+  height: 1px;
+  background: var(--mf-hairline);
+  content: "";
+  pointer-events: none;
+}
+
 .topic-list-item .topic-statuses .topic-status {
   color: var(--mf-ink-faint);
 }
@@ -1114,6 +1135,7 @@ html.desktop-view .suggested-topics-wrapper,
 
 .mobile-view .list-container .topic-list .topic-list-item,
 .mobile-view .list-container .topic-list-item.selected {
+  position: relative;
   display: block;
   min-height: 0;
   margin: 0;
@@ -1125,6 +1147,11 @@ html.desktop-view .suggested-topics-wrapper,
 
   & + .topic-list-item {
     border-top: 0 !important;
+  }
+
+  // Match the wider row padding used on mobile.
+  & + .topic-list-item::before {
+    inset-inline: 16px;
   }
 
   > .topic-list-data:only-child {
@@ -1180,11 +1207,27 @@ html.desktop-view .suggested-topics-wrapper,
     grid-column: 2;
     grid-row: 1;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 6px;
+    gap: 4px 6px;
     min-width: 0;
-    overflow: hidden;
-    white-space: nowrap;
+    white-space: normal;
+
+    // A long category or tag used to be cut mid-word by the row overflow. Wrap
+    // it onto the next line instead, and break only a single word that is wider
+    // than the column.
+    .discourse-tags {
+      flex-wrap: wrap;
+      min-width: 0;
+    }
+
+    .discourse-tag,
+    .badge-category__name {
+      min-width: 0;
+      max-width: 100%;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
   }
 
   .topic-item-stats .activity {

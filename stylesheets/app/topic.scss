@@ -879,6 +879,17 @@ body.archetype-regular {
   }
 }
 
+// A topic has no discovery rail, so the 690px core reading measure leaves a lot
+// of the window unused. Core derives the topic map, post menu, footer and
+// suggested topics from --topic-body-width, so raising that token widens the
+// whole column and keeps every edge aligned instead of stretching only the
+// post body. Below 1200px there is no room to spare, so the default stays.
+@media screen and (width >= 1200px) {
+  html.desktop-view body.archetype-regular {
+    --topic-body-width: clamp(700px, 54vw, 800px);
+  }
+}
+
 .desktop-view body.archetype-regular {
   .more-topics__container,
   #suggested-topics,

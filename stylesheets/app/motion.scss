@@ -146,6 +146,14 @@
     animation: mf-badge-pop var(--mf-dur) var(--mf-ease-out);
   }
 
+  // The mobile filter menu ("latest") opens in a floating modal that is measured
+  // and positioned right after it mounts. The popover entrance scaled and
+  // shifted it during that measurement, which showed up as a jump and a blink.
+  .fk-d-menu-modal.list-control-toggle-link-content,
+  .fk-d-menu-modal .fk-d-menu__inner-content {
+    animation: none;
+  }
+
   .quick-access-panel li,
   .user-menu .notifications li,
   .menu-panel .menu-links-row,

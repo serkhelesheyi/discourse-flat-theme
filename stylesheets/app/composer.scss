@@ -120,13 +120,21 @@
     min-width: 0;
   }
 
+  // The title always reads first, then the category and tag pickers side by
+  // side. `order` pins the title to the first row without touching the DOM.
+  // The 8px gap also keeps the title's focus ring from being painted over by
+  // the picker backgrounds, which made the ring look thinner on that edge.
   .title-and-category {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 8px;
     min-width: 0;
-    align-content: start;
-    column-gap: 6px;
   }
 
   .title-input {
+    order: -1;
+    flex: 1 1 100%;
     width: 100%;
     min-width: 0;
   }
@@ -134,7 +142,7 @@
   #reply-title {
     width: 100%;
     height: 38px;
-    margin-bottom: 6px;
+    margin-bottom: 0;
     padding: 8px 11px;
     color: var(--mf-ink);
     font-family: var(--mf-font);
@@ -160,9 +168,10 @@
 
   .category-input,
   .tags-input {
+    flex: 1 1 0;
     min-width: 0;
     min-height: 36px;
-    margin-bottom: 6px;
+    margin-bottom: 0;
   }
 
   .category-input .category-chooser,
@@ -564,9 +573,9 @@
     }
 
     .title-and-category {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       width: 100%;
     }
 
@@ -579,15 +588,24 @@
       min-width: 0;
     }
 
+    // The title row must keep its height when the editor takes focus and the
+    // mobile composer grows; if it was allowed to shrink the title field
+    // collapsed under the editor's placeholder.
+    .title-input {
+      flex: 0 0 auto !important;
+    }
+
     #reply-title {
+      flex: 0 0 auto;
       height: 38px;
+      min-height: 38px;
     }
 
     .category-input,
     .tags-input {
-      flex: 1 1 auto !important;
+      flex: 0 0 auto !important;
       min-height: 36px;
-      margin-bottom: 6px;
+      margin-bottom: 0;
     }
 
     .category-input .select-kit-header,
