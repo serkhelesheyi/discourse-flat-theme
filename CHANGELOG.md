@@ -4,6 +4,22 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.1.2] — 2026-10-23
+
+Follow-up fixes from testing 3.1.1 on a forum running the composer redesign.
+
+### Fixed
+
+- Search: focusing a search field no longer draws a second, inner focus ring. The
+  wrapper keeps the single ring the theme intends.
+- New-topic composer: the title's focus ring keeps its full weight next to the
+  picker bar, which used to paint over its top edge.
+- Mobile composer: the editor that slides up over the title on focus is now opaque
+  and keeps its own slide shadow, so the title can no longer show through the
+  editor and its placeholder.
+- Mobile filter menu: also remove the modal entrance animation, not just the
+  popover one, which was the remaining source of the jump when it opened.
+
 ## [3.1.1] — 2026-10-23
 
 Fixes from the first live test on a production forum.

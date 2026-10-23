@@ -45,6 +45,22 @@ textarea,
   }
 }
 
+// A search field rings its wrapper (`.search-input`) and the input inside it
+// also matched the generic focus rule above, so focusing search drew two blue
+// boxes, one inside the other. Keep the wrapper ring only.
+.search-input,
+.search-input-wrapper {
+  input,
+  .search-term__input {
+    &:focus,
+    &:focus-within {
+      background: transparent;
+      outline: 0;
+      box-shadow: none !important;
+    }
+  }
+}
+
 select {
   min-height: 34px;
   padding: 4px 10px;

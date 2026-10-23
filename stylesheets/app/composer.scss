@@ -139,6 +139,15 @@
     min-width: 0;
   }
 
+  // The composer redesign puts the picker bar directly above the title with no
+  // gap, so the bar painted over the top 3px of the title's focus ring. Lifting
+  // the focused title in the paint order keeps the ring the same weight on all
+  // four sides without moving anything.
+  .title-input:focus-within {
+    position: relative;
+    z-index: 2;
+  }
+
   #reply-title {
     width: 100%;
     height: 38px;
@@ -565,6 +574,18 @@
       min-height: 32px;
       margin-bottom: 6px;
       padding-bottom: 0;
+    }
+
+    // The composer redesign slides the editor up over the title and picker rows
+    // when the textarea takes focus. The wrapper was transparent and the theme
+    // replaced the slide shadow with its own focus ring, so the title showed
+    // through the editor and the placeholder seemed to sit on top of it.
+    &.has-composer-fields {
+      .d-editor-textarea-wrapper.in-focus,
+      .d-editor-textarea-wrapper:focus-within {
+        background: var(--mf-surface) !important;
+        box-shadow: 0 -12px 12px 0 rgb(var(--primary-rgb), 0.15) !important;
+      }
     }
 
     .composer-action-title,

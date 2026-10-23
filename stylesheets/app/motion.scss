@@ -146,11 +146,15 @@
     animation: mf-badge-pop var(--mf-dur) var(--mf-ease-out);
   }
 
-  // The mobile filter menu ("latest") opens in a floating modal that is measured
-  // and positioned right after it mounts. The popover entrance scaled and
-  // shifted it during that measurement, which showed up as a jump and a blink.
-  .fk-d-menu-modal.list-control-toggle-link-content,
-  .fk-d-menu-modal .fk-d-menu__inner-content {
+  // The mobile filter menu ("latest") opens as a float-kit modal. Two of the
+  // theme's entrances could land on it: the popover entrance on the inner
+  // content and the modal entrance on `.d-modal__container`. Both scaled and
+  // shifted the menu while float-kit was still measuring it, which looked like
+  // the menu jumped, vanished and came back. Leave that menu unanimated.
+  .fk-d-menu-modal,
+  .fk-d-menu-modal .fk-d-menu__inner-content,
+  .d-modal:has(.fk-d-menu-modal) .d-modal__container,
+  .d-modal__container.fk-d-menu-modal {
     animation: none;
   }
 
