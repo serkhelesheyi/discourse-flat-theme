@@ -1,5 +1,8 @@
 @use "lib/containers" as container;
 
+// Fallback for Discourse builds without the `welcome-banner-display-for-route`
+// transformer, which is what actually keeps the banner from rendering
+// (javascripts/discourse/api-initializers/welcome-banner.js).
 .welcome-banner {
   display: none !important;
 }

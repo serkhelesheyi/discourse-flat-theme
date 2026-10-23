@@ -4,6 +4,17 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.1.3] — 2026-10-23
+
+### Fixed
+
+- The header search icon no longer blinks on the first load of a discovery page.
+  Hiding the core welcome banner with CSS still mounted it, and its viewport
+  modifier marked the banner search as visible for one frame, which removed the
+  header icon. The banner is now not rendered at all through the
+  `welcome-banner-display-for-route` transformer, with the CSS rule kept as a
+  fallback for older builds.
+
 ## [3.1.2] — 2026-10-23
 
 Follow-up fixes from testing 3.1.1 on a forum running the composer redesign.
