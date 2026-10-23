@@ -4,6 +4,27 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.1.1] — 2026-10-23
+
+Fixes from the first live test on a production forum.
+
+### Fixed
+
+- New-topic composer: the title field is pinned to the first row, with the category
+  and tag pickers on the row below. The gap between the rows stops the picker
+  background from painting over the title's focus ring.
+- Topic lists show a hairline between rows again, instead of relying on the hover
+  fill alone to mark where a topic ends.
+- Header: avatar, private messages, search and the colour-scheme toggle are centred
+  on one line instead of hanging at different heights.
+- Topic pages widen the reading measure to `clamp(700px, 54vw, 800px)` above 1200px,
+  so a topic keeps the narrow discovery column only on discovery pages.
+- Mobile composer: the title and picker rows keep their height when the editor takes
+  focus, so the editor can no longer overlap the title.
+- Mobile topic list: long categories and tags wrap instead of being cut mid-word.
+- Mobile "latest" filter menu: removed the popover entrance animation that made the
+  floating menu jump and blink when it opened.
+
 ## [3.1.0] — 2026-10-22
 
 Persian/RTL support, accessibility polish, and a leaner stylesheet.
