@@ -100,6 +100,19 @@ Before publishing a change:
 
 GitHub Actions uses Discourse's official reusable theme workflow.
 
+## Documentation
+
+The `docs/` folder holds the project's working memory (written in Persian):
+
+| File | Contents |
+| --- | --- |
+| `01-discourse-theme-docs.fa.md` | Digest of the official Discourse theme documentation and deprecations. |
+| `02-roadmap.fa.md` | Phase plan, current status, session notes, open questions and rules. Start here. |
+| `03-repo-audit.fa.md` | Repository audit (styles, JS, blocks, locales) and its corrections. |
+| `04-design-log.fa.md` | Contrast, typography, focus and motion decisions with measurements. |
+| `05-optimization-log.fa.md` | Stylesheet size, `!important` and dead-code metrics. |
+| `06-live-test-plan.fa.md` | Live-test matrix, page checklists and how to close the final phase. |
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for the changes in each release.

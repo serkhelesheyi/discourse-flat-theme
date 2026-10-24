@@ -123,7 +123,7 @@
 ## ۷) localeها، ساختار فایل‌ها و نکته‌های ریپو
 
 - **localeها:** `en.yml`, `ru.yml`, `zh_CN.yml` (هر یک ۴۳ خط) و کلیدها با en هم‌راستا؛ **`fa.yml` وجود ندارد**. فاز ۳ از ساختار en.yml به‌عنوان مرجع کلید شروع می‌شود.
-- **`common/common.scss`:** نقطهٔ تجمیع: `brand`، `app`، `blocks`، `layouts`، `mobile-platform`. و **`mobile.scss` فقط شامل `@use "lib/viewport"` است** (استایل mobile جدا مستقیم ندارد؛ ریسپانسیو از طریق `mobile-responsive.scss` و `mobile-platform.scss`). این تصمیم باید در فاز ۶ روی موبایل واقعی آزمون شود.
+- **`common/common.scss`:** نقطهٔ تجمیع: `brand`، `app`، `blocks`، `layouts` (به‌همراه `@use "lib/viewport"`). **`mobile/mobile.scss` فقط `@import "mobile-platform"` است**، پس `mobile-platform.scss` تنها یک بار و فقط در بستهٔ موبایل بارگذاری می‌شود. (این بند در نسخهٔ اول این گزارش نادرست نوشته شده بود؛ تصحیح در بند ۱۲.) این تصمیم باید در فاز ۶ روی موبایل واقعی آزمون شود.
 - **فایل بی‌کاربرد احتمالی:** `stylesheets/lib/containers.scss` — ورودی ندارد در @importها (فاز ۵ با ابزار بررسی شود).
 - **asset بی‌کاربرد:** `assets/hero-background.png` در about.json ثبت شده اما در هیچ scss/gjs استفاده نمی‌شود → حذف در فاز ۵ (هم asset هم مدخل about.json).
 - **`discourse-flat-theme.zip` (~۹۶KB) در ریشه:** نسخهٔ آرشیوی از خود تم؛ حذف از گیت در فاز ۵.
@@ -222,3 +222,17 @@
 - **`assets/hero-background.png` و `discourse-flat-theme.zip` حذف شدند** (جمعاً ۱٬۹۰۰٬۷۱۷ بایت) و کلید `assets` و آیکن `sliders` هم از `about.json` برداشته شد.
 - **`sliders`** هیچ مصرف‌کننده‌ای نداشت و حذف شد.
 - وضعیت جدید `!important` و سنجه‌های سبک‌سازی در `docs/05-optimization-log.fa.md` ثبت شده است.
+
+---
+
+## ۱۲) پیوست ۳٫۱٫۵ — تصحیح ادعاهای بارگذاری استایل (۲۰۲۶-۱۰-۲۴)
+
+هنگام بازبینی مستندات در نسخهٔ ۳٫۱٫۵، سه ادعای این سند با کد فعلی تطابق نداشت و اصلاح شد:
+
+| ادعای قبلی | واقعیت کد | شاهد |
+|---|---|---|
+| `common/common.scss` شامل `mobile-platform` است (بند ۷) | `common/common.scss` فقط `brand`، `app`، `blocks`، `layouts` را import می‌کند | `cat common/common.scss` |
+| `mobile/mobile.scss` فقط `@use "lib/viewport"` دارد (بند ۷) | محتوای آن `@import "mobile-platform";` است | `cat mobile/mobile.scss` |
+| `mobile-platform.scss` روی موبایل دو بار دانلود می‌شود (بند ۹-۲ سند ۰۵ و سند ۰۶) | تنها یک import در کل ریپو دارد (`mobile/mobile.scss`) ⇒ یک بار | `grep -rn "mobile-platform" --include=*.scss .` |
+
+اثر این تصحیح: «ادغام `mobile-platform.scss`» دیگر با انگیزهٔ حذف بارگذاری دوباره مطرح نمی‌شود؛ آن کار فقط اگر تکرار *قاعده‌ها* با `profile.scss`/`overrides.scss` آزاردهنده شد، و همچنان با آزمون زندهٔ موبایل، موضوعیت دارد.
