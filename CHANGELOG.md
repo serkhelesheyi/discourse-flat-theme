@@ -4,6 +4,21 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.1.4] — 2026-10-24
+
+### Fixed
+
+- Mobile topic list: categories and tags stay on one line that scrolls
+  sideways, instead of wrapping onto a second row and making rows different
+  heights. The same line is used on suggested topics.
+- Mobile filter menu: the "latest" button no longer opens the core bottom sheet,
+  which flashed and re-opened on touch screens. The filters are inline pills in a
+  single horizontally scrollable row, one tap away, through the
+  `navigation-bar-dropdown-mode` transformer.
+- Bottom-sheet menus: the animation opt-out never matched, because float-kit puts
+  `fk-d-menu-modal` on the modal wrapper rather than on its container. Other
+  sheets (reaction and user lists) no longer animate over core's own slide.
+
 ## [3.1.3] — 2026-10-23
 
 ### Fixed

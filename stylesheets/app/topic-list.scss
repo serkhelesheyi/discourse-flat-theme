@@ -1203,30 +1203,43 @@ html.desktop-view .suggested-topics-wrapper,
     }
   }
 
+  // Category and tags share one line that scrolls sideways. Wrapping them onto
+  // a second row used to push the title down and make rows different heights, so
+  // a row with three tags never lined up with its neighbours.
   .topic-item-stats__category-tags {
     grid-column: 2;
     grid-row: 1;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
-    gap: 4px 6px;
+    gap: 6px;
     min-width: 0;
-    white-space: normal;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
 
-    // A long category or tag used to be cut mid-word by the row overflow. Wrap
-    // it onto the next line instead, and break only a single word that is wider
-    // than the column.
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
     .discourse-tags {
-      flex-wrap: wrap;
+      flex: 0 0 auto;
+      flex-wrap: nowrap;
       min-width: 0;
     }
 
     .discourse-tag,
+    .badge-category,
+    .badge-category__wrapper,
     .badge-category__name {
+      flex: 0 0 auto;
       min-width: 0;
-      max-width: 100%;
-      white-space: normal;
-      overflow-wrap: anywhere;
+      max-width: none;
+      white-space: nowrap;
+      overflow-wrap: normal;
     }
   }
 

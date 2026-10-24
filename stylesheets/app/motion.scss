@@ -146,16 +146,14 @@
     animation: mf-badge-pop var(--mf-dur) var(--mf-ease-out);
   }
 
-  // The mobile filter menu ("latest") opens as a float-kit modal. Two of the
-  // theme's entrances could land on it: the popover entrance on the inner
-  // content and the modal entrance on `.d-modal__container`. Both scaled and
-  // shifted the menu while float-kit was still measuring it, which looked like
-  // the menu jumped, vanished and came back. Leave that menu unanimated.
-  .fk-d-menu-modal,
-  .fk-d-menu-modal .fk-d-menu__inner-content,
-  .d-modal:has(.fk-d-menu-modal) .d-modal__container,
-  .d-modal__container.fk-d-menu-modal {
-    animation: none;
+  // A float-kit menu rendered as a bottom sheet puts `fk-d-menu-modal` on the
+  // `.modal.d-modal` wrapper itself, not on the container. Core also animates
+  // that container through its `is-entering` / `is-exiting` classes, so the
+  // theme's entrance used to run on top of core's slide and the sheet appeared
+  // to flash. Leave every layer of these sheets unanimated.
+  .d-modal.fk-d-menu-modal,
+  .d-modal.fk-d-menu-modal .d-modal__container {
+    animation: none !important;
   }
 
   .quick-access-panel li,

@@ -293,7 +293,9 @@
     border-radius: var(--mf-radius-lg);
 
     > .category-breadcrumb {
-      flex-basis: 100%;
+      order: 1;
+      flex: 1 1 auto;
+      min-width: 0;
       overflow-x: auto;
       scrollbar-width: none;
 
@@ -302,13 +304,19 @@
       }
     }
 
+    // The filters are inline pills on mobile again, so they take a full row of
+    // their own and scroll across the whole width instead of the few pixels left
+    // beside the new-topic button.
     > #navigation-bar {
-      flex: 1 1 auto;
+      order: 3;
+      flex: 0 0 100%;
+      width: 100%;
       min-width: 0;
       overflow-x: auto;
     }
 
     > .navigation-controls {
+      order: 2;
       margin-inline-start: auto;
     }
   }
