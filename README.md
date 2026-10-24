@@ -31,7 +31,7 @@ The theme can also be installed or updated with the official [`discourse_theme`]
 | `show_info_rail`      | Shows the information rail on wide layouts.                                   |
 | `rail_links`          | Quick links in the rail. Each entry has a `label` and a `url`; empty means the default “All categories” / “About” links. |
 | `rail_leaderboard_id` | Gamification leaderboard ID used by the contributors rail.                    |
-| `hero_subtitle`       | Overrides the hero subtitle.                                                  |
+| `hero_subtitle`       | Overrides the hero subtitle. Empty uses the localized default line.            |
 | `show_topic_excerpts` | Shows a short excerpt under each topic title in topic lists.                  |
 | `accent_color`        | Overrides the theme accent color (any CSS color, e.g. `#2563eb`).             |
 | `content_max_width`   | Controls the maximum content width, in pixels.                                |
@@ -39,7 +39,7 @@ The theme can also be installed or updated with the official [`discourse_theme`]
 
 ## Persian and RTL support
 
-The theme ships `locales/fa.yml` and does not rely on core's automatic mirroring: Discourse mirrors only its own stylesheets, so the theme is written with CSS logical properties (`margin-inline`, `padding-block`, `inset-inline-*`, `border-inline-*`, `text-align: start/end`). The remainder that logical properties cannot express — mirrored arrow glyphs, floats, and hover nudges — lives in `stylesheets/app/rtl.scss` behind `html[dir="rtl"]`. The theme never sets `direction` itself.
+The theme ships `locales/fa_IR.yml`, keyed by the locale code Discourse actually resolves (`fa_IR`; a file named `fa.yml` would never be read, because theme translations are looked up through `I18n.fallbacks`, which appends only `en`). The theme does not rely on core's automatic mirroring either: Discourse mirrors only its own stylesheets, so the theme is written with CSS logical properties (`margin-inline`, `padding-block`, `inset-inline-*`, `border-inline-*`, `text-align: start/end`). The remainder that logical properties cannot express — mirrored arrow glyphs, floats, and hover nudges — lives in `stylesheets/app/rtl.scss` behind `html[dir="rtl"]`. The theme never sets `direction` itself.
 
 Persian typography is handled by a system font stack (`--mf-font-fa`), a `letter-spacing` reset for connected script, and a more generous line height for post bodies. Numbers and dates stay with Discourse's own i18n helpers, so `fa_IR` renders Persian digits without hardcoded values.
 

@@ -4,6 +4,14 @@ import { block } from "discourse/blocks";
 import dIcon from "discourse/ui-kit/helpers/d-icon";
 import { i18n } from "discourse-i18n";
 
+// 3.2.0 and 3.2.1 shipped this sentence as the setting's default, and a theme
+// setting that was saved once keeps its stored value. Reading it as "unset"
+// means the hero follows the reader's language instead of staying English on a
+// Persian or Russian site. On an English site the localized default is the same
+// sentence, so the fallback changes nothing there.
+const LEGACY_DEFAULT_SUBTITLE =
+  "Hooray! Enjoy your stay! Feel free to ask questions or search existing posts.";
+
 @block("theme:flat-theme:hero", {
   description: "Centered discovery hero with branding image and search",
   args: {
@@ -12,7 +20,13 @@ import { i18n } from "discourse-i18n";
 })
 export default class BlockHero extends Component {
   get subtitle() {
-    return this.args.subtitle || i18n(themePrefix("hero.default_subtitle"));
+    const configured = this.args.subtitle?.trim();
+
+    if (!configured || configured === LEGACY_DEFAULT_SUBTITLE) {
+      return i18n(themePrefix("hero.default_subtitle"));
+    }
+
+    return configured;
   }
 
   <template>

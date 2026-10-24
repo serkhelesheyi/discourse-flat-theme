@@ -1,0 +1,45 @@
+# The locale code must match the one Discourse uses for Persian (`fa_IR`).
+# A file named fa.yml is never looked up: theme translations are resolved with
+# I18n.fallbacks[locale], which only appends :en after the locale itself.
+fa_IR:
+  hero:
+    title: "همه‌چیز، به یاری رایانه"
+    default_subtitle: "خوش آمدید؛ پرسش‌های خود را مطرح کنید یا در نوشته‌های موجود جستجو کنید."
+    search_placeholder: "جستجو در انجمن"
+    search_label: "جستجو در انجمن"
+    search_action: "جستجو"
+    brand_name: "Caxer"
+    welcome_back: "خوش برگشتید، %{name}!"
+    welcome: "خوش آمدید، %{name}!"
+    advanced_search: "جستجوی پیشرفته"
+  rail:
+    create_topic: "ایجاد موضوع تازه"
+    events_title: "رویدادهای آینده"
+    contributors_title: "برترین‌های همهٔ دوران"
+    contributors_you: "جایگاه شما: %{position}"
+    hot_topics_title: "داغ‌ترین موضوعات"
+    followers: "دنبال‌کنندگان"
+    points: "امتیاز"
+    show_all: "نمایش همه"
+    pulse_title: "فعالیت انجمن"
+    online_title: "کاربران آنلاین"
+    tags_title: "برچسب‌های محبوب"
+    all_tags: "همهٔ برچسب‌ها"
+    links_title: "پیوندهای سریع"
+    posts_today: "نوشته‌های امروز"
+    topics_today: "موضوعات تازهٔ امروز"
+    active_week: "فعال در این هفته"
+    all_categories: "همهٔ دسته‌بندی‌ها"
+    about: "دربارهٔ انجمن"
+  theme_metadata:
+    description: "تم سادهٔ اونیل — تمی سریع و آرام برای دیسکورس، با فهرست موضوعات واکنش‌گرا، جستجوی فشرده و نوار اطلاعات کناری."
+    settings:
+      show_hero: "نمایش بخش معرفی در صفحهٔ اصلی (نام انجمن و کادر جستجو)."
+      show_info_rail: "نمایش نوار اطلاعات در ستون کنار صفحهٔ اصلی (رویدادها، مشارکت‌کنندگان، موضوعات داغ و موارد دیگر)."
+      show_topic_excerpts: "نمایش خلاصهٔ کوتاهی از متن هر موضوع، زیر عنوان آن در فهرست موضوعات."
+      rail_links: "پیوندهای سریع نوار اطلاعات. اگر خالی بماند، پیوندهای پیش‌فرض نمایش داده می‌شود."
+      rail_leaderboard_id: "شناسهٔ جدول رتبه‌بندی افزونهٔ Gamification برای بلوک مشارکت‌کنندگان (برای نمونه ۱)."
+      hero_subtitle: "زیرعنوانی که زیر عنوان بخش معرفی نمایش داده می‌شود. اگر خالی بماند، متن پیش‌فرض به زبان کاربر نمایش داده می‌شود."
+      accent_color: "رنگ تأکیدی را جایگزین می‌کند (هر رنگ معتبر CSS، برای نمونه #2563eb). برای ماندن روی رنگ پیش‌فرض تم، خالی بگذارید."
+      content_max_width: "بیشترین عرض ستون اصلی محتوا، بر حسب پیکسل."
+      ui_radius: "ضریب گردی گوشه‌ها در کل رابط کاربری (۱ = پیش‌فرض، ۰ = گوشه‌های تیز، ۲ = بسیار گرد)."

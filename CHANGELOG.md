@@ -4,6 +4,25 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.2.2] — 2026-10-24
+
+### Fixed
+
+- Theme strings stayed English on a Persian site. The translations lived in
+  `locales/fa.yml`, but Discourse resolves theme translations with
+  `I18n.fallbacks[:fa_IR]`, which is `[:fa_IR, :en]`: the Persian file was never
+  read, so every hero and rail label fell back to English while core stayed
+  translated. The file is now `locales/fa_IR.yml`, keyed by `fa_IR`, as in
+  Discourse's own themes.
+- The hero subtitle stayed English even with Persian translations. The
+  `hero_subtitle` setting shipped an English sentence as its default, which
+  overrode the localized fallback line and would also survive in an install that
+  had saved the setting once. The default is empty now, and the block treats the
+  old sentence as "not set".
+- The Persian copy was rewritten in a formal register for an academic forum —
+  no colloquial openers, no transliterated jargon ("فلت", "خوراک"), and
+  terminology aligned with core (`موضوعات`, `نوشته‌ها`, `پیوندها`).
+
 ## [3.2.1] — 2026-10-24
 
 ### Fixed
