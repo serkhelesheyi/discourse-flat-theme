@@ -98,7 +98,7 @@
 |---|---|---|
 | api-initializers/main-outlet-blocks.gjs | `api.renderBlocks("main-outlet-blocks", ...)` با conditions (route/setting/viewport) | API جدید؛ نیاز به تأیید گذاشتن در نسخهٔ واقعی هستهٔ ≥ 2026.6 در فاز ۶ |
 | api-initializers/sidebar-discovery-blocks.gjs | `api.renderBlocks("sidebar-discovery", ...)` برای ستون rail؛ خواندن `rail_leaderboard_id` از settings | پیوند تمیز؛ ریسک کم |
-| api-initializers/topic-list-customizations.gjs | `registerValueTransformer` روی `topic-list-item-expand-pinned` و `topic-list-columns` (افزودن ستون posters در suggested) | پیوند با سیستم topic-list جدید ۲۰۲۴-۱۲؛ API عمومی. **یافتهٔ کد:** transformer `create-topic-label` (حدود خط ۹–۱۳) منطق فعلی بی‌اثر است (`value || (context.site.desktopView ? value : context.defaultKey)` خروجی همسون)؛ در فاز ۳/۵ اصلاح یا حذف شود. |
+| api-initializers/topic-list-customizations.gjs | `registerValueTransformer` روی `topic-list-item-expand-pinned` و `topic-list-columns` (افزودن ستون posters در suggested) | پیوند با سیستم topic-list جدید ۲۰۲۴-۱۲؛ API عمومی. **یافتهٔ کد:** transformer `create-topic-label` (حدود خط ۹–۱۳) منطق فعلی بی‌اثر است (`value \|\| (context.site.desktopView ? value : context.defaultKey)` خروجی همسون)؛ در فاز ۳/۵ اصلاح یا حذف شود. |
 | api-initializers/docked-header-logo.js | `registerValueTransformer("home-logo-minimized", ...)` با گارد optional-call | مرتبط با هدر Glimmer جدید؛ سالم |
 | api-initializers/sidebar-section-header.js | `api.modifyClass` روی `component:sidebar/user/categories-section` | تنها `modifyClass` ریپو؛ ریسک نگهداری متوسط (بازنویسی getter `headerActionsIcon`)؛ بازبینی سالانه |
 | initializers/default-homepage.js | initializer کلاسیک؛ `setDefaultHomepage("latest")` فقط وقتی کاربر homepage_id نداشته باشد (null یا `-1`) | درست؛ وابسته به `after: "url-redirects"`. چک فاز ۶: تست رفتار بعد از تغییر `--default-interface` |
@@ -171,7 +171,7 @@
 | سنجه | نتیجه |
 |---|---|
 | اعلان‌های `inline-start/end` در CSS خروجی تم | ۷۱ |
-| ویژگی‌های فیزیکی باقی‌مانده (`margin/padding/border-left|right`، `text-align: left|right`) | ۰ |
+| ویژگی‌های فیزیکی باقی‌مانده (`margin/padding/border-left\|right`، `text-align: left\|right`) | ۰ |
 | `float: inline-start` | ۵ |
 | کامپایل SCSS کل تم (`brand`+`app`+`blocks`+`layouts`+`rtl`) | موفق، ۱۹٬۷۰۷ خط CSS، بدون خطا (ماژول `lib/viewport` هسته شبیه‌سازی شد) |
 | تطابق کلیدهای locale | `fa` = `en` = `ru` = `zh_CN` = ۳۸ کلید برگ |

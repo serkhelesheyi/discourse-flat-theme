@@ -180,7 +180,7 @@ html:lang(fa) * {
 | `!important` در سورس SCSS | ۱٬۷۹۹ | ۱٬۸۰۰ (+۱: ریست فارسی) |
 | `!important` در CSS خروجی | ۱٬۶۸۲ | ۱٬۶۸۳ |
 | شعاع هاردکد | ۴ | ۰ |
-| ویژگی‌های فیزیکی در CSS خروجی (`margin/padding/border-left|right`, `text-align: left|right`) | ۰ | ۰ |
+| ویژگی‌های فیزیکی در CSS خروجی (`margin/padding/border-left\|right`, `text-align: left\|right`) | ۰ | ۰ |
 | کلیدهای locale فارسی | ۳۸ (با متن خراب/ترکیبی در چند رشته) | ۳۸ (بدون متن خراب) |
 | حلقهٔ فوکوس با کنتراست < ۳:۱ | ۵ محل + مقدار توکن | ۰ |
 
