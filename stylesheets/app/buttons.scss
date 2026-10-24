@@ -12,6 +12,13 @@
   --d-button-default-bg-color--hover: var(--mf-panel-strong);
   --d-button-default-icon-color: var(--mf-ink-2);
   --d-button-default-icon-color--hover: var(--mf-ink);
+
+  // A default button is filled with --mf-panel and usually sits on a card of
+  // the same colour, so a borderless box only appeared on hover (owner report:
+  // "check for updates" and "change source" in the dark scheme). The 1px
+  // control line stays visible in both schemes and keeps the button's size.
+  --d-button-default-border: 1px solid var(--mf-control-line);
+  --d-button-default-border--hover: 1px solid var(--mf-ink-faint);
   --d-button-primary-text-color: var(--mf-accent-fg);
   --d-button-primary-text-color--hover: var(--mf-accent-fg);
   --d-button-primary-bg-color: var(--mf-accent);
@@ -53,7 +60,6 @@
 
 .btn {
   background-image: none !important;
-  border: none !important;
   box-shadow: none !important;
   font-family: var(--mf-font);
   font-weight: var(--mf-weight-medium);
@@ -75,24 +81,41 @@
   background: var(--mf-fill-active);
 }
 
-.btn.btn-icon-text:not(.btn-primary, .btn-danger),
+.btn.btn-icon-text:not(
+    .btn-primary,
+    .btn-danger,
+    .btn-success,
+    .cancel,
+    .ok,
+    .btn-flat,
+    .btn-transparent
+  ),
 .btn.btn-default:not(
     .btn-primary,
     .btn-danger,
+    .btn-success,
     .btn-flat,
     .btn-transparent,
     .no-text
   ) {
+  // One pixel of border replaces one pixel of padding so the box keeps its size
+  // next to borderless buttons in the same toolbar.
+  padding: 7px 13px;
   background: var(--d-button-default-bg-color);
   color: var(--d-button-default-text-color);
+  border: var(--d-button-default-border);
 
   &:hover {
     background: var(--d-button-default-bg-color--hover);
+    border-color: var(--mf-ink-faint);
   }
 }
 
 .btn.no-text,
 .btn-default.no-text {
+  // Icon-only buttons are identified by the icon itself; a ring around an
+  // unlabelled glyph only added noise, so they opt out of the control line.
+  border: 0;
   background: transparent;
 
   &:hover {

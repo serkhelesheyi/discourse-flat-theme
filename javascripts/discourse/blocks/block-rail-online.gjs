@@ -27,8 +27,11 @@ export default class BlockRailOnline extends Component {
     {{#if this.users.length}}
       <div class="block-rail-online">
         <h4 class="block-rail-online__title">
-          <span>{{i18n (themePrefix "rail.online_title")}}</span>
+          {{! The count comes first in the DOM so a right-to-left reader sees
+              "۳ کاربر آنلاین" and a left-to-right one "3 online now": the
+              label stays a singular noun next to a number, as Persian requires. }}
           <span class="block-rail-online__count">{{dNumber this.count}}</span>
+          <span>{{i18n (themePrefix "rail.online_title")}}</span>
         </h4>
         <div class="block-rail-online__avatars">
           {{#each this.users as |user|}}

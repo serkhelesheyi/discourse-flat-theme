@@ -4,6 +4,29 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.2.3] — 2026-10-24
+
+### Fixed
+
+- Neutral buttons had no visible box until hover. `buttons.scss` removed the
+  border from every `.btn`, and a default button is filled with `--mf-panel` —
+  the same fill as the card it sits on — so on a dark admin page the “check for
+  updates” and “change source” buttons read as plain text. Inside cards and
+  headers they now get a 1px control line (2.64:1 against the light panel,
+  3.37:1 against the dark one) that strengthens to `--mf-ink-faint` on hover;
+  padding loses the pixel the border gains so toolbars keep their height.
+  Icon-only buttons stay borderless because the icon already identifies them.
+- The online heading read as “کاربران آنلاین ۳”. The count now comes first in
+  the markup, so a right-to-left reader gets «۳ کاربر آنلاین» and an LTR reader
+  “3 online now”, and the Persian label is the singular noun a numeral needs.
+
+### Changed
+
+- The hero title now names this forum: «مباحثه، تالار علمی فقاهت».
+- Persian strings use a plain ه where they used هٔ: «همه»، «درباره»، «تازه».
+- The followers stat is labelled «دنبال‌کننده» so the number above it reads
+  naturally.
+
 ## [3.2.2] — 2026-10-24
 
 ### Fixed
