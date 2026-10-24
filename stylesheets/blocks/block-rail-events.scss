@@ -33,9 +33,13 @@
     align-items: center;
     justify-content: center;
     flex: 0 0 auto;
-    width: 40px;
+
+    // The badge grows with the month name: "Oct" or "اکتبر" fit the 40px
+    // minimum, while longer names ("сент.", "سپتامبر") widen it instead of
+    // wrapping inside a fixed box.
+    min-width: 40px;
     min-height: 40px;
-    padding: 4px 0;
+    padding: 4px 6px;
     background: var(--mf-surface);
     border: 1px solid var(--mf-hairline);
     border-radius: var(--mf-radius-sm);
@@ -46,6 +50,7 @@
     font-size: var(--mf-text-2xs);
     font-weight: var(--mf-weight-semibold);
     line-height: 1.2;
+    white-space: nowrap;
   }
 
   &__day {

@@ -4,6 +4,25 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.2.0] — 2026-10-24
+
+### Changed
+
+- Rail events show the calendar month name in the reader's language instead of a
+  month number plus a suffix: `Oct / 24` in English, `اکتبر / ۲۴` under `fa_IR`,
+  `окт. / 24` in Russian, `10月 / 24` in Chinese. Both lines come from one
+  `Intl.DateTimeFormat` built on the BCP47 locale core already exposes, so the
+  theme stores no month strings. The calendar stays Gregorian, as Discourse
+  renders every other date, so the event day never disagrees with the post
+  timestamps next to it; only the names and digits follow the locale.
+- The date badge grows with the month name (40px minimum) instead of clipping a
+  long name inside a fixed 40px box.
+
+### Removed
+
+- `rail.month_suffix` from all four locales. It only made sense while the month
+  was a bare number, and in Persian it read as "۱۰ ماه".
+
 ## [3.1.5] — 2026-10-24
 
 ### Fixed
