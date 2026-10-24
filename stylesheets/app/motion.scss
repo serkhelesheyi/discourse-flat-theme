@@ -108,17 +108,11 @@
     animation: mf-popover-enter var(--mf-dur-fast) var(--mf-ease-out);
   }
 
-  .d-modal__backdrop,
-  .modal-backdrop {
-    animation: mf-fade-enter var(--mf-dur) var(--mf-ease);
-  }
-
-  .d-modal__container,
-  .modal-inner-container {
-    transform-origin: center;
-    animation: mf-modal-enter var(--mf-dur-slow) var(--mf-ease-out);
-  }
-
+  // Core animates every modal layer itself: it adds `is-entering` to the
+  // container (and fades the backdrop) on insert, then removes that class.
+  // Animating the container from the theme meant the animation *changed* when
+  // core removed `is-entering`, so the browser restarted it — the sheet faded
+  // out and back in, which reads as a flash. Modal motion belongs to core.
   #dialog-holder .dialog-overlay {
     animation: mf-fade-enter var(--mf-dur) var(--mf-ease);
   }
@@ -146,14 +140,17 @@
     animation: mf-badge-pop var(--mf-dur) var(--mf-ease-out);
   }
 
-  // A float-kit menu rendered as a bottom sheet puts `fk-d-menu-modal` on the
-  // `.modal.d-modal` wrapper itself, not on the container. Core also animates
-  // that container through its `is-entering` / `is-exiting` classes, so the
-  // theme's entrance used to run on top of core's slide and the sheet appeared
-  // to flash. Leave every layer of these sheets unanimated.
+  // A float-kit menu rendered as a bottom sheet marks the `.modal.d-modal`
+  // wrapper itself with `fk-d-menu-modal`, and core slides that sheet in and
+  // out by toggling `is-entering` / `is-exiting` on the container. The rest of
+  // the theme keeps its hands off modal motion, and these sheets opt out
+  // completely: they appear and disappear on the tap, which is what makes them
+  // feel instant instead of re-entering while the finger is still down.
   .d-modal.fk-d-menu-modal,
-  .d-modal.fk-d-menu-modal .d-modal__container {
+  .d-modal.fk-d-menu-modal .d-modal__container,
+  .d-modal.fk-d-menu-modal ~ .d-modal__backdrop {
     animation: none !important;
+    transition: none !important;
   }
 
   .quick-access-panel li,

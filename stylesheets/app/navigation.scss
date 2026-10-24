@@ -293,9 +293,7 @@
     border-radius: var(--mf-radius-lg);
 
     > .category-breadcrumb {
-      order: 1;
-      flex: 1 1 auto;
-      min-width: 0;
+      flex-basis: 100%;
       overflow-x: auto;
       scrollbar-width: none;
 
@@ -304,19 +302,16 @@
       }
     }
 
-    // The filters are inline pills on mobile again, so they take a full row of
-    // their own and scroll across the whole width instead of the few pixels left
-    // beside the new-topic button.
+    // Core opens the filters in a bottom sheet on mobile, so this bar holds the
+    // single "latest"-style trigger and keeps its natural width next to the
+    // new-topic button instead of claiming a row of its own.
     > #navigation-bar {
-      order: 3;
-      flex: 0 0 100%;
-      width: 100%;
+      flex: 0 1 auto;
       min-width: 0;
       overflow-x: auto;
     }
 
     > .navigation-controls {
-      order: 2;
       margin-inline-start: auto;
     }
   }

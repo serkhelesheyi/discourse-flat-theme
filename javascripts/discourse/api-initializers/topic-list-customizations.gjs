@@ -1,6 +1,6 @@
-import { apiInitializer } from "discourse/lib/api";
 import HeaderPostersCell from "discourse/components/topic-list/header/posters-cell";
 import ItemPostersCell from "discourse/components/topic-list/item/posters-cell";
+import { apiInitializer } from "discourse/lib/api";
 
 export default apiInitializer((api) => {
   api.registerValueTransformer(

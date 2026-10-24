@@ -1,6 +1,6 @@
 import Component from "@glimmer/component";
 import { service } from "@ember/service";
-import { htmlSafe } from "@ember/template";
+import { trustHTML } from "@ember/template";
 import { themePrefix } from "virtual:theme";
 import { block } from "discourse/blocks";
 import { ajax } from "discourse/lib/ajax";
@@ -44,7 +44,7 @@ export default class BlockRailHotTopics extends Component {
 
       return {
         href: getURL(`/t/${topic.slug}/${topic.id}`),
-        title: htmlSafe(topic.fancy_title || topic.title),
+        title: trustHTML(topic.fancy_title || topic.title),
         category,
         tag: tagName,
         age: relativeAge(new Date(topic.bumped_at || topic.created_at), {

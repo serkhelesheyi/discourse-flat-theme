@@ -460,7 +460,10 @@
   }
 
   .fk-d-menu-modal .d-modal__container {
-    max-height: min(84dvh, 720px);
+    max-height: min(80dvh, 640px);
+    background: var(--mf-surface-elevated);
+    border-radius: var(--mf-radius-xl) var(--mf-radius-xl) 0 0;
+    box-shadow: none;
   }
 
   .fk-d-menu-modal {
@@ -477,16 +480,66 @@
     }
 
     .d-modal__body {
-      padding: var(--mf-floating-padding);
+      padding: var(--mf-space-2) var(--mf-space-2)
+        calc(var(--mf-space-2) + env(safe-area-inset-bottom));
+      background: transparent;
     }
 
+    h3,
+    .dropdown-menu__heading {
+      margin: 0;
+      padding: var(--mf-space-2) var(--mf-space-3) var(--mf-space-3);
+      color: var(--mf-ink);
+      font-size: var(--mf-text-md);
+      font-weight: var(--mf-weight-semibold);
+      letter-spacing: var(--mf-tracking-snug);
+    }
+
+    // One flat list of rows: the active filter carries the tint, so no
+    // separators, shadows or per-row borders are needed between them.
     .dropdown-menu {
       width: 100%;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+
+      &__item {
+        border: 0;
+
+        & + & {
+          margin-top: 2px;
+        }
+      }
 
       &__item > .btn,
       &__item > a {
+        justify-content: flex-start;
+        gap: var(--mf-space-2);
         min-height: 48px;
+        padding-inline: var(--mf-space-3);
+        color: var(--mf-ink);
+        font-size: var(--mf-text-md);
+        font-weight: var(--mf-weight-medium);
+        text-align: start;
+        border: 0;
         border-radius: var(--mf-radius-md) !important;
+        box-shadow: none;
+        transition: background var(--mf-dur-fast) var(--mf-ease);
+
+        &:hover,
+        &:focus-visible {
+          background: var(--mf-fill-hover);
+        }
+
+        &.active,
+        &.--active,
+        &[aria-current="page"] {
+          color: var(--mf-accent);
+          background: var(--mf-fill-selected);
+          font-weight: var(--mf-weight-semibold);
+        }
       }
     }
   }

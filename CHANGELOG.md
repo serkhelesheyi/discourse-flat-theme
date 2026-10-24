@@ -4,6 +4,25 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.1.5] — 2026-10-24
+
+### Fixed
+
+- Mobile filter menu: the bottom sheet is back, and the flash that made it look
+  like it closed and re-opened is gone. The theme animated every
+  `.d-modal__container`, and core adds then removes `is-entering` on that same
+  element; when the class left, the container's animation changed and the
+  browser restarted it, so the sheet faded out and in again right after it slid
+  up. Modal motion is core's job now — the theme no longer animates modal
+  containers or backdrops — and these sheets opt out of motion entirely, so they
+  appear on the tap instead of re-entering under the finger.
+- Mobile filter sheet styling: flat elevated surface with only the top corners
+  rounded, 48px rows with the active filter carried by the accent tint, 8px body
+  padding and safe-area inset, no separators, shadows or backdrop blur.
+- Mobile filter button: with the sheet restored, `#navigation-bar` holds a
+  single trigger again, so it keeps its natural width beside the new-topic
+  button instead of taking a full-width row of its own.
+
 ## [3.1.4] — 2026-10-24
 
 ### Fixed
