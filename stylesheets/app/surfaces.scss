@@ -463,7 +463,7 @@
     max-height: min(80dvh, 640px);
     background: var(--mf-surface-elevated);
     border-radius: var(--mf-radius-xl) var(--mf-radius-xl) 0 0;
-    box-shadow: none;
+    box-shadow: none !important;
   }
 
   .fk-d-menu-modal {
