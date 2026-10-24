@@ -305,3 +305,48 @@ html:lang(fa) * {
 | رفتار با تاریخ نامعتبر | `RangeError` از `Intl` — با `filter` پیش از فراخوانی پوشش داده شد |
 
 **باقی‌ماندهٔ نیازمند آزمون زنده:** دیدن badge با نام ماه فارسی در rail، عرض‌های ۱۰۲۴px و ۳۹۰px، و RTL. ظاهر از صورت مسئله قابل استنتاج است ولی «دیده‌ام» ادعا نمی‌شود.
+
+---
+
+## ۱۴) پیوست ۳٫۲٫۱ — خطای بارگذاری تم و قاعدهٔ scope در قالب‌های strict
+
+### ۱۴-۱) گزارش
+
+پس از فعال‌سازی ۳٫۲٫۰، کل تم بارگذاری نشد (نه فقط بلوک رویدادها) و کنسول Discourse گفت:
+
+```
+[THEME 76 'Oniel's Flat Theme'] Compile error: SyntaxError:
+/theme-76/discourse/blocks/block-rail-events.gjs: Attempted to resolve a
+component or helper in a strict mode template, but that value was not in scope: i18n
+```
+
+### ۱۴-۲) ریشه
+
+کامیت `637a87b` برای دسترسی به `I18n.currentBcp47Locale`، خط `import { i18n } from "discourse-i18n"` را به `import I18n from "discourse-i18n"` تبدیل کرد، ولی قالب همچنان `{{i18n (themePrefix "rail.events_title")}}` و `{{i18n (themePrefix "rail.show_all")}}` را رندر می‌کرد. در `.gjs` قالب در **strict mode** کامپایل می‌شود: هر شناسه باید یا import شده باشد یا local (block param، `this`، `@arg`). کمپایلر Glimmer این بررسی را در زمان کامپایل انجام می‌دهد و کل ماژول را رد می‌کند — به همین دلیل «Compile error» بود، نه خطای رندر یک بلوک.
+
+### ۱۴-۳) اصلاح
+
+| فایل | تغییر | نتیجه |
+|---|---|---|
+| `javascripts/discourse/blocks/block-rail-events.gjs` | `import I18n, { i18n } from "discourse-i18n";` | هر دو مصرف (`I18n.currentBcp47Locale` در JS و `{{i18n}}` در قالب) در scope هستند |
+
+هیچ بلوک دیگری این ایراد را نداشت: هشت بلوک دیگر از قبل `{ i18n }` را import می‌کردند.
+
+### ۱۴-۴) چرا لینترها این را نگرفتند
+
+`eslint`، `prettier`، `ember-template-lint` و `ember-tsc` همه سبز بودند، چون `i18n` یک helper شناخته‌شدهٔ هسته است و این ابزارها scope باندل‌شدهٔ تم را نمی‌سازند. یعنی «lint سبز» هرگز اثبات بارگذاری تم نیست؛ این شکاف در سند ۰۶ (طرح آزمون) هم دیده شده بود.
+
+### ۱۴-۵) راستی‌آزمایی قطعی (بدون Discourse زنده)
+
+با `ember-template-compiler` نسخهٔ ۶، هر `<template>` تم با گزینه‌های `{ strictMode: true, lexicalScope: (name) => scope.has(name) }` کامپایل شد، جایی که `scope` همان importهای بالای فایل است — یعنی همان کاری که babel plugin در باندل Discourse می‌کند.
+
+| آزمون | نتیجه |
+|---|---|
+| نسخهٔ ۳٫۲٫۰ (`git show 637a87b:…`) | همان خطای دقیق کنسول: `…not in scope: i18n` |
+| HEAD (۳٫۲٫۱) | ۹ قالب کامپایل شد، ۰ خطا |
+
+نتیجه: خطای گزارش‌شده بازتولید و رفع آن تأیید شد. همچنان آزمون زندهٔ بارگذاری تم روی `mobahasah.ir` لازم است (بند ۱۰).
+
+### ۱۴-۶) قاعدهٔ تازهٔ نقشهٔ راه
+
+> در هر `.gjs`، هر شناسه‌ای که در قالب ظاهر می‌شود باید در همان فایل import شود — حتی helperهایی که در قالب‌های `.hbs` قدیمی سراسری بودند (`i18n`، `themePrefix`، `dIcon`، `dNumber`). پیش از هر انتشار، قالب‌ها باید در strict mode کامپایل شوند، نه فقط lint.

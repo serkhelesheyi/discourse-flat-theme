@@ -143,7 +143,7 @@
 - [x] لنت و `ember-tsc` سبز — `pnpm lint` با هر ۵ لینتر و types، سبز
 - [ ] CI (`discourse-theme.yml`) سبز — **وضعیت واقعی بررسی شد (۲۰۲۶-۱۰-۲۴):** روی مخزن `serkhelesheyi/discourse-flat-theme` هر دو workflow فعال‌اند (`Discourse Theme` و `Create new d-compat branch`)، ولی **۰ اجرا** دارند. علتش تریگرها است: `push` فقط روی `main` و `pull_request`؛ و کارها روی شاخهٔ `freebuff-3.1.0` push شده‌اند. برای ثبت «سبز» باید یا PR باز شود یا شاخه به `main` برود (هر دو نیازمند اجازهٔ مالک). تمام گام‌های همان workflow (stylelint/eslint/template-lint/prettier/ember-tsc) محلی اجرا و سبز شده‌اند.
 - [ ] `about.json`: کلید `screenshots` پس از تهیهٔ پوشهٔ `screenshots/` (دو تصویر 16:9 روشن/تاریک، ≤1MB؛ توصیهٔ ۲۰۲۵: 2560×1440 یا بیشتر) — بدون محیط زنده ممکن نیست
-- [x] به‌روزرسانی `theme_version` و بازبینی `minimum_discourse_version` — اکنون `3.2.0` (۳٫۱٫۰ پایه، ۳٫۱٫۱–۳٫۱٫۵ اصلاح آزمون زنده، ۳٫۲٫۰ نام ماه تقویم)؛ حداقل نسخه `2026.6.0` بدون تغییر ماند (تم به `renderBlocks`، بلوک‌های Glimmer و `light-dark()` وابسته است)
+- [x] به‌روزرسانی `theme_version` و بازبینی `minimum_discourse_version` — اکنون `3.2.1` (۳٫۱٫۰ پایه، ۳٫۱٫۱–۳٫۱٫۵ اصلاح آزمون زنده، ۳٫۲٫۰ نام ماه تقویم، ۳٫۲٫۱ رفع خطای strict-mode)؛ حداقل نسخه `2026.6.0` بدون تغییر ماند (تم به `renderBlocks`، بلوک‌های Glimmer و `light-dark()` وابسته است)
 - [x] چند زبانه‌ها (`en.yml`، `fa.yml`، `ru.yml`، `zh_CN.yml`) و README با بخش «فارسی/RTL» — ۳۸ کلید برگ هم‌راستا در هر چهار فایل (عدد «۴۲» در نسخهٔ اول این بند اشتباه بود)
 - [x] تهیهٔ changelog نسخه جدید (`3.1.0`) — `CHANGELOG.md`؛ ۳٫۱٫۱ تا ۳٫۱٫۵ هم با علت ریشه‌ای هر اصلاح ثبت شده‌اند
 

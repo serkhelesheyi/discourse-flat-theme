@@ -5,7 +5,7 @@ import { ajax } from "discourse/lib/ajax";
 import { bind } from "discourse/lib/decorators";
 import DAsyncContent from "discourse/ui-kit/d-async-content";
 import dIcon from "discourse/ui-kit/helpers/d-icon";
-import I18n from "discourse-i18n";
+import I18n, { i18n } from "discourse-i18n";
 
 // Core formats every other date in Discourse on the Gregorian calendar, so the
 // rail badge keeps that calendar and the event day never disagrees with the

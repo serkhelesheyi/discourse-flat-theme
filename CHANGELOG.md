@@ -4,6 +4,19 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.2.1] — 2026-10-24
+
+### Fixed
+
+- The theme failed to load after 3.2.0 (`Attempted to resolve a component or
+  helper in a strict mode template, but that value was not in scope: i18n`).
+  `block-rail-events.gjs` traded `import { i18n }` for the default `I18n` import
+  while its template still rendered `{{i18n ...}}`, and a `.gjs` template is
+  compiled in strict mode, so every identifier it uses must be imported. The
+  block now imports both (`import I18n, { i18n } from "discourse-i18n"`), and all
+  nine theme templates were compiled in strict mode to confirm nothing else is
+  missing from scope.
+
 ## [3.2.0] — 2026-10-24
 
 ### Changed
