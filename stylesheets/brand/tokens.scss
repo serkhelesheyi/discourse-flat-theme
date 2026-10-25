@@ -105,11 +105,17 @@
     color-mix(in srgb, var(--primary) 27%, transparent)
   );
 
-  // Boundary of a neutral control (default button, neutral icon button). A
-  // default button is filled with --mf-panel and usually sits on a card of the
-  // same colour, so with no border its box disappeared until hover. Measured
-  // against that panel: 2.64:1 (light), 3.37:1 (dark).
-  --mf-control-line: color-mix(in srgb, var(--primary) 45%, var(--secondary));
+  // Boundary of a neutral control (default button, text field, select). These
+  // sit on fills of the same tone, so without a line the box disappears until
+  // hover. 55% is the lowest stop that clears the 3:1 non-text contrast floor on
+  // every surface a control uses: 3.35:1 on the light panel, 3.84:1 on the dark
+  // panel, 3.10:1 on the darkest light field fill.
+  --mf-control-line: color-mix(in srgb, var(--primary) 55%, var(--secondary));
+
+  // Two very low-alpha washes behind the page. They sit on --mf-app-bg and
+  // read as a quiet tint rather than a gradient band in both schemes.
+  --mf-glow-accent: color-mix(in srgb, var(--mf-accent) 8%, transparent);
+  --mf-glow-ink: color-mix(in srgb, var(--primary) 5%, transparent);
   --mf-ink: var(--primary);
 
   // Muted text scale. Each step clears WCAG AA (4.5:1) on every surface it is
@@ -167,8 +173,13 @@
   --d-tag-font-size: var(--mf-text-sm);
   --token-radius-normal: var(--mf-radius-md);
   --category-badge-border-radius: var(--mf-radius-xs);
-  --content-border-color: transparent;
-  --table-border-color: transparent;
+
+  // Core draws 170+ structural lines (topic body, modal header/footer, topic
+  // map, user menu, preferences rows, tables, hr) from these two tokens. They
+  // were transparent, which is why dividers vanished across the site; the
+  // hairlines keep the flat look and separate sections again.
+  --content-border-color: var(--mf-hairline-strong);
+  --table-border-color: var(--mf-hairline-strong);
   --primary-low: var(--mf-hairline-strong);
   --d-selected: var(--mf-fill-selected);
   --d-selected-text-color: var(--mf-accent);

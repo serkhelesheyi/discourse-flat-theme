@@ -4,7 +4,7 @@ html {
 
 html,
 body {
-  background: var(--mf-app-bg);
+  background-color: var(--mf-app-bg);
   color: var(--mf-ink);
   font-family: var(--mf-font);
   font-feature-settings:
@@ -17,6 +17,31 @@ body {
   text-rendering: optimizelegibility;
   letter-spacing: var(--mf-tracking-normal);
   line-height: var(--mf-leading-normal);
+}
+
+// Page wash: one accent glow at the reading start and one ink glow low at the
+// far end. Kept on <body> so cards stay opaque and only the gutters tint. The
+// anchor points mirror in RTL so the accent follows the reading direction.
+body {
+  --mf-glow-start: 12% 8%;
+  --mf-glow-end: 88% 78%;
+  background-image:
+    radial-gradient(
+      ellipse at var(--mf-glow-start),
+      var(--mf-glow-accent) 0%,
+      transparent 44%
+    ),
+    radial-gradient(
+      ellipse at var(--mf-glow-end),
+      var(--mf-glow-ink) 0%,
+      transparent 42%
+    );
+  background-repeat: no-repeat;
+}
+
+body:dir(rtl) {
+  --mf-glow-start: 88% 8%;
+  --mf-glow-end: 12% 78%;
 }
 
 // Persian (fa_IR): a Persian-capable stack, no negative tracking (it breaks the
@@ -66,7 +91,8 @@ html:lang(fa) * {
 #main-outlet-wrapper,
 .posts-wrapper,
 .container.posts {
-  background: var(--mf-app-bg);
+  // Transparent so the body wash is not painted over by the outlet.
+  background: transparent;
 }
 
 h1,

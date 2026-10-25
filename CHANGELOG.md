@@ -4,6 +4,46 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.2.4] — 2026-10-25
+
+### Fixed
+
+- Tag lists printed a comma between pills. Discourse renders the gap as a
+  literal `.discourse-tags__tag-separator` span, so the pills read
+  “شهیدی , جمع-عرفی , خویی” even though each tag is already its own box. The
+  separator is now hidden in every tag list (topic list, topic header, profile),
+  not just the ones this theme builds.
+- Dividers had vanished across the site. Core draws more than 170 structural
+  lines — topic body, post notice, topic map, modal and dialog header/footer,
+  user menu, preferences rows, `hr`, admin tables — from
+  `--content-border-color` and `--table-border-color`, and the theme had set
+  both to `transparent`. Both now resolve to `--mf-hairline-strong`.
+- Three edges the theme itself had erased were restored: the header's bottom
+  line (header and page were one surface), modal header/footer rules, and
+  sidebar section separators (`--d-sidebar-*-border-color` were transparent).
+- Neutral `.btn` boxes were still invisible wherever a component used a plain
+  `.btn` instead of `.btn-default`: `--d-button-border` was `none`, which core
+  applies to every button. The token is a 1px control line again, so buttons
+  from components and plugins (gamification, reactions, admin reports) get the
+  same box; primary/danger/success fills and text-only `.btn-flat`,
+  `.btn-transparent`, `.btn-link` explicitly opt out.
+- Text fields, textareas and select-kit headers were borderless
+  (`--d-input-border: none`), so a field on a panel of the same tone had no
+  visible edge. They carry the control line and switch it to the accent on
+  focus.
+
+### Changed
+
+- The control line is 55% ink instead of 45%: 3.35:1 on the light panel and
+  3.84:1 on the dark panel, so a default button or field boundary clears the 3:1
+  non-text contrast floor instead of approaching it.
+- 3.2.3's padding compensation is gone: core reserves the 1px button border in
+  the box, so buttons return to 8/14 padding and keep the size they had before
+  3.2.3.
+- The page background is a tinted wash instead of one flat colour: a very
+  low-alpha accent glow at the reading start and an ink glow low at the far end,
+  mirrored in RTL. Cards stay opaque, so only the gutters take the tint.
+
 ## [3.2.3] — 2026-10-24
 
 ### Fixed

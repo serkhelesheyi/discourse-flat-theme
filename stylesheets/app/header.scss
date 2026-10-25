@@ -13,7 +13,10 @@
 
 .d-header {
   background: var(--mf-surface);
-  border-bottom: 0;
+
+  // With no shadow the header and the page were one surface, so scrolling had
+  // no line to separate them.
+  border-bottom: 1px solid var(--mf-hairline-strong);
   box-shadow: none;
 
   .wrap {

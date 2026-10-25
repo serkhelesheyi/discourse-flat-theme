@@ -1,7 +1,10 @@
 :root {
   --d-sidebar-background: var(--mf-app-bg);
-  --d-sidebar-border-color: transparent;
-  --d-sidebar-section-border-color: transparent;
+
+  // The sidebar shares the page background, so with transparent borders it had
+  // no edge against the topic list at all.
+  --d-sidebar-border-color: var(--mf-hairline);
+  --d-sidebar-section-border-color: var(--mf-hairline);
   --d-sidebar-row-height: 2.3em;
   --d-sidebar-link-color: var(--mf-ink-2);
   --d-sidebar-link-icon-color: var(--mf-ink-3);

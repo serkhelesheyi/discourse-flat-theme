@@ -1,3 +1,10 @@
+// Core renders each gap between tags as a literal comma span
+// (.discourse-tags__tag-separator). The pills already read as separate items,
+// so the comma is dropped in every tag list, not just the topic list.
+.discourse-tags__tag-separator {
+  display: none !important;
+}
+
 .tags-controls {
   align-items: center;
   gap: var(--mf-space-2) var(--mf-space-4);

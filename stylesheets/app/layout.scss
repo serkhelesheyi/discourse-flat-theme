@@ -9,9 +9,13 @@
 }
 
 html,
-body,
+body {
+  background-color: var(--mf-app-bg);
+}
+
+// Keep the page wash visible: an opaque outlet would cover the body gradient.
 #main-outlet-wrapper {
-  background: var(--mf-app-bg);
+  background: transparent;
 }
 
 .list-container .container,

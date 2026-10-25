@@ -85,7 +85,6 @@
   box-shadow: none !important;
 }
 
-.d-header,
 .topic-list-body,
 .discourse-tag.box,
 .search-info,
@@ -282,8 +281,19 @@
   .modal-header,
   .d-modal__footer,
   .modal-footer {
-    border: 0 !important;
+    // Sections of one card: without these lines the title, body and actions
+    // read as an undivided block.
     background: transparent;
+  }
+
+  .d-modal__header,
+  .modal-header {
+    border-bottom: 1px solid var(--mf-hairline-strong) !important;
+  }
+
+  .d-modal__footer,
+  .modal-footer {
+    border-top: 1px solid var(--mf-hairline-strong) !important;
   }
 
   .d-modal__header,

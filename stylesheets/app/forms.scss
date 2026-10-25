@@ -2,7 +2,10 @@
   --d-input-bg-color: var(--mf-surface-3);
   --d-input-bg-color--focus: var(--mf-panel-hover);
   --d-input-text-color: var(--mf-ink);
-  --d-input-border: none;
+
+  // Fields are filled with --mf-surface-3; on a panel of the same tone the box
+  // disappeared. A control line keeps every field visible in both schemes.
+  --d-input-border: 1px solid var(--mf-control-line);
   --d-input-border-radius: var(--mf-radius-md);
   --d-input-focused-color: var(--mf-accent);
 }
@@ -23,7 +26,7 @@ textarea,
 .select-kit .select-kit-header,
 .select-kit.combo-box .select-kit-header {
   background: var(--d-input-bg-color);
-  border: none !important;
+  border: var(--d-input-border) !important;
   border-radius: var(--d-input-border-radius);
   color: var(--d-input-text-color);
   font-family: var(--mf-font);
@@ -38,7 +41,7 @@ textarea,
 
   &:focus,
   &:focus-within {
-    border: var(--d-input-border);
+    border-color: var(--mf-accent) !important;
     background: var(--d-input-bg-color--focus);
     outline: 0;
     box-shadow: var(--shadow-focus);

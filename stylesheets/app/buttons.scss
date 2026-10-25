@@ -1,6 +1,6 @@
 :root {
   --d-button-border-radius: var(--mf-radius-md);
-  --d-button-border: none;
+  --d-button-border: 1px solid var(--mf-control-line);
   --d-button-transition:
     background-color var(--mf-dur-fast) var(--mf-ease),
     border-color var(--mf-dur-fast) var(--mf-ease),
@@ -19,6 +19,12 @@
   // control line stays visible in both schemes and keeps the button's size.
   --d-button-default-border: 1px solid var(--mf-control-line);
   --d-button-default-border--hover: 1px solid var(--mf-ink-faint);
+
+  // Filled variants and text-only buttons need no ring: the fill or the flat
+  // hover already separates them from the page.
+  --d-button-primary-border: 1px solid transparent;
+  --d-button-danger-border: 1px solid transparent;
+  --d-button-success-border: 1px solid transparent;
   --d-button-primary-text-color: var(--mf-accent-fg);
   --d-button-primary-text-color--hover: var(--mf-accent-fg);
   --d-button-primary-bg-color: var(--mf-accent);
@@ -98,17 +104,26 @@
     .btn-transparent,
     .no-text
   ) {
-  // One pixel of border replaces one pixel of padding so the box keeps its size
-  // next to borderless buttons in the same toolbar.
-  padding: 7px 13px;
   background: var(--d-button-default-bg-color);
   color: var(--d-button-default-text-color);
-  border: var(--d-button-default-border);
+
+  // Plugin and component stylesheets load after the theme, so the box has to
+  // hold its own boundary without relying on cascade order.
+  border: var(--d-button-default-border) !important;
 
   &:hover {
     background: var(--d-button-default-bg-color--hover);
     border-color: var(--mf-ink-faint);
   }
+}
+
+// Core paints flat/transparent buttons with the same border token as ordinary
+// buttons, so they have to opt out explicitly now that the token is visible.
+.btn-flat,
+.btn-transparent,
+.btn-link,
+.btn.btn-text {
+  border-color: transparent !important;
 }
 
 .btn.no-text,
