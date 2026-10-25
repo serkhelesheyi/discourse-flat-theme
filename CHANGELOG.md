@@ -4,6 +4,29 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.2.5] — 2026-10-25
+
+### Changed
+
+- The page wash is the owner's Concept A snippet verbatim: `body` paints
+  `radial-gradient(ellipse at 12% 8%, var(--tertiary-very-low) …, transparent 44%)`
+  and `radial-gradient(ellipse at 88% 78%, var(--primary-very-low) …, transparent 42%)`.
+  The two variables it names are defined in the same block, because core ships
+  no `--tertiary-very-low` at all — an undefined `var()` without a fallback
+  invalidates the whole `background-image` — and its `--primary-very-low` is an
+  opaque `#f8f8f8`. Both are translucent tints instead: 8% accent, 5% ink.
+  Defining them on `body` also gives core what it expected: it reads
+  `--tertiary-very-low` in 15 places but never defines it (14 of those
+  declarations were dropped, e.g. date-picker focus, checked radio cards,
+  private-message notices, `d-table` updated rows and badges, not-found search),
+  and its `--primary-very-low` (71 references: keycaps, quote oneboxes, stat
+  tiles, skeleton placeholders, loading sections, upload previews, emoji-picker
+  hovers) is now a translucent 5% ink tint instead of an opaque `#f8f8f8`, so it
+  reads in both schemes.
+- The snippet's base colour stays `--mf-app-bg` instead of `--secondary`: in the
+  light scheme `--secondary` and `--mf-surface` are both pure white, so the 3%
+  step that separates the page from its cards would disappear.
+
 ## [3.2.4] — 2026-10-25
 
 ### Fixed
@@ -43,6 +66,7 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 - The page background is a tinted wash instead of one flat colour: a very
   low-alpha accent glow at the reading start and an ink glow low at the far end,
   mirrored in RTL. Cards stay opaque, so only the gutters take the tint.
+  (3.2.5 restates this as the owner's own snippet; see above.)
 
 ## [3.2.3] — 2026-10-24
 

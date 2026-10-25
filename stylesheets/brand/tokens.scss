@@ -111,11 +111,6 @@
   // every surface a control uses: 3.35:1 on the light panel, 3.84:1 on the dark
   // panel, 3.10:1 on the darkest light field fill.
   --mf-control-line: color-mix(in srgb, var(--primary) 55%, var(--secondary));
-
-  // Two very low-alpha washes behind the page. They sit on --mf-app-bg and
-  // read as a quiet tint rather than a gradient band in both schemes.
-  --mf-glow-accent: color-mix(in srgb, var(--mf-accent) 8%, transparent);
-  --mf-glow-ink: color-mix(in srgb, var(--primary) 5%, transparent);
   --mf-ink: var(--primary);
 
   // Muted text scale. Each step clears WCAG AA (4.5:1) on every surface it is
