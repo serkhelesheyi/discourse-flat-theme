@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.21] — 2026-10-28
+
+### Changed
+
+- Reduce only the mobile topic view outer card gutters to 8px on the sidebar side and 12px on the display side, reclaiming horizontal reading space while preserving a small edge margin.
+
+### Notes
+
+- Desktop and non-topic pages are unchanged; live mobile confirmation is still required.
+
+
+
 ## [3.2.20] — 2026-10-28
 
 ### Changed
