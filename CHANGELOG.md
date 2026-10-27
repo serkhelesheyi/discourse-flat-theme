@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.2.14] — 2026-10-28
+
+### Fixed
+
+- Reduce the admin timeline wrench control to a compact 28px square with a 14px icon, removing excess button area while preserving its action and the shared control-group layout.
+
+### Notes
+
+- Visual confirmation after updating the live theme is still required.
+
+
 ## [3.2.13] — 2026-10-28
 
 ### Fixed
