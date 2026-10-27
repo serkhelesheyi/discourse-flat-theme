@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.19] — 2026-10-28
+
+### Changed
+
+- Refresh the page background with layered accent glows and ultra-subtle geometric lines, using CSS gradients only and stronger dark-scheme contrast behind opaque topic cards.
+
+### Notes
+
+- Visual confirmation on both light and dark schemes is still required.
+
+
+
 ## [3.2.18] — 2026-10-28
 
 ### Changed
