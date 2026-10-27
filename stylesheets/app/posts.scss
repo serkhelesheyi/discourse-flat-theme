@@ -425,17 +425,21 @@ body.archetype-regular {
       opacity: 1;
     }
 
-    // Core renders this map as a child of the post row (post.gjs:
-    // `.post__topic-map.topic-map.--op`). The row's grid has the avatar in
-    // column 1 and the body in column 2, so auto-placement gave the map a cell of
-    // the 32px avatar column and wrapped the stats into a narrow stack; the
-    // padding below was only there to push that content back under the text. It
-    // spans the row now, exactly like the post notice above it, and keeps the
-    // same inset so its content still lines up with the post body.
+    // The OP map must keep a full row width at every viewport. At widths below
+    // md the post row becomes block layout, but core's map can still shrink as a
+    // flex item to its min-content width (observed computed width: 11px), which
+    // pushes the view count beside the timeline age. Keep the sizing rule outside
+    // the md-only grid placement; the grid span and avatar offset remain desktop-only.
     .post-stream > .topic-post .topic-map.--op {
-      grid-column: 1 / -1;
       width: 100%;
       min-width: 0;
+      max-width: 100%;
+      flex: 0 0 100%;
+      box-sizing: border-box;
+    }
+
+    @include viewport.from(md) {
+      grid-column: 1 / -1;
       padding-inline-start: calc(
         var(--mf-post-avatar-size) + var(--mf-post-column-gap)
       );
@@ -467,6 +471,10 @@ body.archetype-regular {
     .post-stream > .topic-post .topic-meta-data:not(.embedded-reply) {
       min-height: var(--mf-post-avatar-size);
       margin-inline-start: calc(var(--mf-post-avatar-size) + 8px);
+    }
+
+    .post-stream > .topic-post .topic-map.--op {
+      padding-inline: 0;
     }
 
     .post-stream > .topic-post .post-avatar,
