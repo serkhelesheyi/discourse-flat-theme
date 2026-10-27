@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.16] — 2026-10-28
+
+### Fixed
+
+- Explicitly remove the docked timeline control wrapper background, border, radius, and shadow when the admin wrench is its only control.
+
+### Notes
+
+- Confirm the live appearance after updating the theme; the prior CSS-only change did not alter the reported result.
+
+
+
 ## [3.2.15] — 2026-10-28
 
 ### Fixed
