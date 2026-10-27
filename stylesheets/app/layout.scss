@@ -67,11 +67,10 @@ body.archetype-regular {
   --mf-topic-gutter-end: calc(var(--mf-topic-gutter) + var(--mf-space-2));
   --d-main-content-gap: var(--mf-topic-gutter);
 
-  // Narrow the *outer* topic-card margins on phones only. Keep a small
-  // safety gutter while reclaiming reading width; logical end remains slightly
-  // wider to preserve the established visual balance in RTL and LTR.
+  // Mobile view is a wrapper class on an ancestor, not on body itself.
+  // Override the topic gutters on the body where the base tokens are defined.
   @include viewport.until(md) {
-    &.mobile-view {
+    .mobile-view & {
       --mf-topic-gutter: 8px;
       --mf-topic-gutter-end: 12px;
       --d-main-content-gap: var(--mf-topic-gutter);
