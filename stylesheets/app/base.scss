@@ -19,47 +19,89 @@ body {
   line-height: var(--mf-leading-normal);
 }
 
-/* Mobahathah — Concept A: Quiet Academic */
-// Two low-alpha washes behind the page: an accent glow at the reading start and
-// an ink glow low at the far end. Kept on <body> so cards stay opaque and only
-// the gutters tint. Core ships no --tertiary-very-low at all and its
-// --primary-very-low is an opaque #f8f8f8, so both are defined here as
-// translucent tints — otherwise the whole background-image is dropped as
-// invalid and the page stays flat.
-//
-// background-color stays --mf-app-bg rather than --secondary: in the light
-// scheme --secondary is pure white and so is --mf-surface, so the 3% step that
-// separates the page from its cards would disappear.
+/* Mobahathah — Quiet Academic: layered page atmosphere, no image assets. */
+// Pure CSS gradients keep the background cheap to paint and avoid extra network
+// requests. Stronger dark-mode color fields create separation from the reading
+// card; light mode retains a quieter wash. Cards remain opaque above this layer.
 body {
-  --tertiary-very-low: color-mix(in srgb, var(--mf-accent) 8%, transparent);
-  --primary-very-low: color-mix(in srgb, var(--primary) 5%, transparent);
+  --mf-page-glow-primary: light-dark(
+    color-mix(in srgb, var(--mf-accent) 9%, transparent),
+    color-mix(in srgb, var(--mf-accent) 34%, transparent)
+  );
+  --mf-page-glow-secondary: light-dark(
+    color-mix(in srgb, #7c3aed 5%, transparent),
+    color-mix(in srgb, #7c3aed 24%, transparent)
+  );
+  --mf-page-glow-teal: light-dark(
+    color-mix(in srgb, #0d9488 4%, transparent),
+    color-mix(in srgb, #14b8a6 16%, transparent)
+  );
+  --mf-page-pattern: light-dark(
+    color-mix(in srgb, var(--mf-accent) 3%, transparent),
+    color-mix(in srgb, #a78bfa 8%, transparent)
+  );
   background-color: var(--mf-app-bg);
   background-image:
     radial-gradient(
-      ellipse at 12% 8%,
-      var(--tertiary-very-low) 0%,
-      transparent 44%
+      ellipse at 9% 9%,
+      var(--mf-page-glow-primary) 0%,
+      transparent 34rem
     ),
     radial-gradient(
-      ellipse at 88% 78%,
-      var(--primary-very-low) 0%,
-      transparent 42%
+      ellipse at 94% 38%,
+      var(--mf-page-glow-secondary) 0%,
+      transparent 30rem
+    ),
+    radial-gradient(
+      ellipse at 78% 92%,
+      var(--mf-page-glow-teal) 0%,
+      transparent 32rem
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0 46%,
+      var(--mf-page-pattern) 46.1%,
+      transparent 46.35% 100%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 0 69%,
+      var(--mf-page-pattern) 69.1%,
+      transparent 69.35% 100%
     );
   background-repeat: no-repeat;
+  background-attachment: scroll;
 }
 
-// RTL mirrors the anchors so the accent glow still sits on the reading edge.
+// Mirror the main glow and angular accents for right-to-left reading.
 body:dir(rtl) {
   background-image:
     radial-gradient(
-      ellipse at 88% 8%,
-      var(--tertiary-very-low) 0%,
-      transparent 44%
+      ellipse at 91% 9%,
+      var(--mf-page-glow-primary) 0%,
+      transparent 34rem
     ),
     radial-gradient(
-      ellipse at 12% 78%,
-      var(--primary-very-low) 0%,
-      transparent 42%
+      ellipse at 6% 38%,
+      var(--mf-page-glow-secondary) 0%,
+      transparent 30rem
+    ),
+    radial-gradient(
+      ellipse at 22% 92%,
+      var(--mf-page-glow-teal) 0%,
+      transparent 32rem
+    ),
+    linear-gradient(
+      45deg,
+      transparent 0 46%,
+      var(--mf-page-pattern) 46.1%,
+      transparent 46.35% 100%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0 69%,
+      var(--mf-page-pattern) 69.1%,
+      transparent 69.35% 100%
     );
 }
 
