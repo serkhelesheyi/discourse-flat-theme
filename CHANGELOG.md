@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.22] — 2026-10-28
+
+### Fixed
+
+- Correct the mobile topic gutter override selector: Discourse places `.mobile-view` on an ancestor rather than on `body`, so the 3.2.21 override did not match.
+
+### Notes
+
+- Confirm the reduced gutters on the live mobile topic page after updating the theme.
+
+
+
 ## [3.2.21] — 2026-10-28
 
 ### Changed
