@@ -67,6 +67,17 @@ body.archetype-regular {
   --mf-topic-gutter-end: calc(var(--mf-topic-gutter) + var(--mf-space-2));
   --d-main-content-gap: var(--mf-topic-gutter);
 
+  // Narrow the *outer* topic-card margins on phones only. Keep a small
+  // safety gutter while reclaiming reading width; logical end remains slightly
+  // wider to preserve the established visual balance in RTL and LTR.
+  @include viewport.until(md) {
+    &.mobile-view {
+      --mf-topic-gutter: 8px;
+      --mf-topic-gutter-end: 12px;
+      --d-main-content-gap: var(--mf-topic-gutter);
+    }
+  }
+
   // Inner gutter of the card. Every child of the box reads it: the post text has
   // had an inset of its own since 3.2.9, but the title, the topic map, the
   // timeline column, the buttons and the suggested topics stayed on the card
