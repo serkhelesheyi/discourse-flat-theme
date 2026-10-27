@@ -311,6 +311,61 @@ body.archetype-regular {
   }
 }
 
+// The lone admin wrench is intentionally shown as a subtle circular icon button.
+@media screen and (width >= 925px) {
+  .desktop-view body.archetype-regular
+    .topic-navigation.with-timeline
+    .timeline-container.timeline-docked
+    .timeline-controls:not(:has(.btn-toggle-localized-content))
+    .topic-admin-menu-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    min-width: 28px;
+    height: 28px;
+    min-height: 28px;
+    padding: 6px;
+    color: var(--mf-ink-faint);
+    background: var(--mf-surface-2) !important;
+    border: 1px solid var(--mf-hairline) !important;
+    border-radius: 50% !important;
+    box-shadow: none !important;
+    transition:
+      color 120ms ease,
+      background-color 120ms ease,
+      border-color 120ms ease;
+  }
+
+  .desktop-view body.archetype-regular
+    .topic-navigation.with-timeline
+    .timeline-container.timeline-docked
+    .timeline-controls:not(:has(.btn-toggle-localized-content))
+    .topic-admin-menu-trigger:hover {
+    color: var(--mf-accent);
+    background: var(--mf-accent-tint) !important;
+    border-color: var(--mf-accent) !important;
+  }
+
+  .desktop-view body.archetype-regular
+    .topic-navigation.with-timeline
+    .timeline-container.timeline-docked
+    .timeline-controls:not(:has(.btn-toggle-localized-content))
+    .topic-admin-menu-trigger:focus-visible {
+    outline: 2px solid var(--mf-accent);
+    outline-offset: 2px;
+  }
+
+  .desktop-view body.archetype-regular
+    .topic-navigation.with-timeline
+    .timeline-container.timeline-docked
+    .timeline-controls:not(:has(.btn-toggle-localized-content))
+    .topic-admin-menu-trigger .d-icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
 // Keep the DiscoTOC sidebar styling at the regular desktop breakpoint; only the
 // docked timeline itself follows core's narrower, content-derived 925px switch.
 @include viewport.from(md) {
