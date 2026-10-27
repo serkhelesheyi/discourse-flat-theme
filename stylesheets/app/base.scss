@@ -19,10 +19,10 @@ body {
   line-height: var(--mf-leading-normal);
 }
 
-/* Mobahathah — Quiet Academic: layered page atmosphere, no image assets. */
-// Pure CSS gradients keep the background cheap to paint and avoid extra network
-// requests. Stronger dark-mode color fields create separation from the reading
-// card; light mode retains a quieter wash. Cards remain opaque above this layer.
+/* Mobahathah — Quiet Academic: layered atmosphere with subtle Islamic geometry. */
+// CSS-only gradients: no image assets, network requests, filters, or animation.
+// The dark scheme gets richer color fields; tiny concentric rosettes replace the
+// long crossing diagonals so the page remains calm behind the reading surface.
 body {
   --mf-page-glow-primary: light-dark(
     color-mix(in srgb, var(--mf-accent) 9%, transparent),
@@ -38,7 +38,7 @@ body {
   );
   --mf-page-pattern: light-dark(
     color-mix(in srgb, var(--mf-accent) 3%, transparent),
-    color-mix(in srgb, #a78bfa 8%, transparent)
+    color-mix(in srgb, #a78bfa 6%, transparent)
   );
   background-color: var(--mf-app-bg);
   background-image:
@@ -57,23 +57,29 @@ body {
       var(--mf-page-glow-teal) 0%,
       transparent 32rem
     ),
-    linear-gradient(
-      135deg,
-      transparent 0 46%,
-      var(--mf-page-pattern) 46.1%,
-      transparent 46.35% 100%
+    radial-gradient(
+      circle at 9% 20%,
+      var(--mf-page-pattern) 0 1px,
+      transparent 2px 20px,
+      var(--mf-page-pattern) 20.5px 21px,
+      transparent 21.5px 29px,
+      var(--mf-page-pattern) 29.5px 30px,
+      transparent 30.5px
     ),
-    linear-gradient(
-      45deg,
-      transparent 0 69%,
-      var(--mf-page-pattern) 69.1%,
-      transparent 69.35% 100%
+    radial-gradient(
+      circle at 93% 72%,
+      var(--mf-page-pattern) 0 1px,
+      transparent 2px 16px,
+      var(--mf-page-pattern) 16.5px 17px,
+      transparent 17.5px 24px,
+      var(--mf-page-pattern) 24.5px 25px,
+      transparent 25.5px
     );
   background-repeat: no-repeat;
   background-attachment: scroll;
 }
 
-// Mirror the main glow and angular accents for right-to-left reading.
+// Mirror the subtle rosette positions for right-to-left reading.
 body:dir(rtl) {
   background-image:
     radial-gradient(
@@ -91,17 +97,23 @@ body:dir(rtl) {
       var(--mf-page-glow-teal) 0%,
       transparent 32rem
     ),
-    linear-gradient(
-      45deg,
-      transparent 0 46%,
-      var(--mf-page-pattern) 46.1%,
-      transparent 46.35% 100%
+    radial-gradient(
+      circle at 91% 20%,
+      var(--mf-page-pattern) 0 1px,
+      transparent 2px 20px,
+      var(--mf-page-pattern) 20.5px 21px,
+      transparent 21.5px 29px,
+      var(--mf-page-pattern) 29.5px 30px,
+      transparent 30.5px
     ),
-    linear-gradient(
-      135deg,
-      transparent 0 69%,
-      var(--mf-page-pattern) 69.1%,
-      transparent 69.35% 100%
+    radial-gradient(
+      circle at 7% 72%,
+      var(--mf-page-pattern) 0 1px,
+      transparent 2px 16px,
+      var(--mf-page-pattern) 16.5px 17px,
+      transparent 17.5px 24px,
+      var(--mf-page-pattern) 24.5px 25px,
+      transparent 25.5px
     );
 }
 
