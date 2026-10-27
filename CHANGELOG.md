@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.17] — 2026-10-28
+
+### Fixed
+
+- Remove the outer docked timeline container tile when it contains only the admin controls, based on the reported computed dimensions and background.
+
+### Notes
+
+- Visual confirmation after updating the live theme is still required.
+
+
+
 ## [3.2.16] — 2026-10-28
 
 ### Fixed
