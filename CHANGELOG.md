@@ -4,6 +4,23 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.2.7] — 2026-10-27
+
+### Fixed
+
+- The topic box still stood too close to the display edge on one side — the left
+  one in an RTL forum (owner report) and the right one in an LTR forum. 3.2.6
+  added the same padding to both inline sides of `#main-outlet`, but the sidebar
+  side of the box is already the grid gap, so that side came out ~13px wider than
+  the display side: at a 1440px window the box stood 24px from the display edge
+  and ~37px from the sidebar, which left the display side looking short. Every
+  inline gap on a topic page — viewport ↔ sidebar, sidebar ↔ box, box ↔
+  viewport — now reads one `--mf-topic-gutter` (`clamp(16px, 2.2vw, 40px)`): the
+  sidebar's outer edge takes `padding-inline-start` on `#main-outlet-wrapper`, the
+  display edge takes `padding-inline-end` on `#main-outlet`, and the sidebar gap
+  keeps `--d-main-content-gap`. Both properties are logical, so an LTR forum
+  mirrors the fix to its own display side without a second rule.
+
 ## [3.2.6] — 2026-10-27
 
 ### Fixed
