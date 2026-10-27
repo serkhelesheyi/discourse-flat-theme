@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.20] — 2026-10-28
+
+### Changed
+
+- Replace the two crossing diagonal background lines with faint concentric rosette motifs inspired by Islamic geometry; keep the layered color glows and CSS-only implementation.
+
+### Notes
+
+- Visual confirmation in dark/light and RTL/LTR layouts is still required.
+
+
+
 ## [3.2.19] — 2026-10-28
 
 ### Changed
