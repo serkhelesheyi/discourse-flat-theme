@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.2.12] — 2026-10-28
+
+### Fixed
+
+- Keep the first post's inline topic map (`.topic-map.--op`) at full width below and above the `md` breakpoint. The mobile block layout had no equivalent sizing rule, and the map could shrink to its min-content width (11px in the owner's computed styles), moving the view count beside the timeline age. Desktop grid spanning and its avatar-aligned inset remain scoped to `md` and up.
+
+### Notes
+
+- The change is based on the supplied live computed styles and has not yet been visually verified after deployment. Recheck at 639px and 767px, plus 768px to confirm the breakpoint transition.
+
+
 All notable changes to Oniel's Flat Theme are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
