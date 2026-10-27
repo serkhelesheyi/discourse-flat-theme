@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.15] — 2026-10-28
+
+### Fixed
+
+- Remove the grey rounded control-group background when the admin wrench is the only timeline control; retain the compact wrench button and its action.
+
+### Notes
+
+- Visual confirmation after updating the live theme is still required.
+
+
+
 ## [3.2.14] — 2026-10-28
 
 ### Fixed
