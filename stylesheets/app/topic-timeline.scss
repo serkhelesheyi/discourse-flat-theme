@@ -279,6 +279,22 @@ body.archetype-regular {
 
 }
 
+// The admin-only timeline control can be the sole child of this group.
+// In that case, remove the wrapper tile itself (not just the button styling).
+@media screen and (width >= 925px) {
+  .desktop-view body.archetype-regular
+    .topic-navigation.with-timeline
+    .timeline-container.timeline-docked
+    .topic-timeline
+    .timeline-controls:not(:has(.btn-toggle-localized-content)) {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+}
+
 // Keep the DiscoTOC sidebar styling at the regular desktop breakpoint; only the
 // docked timeline itself follows core's narrower, content-derived 925px switch.
 @include viewport.from(md) {
