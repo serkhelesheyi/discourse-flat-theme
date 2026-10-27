@@ -54,6 +54,11 @@ body.archetype-regular {
   // nor wide enough to squeeze the reading measure.
   --mf-topic-gutter: clamp(var(--mf-space-4), 2.2vw, var(--mf-space-10));
   --mf-topic-gutter-top: clamp(var(--mf-space-2), 0.9vw, var(--mf-space-3));
+
+  // The display side of the box takes 8px more than the sidebar side (owner
+  // report: the left-hand gap in RTL — the right-hand one in an LTR forum —
+  // still read narrow beside the sidebar gap).
+  --mf-topic-gutter-end: calc(var(--mf-topic-gutter) + var(--mf-space-2));
   --d-main-content-gap: var(--mf-topic-gutter);
 
   // Outer edge of the sidebar. Only the difference is added: .wrap already
@@ -73,12 +78,23 @@ body.archetype-regular {
 
     // Outer edge of the box. padding-inline-* is logical, so an LTR forum gets
     // this on its right side without a second rule.
-    padding-inline-end: calc(var(--mf-topic-gutter) - var(--d-wrap-padding-x));
+    padding-inline-end: calc(
+      var(--mf-topic-gutter-end) - var(--d-wrap-padding-x)
+    );
     padding-top: var(--mf-topic-gutter-top);
 
     // Flush bottom. Selector specificity stays below core's
     // `html.composer-open … #main-outlet` rule (1,2,1 against this 1,1,1), so an
     // open composer still reserves its own height.
     padding-bottom: 0;
+  }
+
+  // The box itself: the element that carries the content background and holds
+  // the topic grid. Rounded like every other card in the theme (topic list,
+  // rails, hero). Deliberately without `overflow: hidden`, which would break the
+  // sticky timeline in the second grid column.
+  #main-outlet > :has(> .container.posts),
+  #main-outlet > .regular {
+    border-radius: var(--mf-radius-xl);
   }
 }

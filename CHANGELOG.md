@@ -4,6 +4,32 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.2.8] — 2026-10-27
+
+### Fixed
+
+- The save/revert tick and cross pair beside a changed setting was still not
+  visible in the dark scheme. The 3.2.6 fix only reached buttons that are not
+  `.btn-flat`, but core renders this pair without the `btn-default` prefix that
+  its neighbour `btn-default undo setting-controls__undo` carries, so the pair
+  can arrive as a flat button — and for a flat button the theme’s own
+  `.btn-flat { border-color: transparent !important }` strips whatever edge the
+  fill leaves. The pair is now matched on its own classes in every variant
+  (including a bare `<button>`), with `.btn-flat` no longer excluded; transparent
+  buttons, links, text buttons, the composer’s discard button and the whole
+  `save-or-cancel` area still opt out, so nothing that is meant to read as a link
+  gains a box.
+
+### Changed
+
+- The topic box now takes 8px more on its display side than on its sidebar side
+  (`--mf-topic-gutter-end`): in an RTL forum that is the left-hand gap the owner
+  asked to widen, and the logical property puts it on the right in an LTR forum.
+- The topic box has the theme’s card corners (`--mf-radius-xl`, as on the topic
+  list, the rails and the hero) instead of square ones. No `overflow: hidden` was
+  added, because it would break the sticky topic timeline in the second grid
+  column.
+
 ## [3.2.7] — 2026-10-27
 
 ### Fixed

@@ -142,22 +142,34 @@
   }
 }
 
-// Core renders the save/revert pair that appears beside a changed site setting
-// as two icon-only neutral buttons — `class="ok setting-controls__ok"` with
+// Core renders the save/revert pair that appears beside a changed setting as two
+// icon-only neutral buttons — `class="ok setting-controls__ok"` with
 // @icon="check" and `class="cancel setting-controls__cancel"` with @icon="xmark"
-// (admin site settings, and the same pair in theme settings). Both classes were
-// in the :not() list above, so the pair inherited the icon-only "no box" rule:
-// with a transparent fill on a transparent row there was nothing to see in
-// either scheme (owner report: "neither is visible in the dark theme"). They are
-// ordinary neutral controls, so they get the same fill, boundary and ink as
-// every other default button. Flat / transparent / discard variants keep opting
-// out, so nothing that is meant to read as a link gains a box.
-.btn:is(.ok, .cancel, .setting-controls__ok, .setting-controls__cancel):not(
-    .btn-flat,
+// (site settings, and the same pair in theme settings). Both classes were in the
+// :not() list above, so the pair inherited the icon-only “no box” rule: a
+// transparent fill on a transparent row, i.e. nothing to see (owner report,
+// twice — "still not visible in the dark theme").
+//
+// The 3.2.6 attempt only reached buttons that are not `.btn-flat`, but core
+// renders this pair *without* the `btn-default` prefix its neighbour
+// (`btn-default undo setting-controls__undo`) carries, so it can arrive as a
+// flat button — and for a flat button `.btn-flat { border-color: transparent
+// !important }` below removes whatever edge the fill left. The pair is matched
+// on its own classes now, in every variant, including a bare `<button>`, while
+// everything that is meant to read as a link stays out: transparent buttons,
+// links, text buttons, the composer’s discard button and the whole
+// save-or-cancel area.
+:is(button, .btn):is(
+    .ok,
+    .cancel,
+    .setting-controls__ok,
+    .setting-controls__cancel
+  ):not(
     .btn-transparent,
     .btn-link,
     .btn-text,
-    .discard-button
+    .discard-button,
+    .save-or-cancel *
   ) {
   color: var(--d-button-default-text-color) !important;
   background: var(--d-button-default-bg-color) !important;
