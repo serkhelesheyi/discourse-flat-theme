@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.18] — 2026-10-28
+
+### Changed
+
+- Style the lone admin wrench as a subtle 28px circular icon button with a restrained hover state and visible keyboard focus.
+
+### Notes
+
+- Visual confirmation after updating the live theme is still required.
+
+
+
 ## [3.2.17] — 2026-10-28
 
 ### Fixed
