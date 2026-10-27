@@ -265,6 +265,15 @@ body.archetype-regular {
         width: 14px;
         height: 14px;
       }
+
+      // When the wrench is the only control, remove the group's pill-shaped
+      // background entirely; shrinking the button alone leaves a large-looking
+      // grey tile because the background belongs to this wrapper.
+      &:not(:has(.btn-toggle-localized-content)) {
+        overflow: visible;
+        background: transparent;
+        border-radius: 0;
+      }
     }
   }
 
