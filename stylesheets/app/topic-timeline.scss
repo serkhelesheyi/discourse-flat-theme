@@ -295,6 +295,22 @@ body.archetype-regular {
   }
 }
 
+// The owner confirmed the visible tile is the docked timeline container itself
+// (112x56px, 8px padding, 16px radius), not the wrench button or controls row.
+// When the timeline has no actual timeline content and only the admin control,
+// strip the outer container chrome while preserving normal populated timelines.
+@media screen and (width >= 925px) {
+  .desktop-view body.archetype-regular
+    .topic-navigation.with-timeline
+    .timeline-container.timeline-docked:not(:has(.topic-timeline > :not(.timeline-controls))) {
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+}
+
 // Keep the DiscoTOC sidebar styling at the regular desktop breakpoint; only the
 // docked timeline itself follows core's narrower, content-derived 925px switch.
 @include viewport.from(md) {
