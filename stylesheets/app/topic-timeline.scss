@@ -241,11 +241,29 @@ body.archetype-regular {
       .fk-d-menu__trigger.topic-admin-menu-trigger,
       .toggle-admin-menu {
         margin: 0;
-        min-height: 32px;
+        min-height: 28px;
         border: 0 !important;
         border-radius: 0 !important;
         background: transparent !important;
         box-shadow: none !important;
+      }
+
+      // Keep the admin wrench compact; the shared control group should not
+      // create a large square around a single small icon.
+      .topic-admin-menu-trigger,
+      .fk-d-menu__trigger.topic-admin-menu-trigger,
+      .toggle-admin-menu {
+        width: 28px;
+        min-width: 28px;
+        height: 28px;
+        padding: 4px;
+      }
+
+      .topic-admin-menu-trigger .d-icon,
+      .fk-d-menu__trigger.topic-admin-menu-trigger .d-icon,
+      .toggle-admin-menu .d-icon {
+        width: 14px;
+        height: 14px;
       }
     }
   }
