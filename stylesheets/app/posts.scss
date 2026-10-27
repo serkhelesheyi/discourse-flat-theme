@@ -384,6 +384,18 @@ body.archetype-regular {
   }
 }
 
+// Core's inline topic map can shrink to its min-content width when the
+// post row switches from grid to block below md. Keep the map full-width in
+// both layouts; grid spanning and avatar inset are handled in the md block.
+body.archetype-regular .post-stream > .topic-post .topic-map.--op {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  flex: 0 0 100%;
+  box-sizing: border-box;
+}
+
 @include viewport.from(md) {
   body.archetype-regular {
     .post-stream > .topic-post > article.boxed > .post__row {
@@ -425,20 +437,7 @@ body.archetype-regular {
       opacity: 1;
     }
 
-    // The OP map must keep a full row width at every viewport. At widths below
-    // md the post row becomes block layout, but core's map can still shrink as a
-    // flex item to its min-content width (observed computed width: 11px), which
-    // pushes the view count beside the timeline age. Keep the sizing rule outside
-    // the md-only grid placement; the grid span and avatar offset remain desktop-only.
     .post-stream > .topic-post .topic-map.--op {
-      width: 100%;
-      min-width: 0;
-      max-width: 100%;
-      flex: 0 0 100%;
-      box-sizing: border-box;
-    }
-
-    @include viewport.from(md) {
       grid-column: 1 / -1;
       padding-inline-start: calc(
         var(--mf-post-avatar-size) + var(--mf-post-column-gap)
