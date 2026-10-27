@@ -48,6 +48,12 @@ html .loading-indicator {
 // screen on one side and 32px from the sidebar on the other. All three inline
 // gaps now read --mf-topic-gutter, the strip above is smaller than the sides, and
 // the bottom is flush with the end of the page.
+//
+// The theme owns those gaps outright instead of borrowing core's: only the
+// tokens below contribute horizontal padding inside the topic view. Subtracting
+// a core token (as ≤3.2.8 did) made the gap depend on what core happened to
+// contribute at that width, so it shrank towards zero as the window narrowed and
+// left one side flush with the display edge.
 body.archetype-regular {
   // One gutter for the whole width of the page. 16px on a phone, ~32px at
   // 1440px, 40px from 1820px up: standard, never small enough to look clipped
@@ -61,12 +67,13 @@ body.archetype-regular {
   --mf-topic-gutter-end: calc(var(--mf-topic-gutter) + var(--mf-space-2));
   --d-main-content-gap: var(--mf-topic-gutter);
 
-  // Outer edge of the sidebar. Only the difference is added: .wrap already
-  // contributes --d-wrap-padding-x.
+  // Outer edge of the sidebar. The full token: core's `.wrap` padding lands on
+  // this element, and core's two horizontal tokens are zeroed *here* — not on
+  // body — so the header and the footer keep core's own gutter.
   #main-outlet-wrapper {
-    padding-inline-start: calc(
-      var(--mf-topic-gutter) - var(--d-wrap-padding-x)
-    );
+    --d-wrap-padding-x: 0px;
+    --main-outlet-padding-x: 0px;
+    padding-inline-start: var(--mf-topic-gutter);
   }
 
   #main-outlet {
@@ -78,9 +85,7 @@ body.archetype-regular {
 
     // Outer edge of the box. padding-inline-* is logical, so an LTR forum gets
     // this on its right side without a second rule.
-    padding-inline-end: calc(
-      var(--mf-topic-gutter-end) - var(--d-wrap-padding-x)
-    );
+    padding-inline-end: var(--mf-topic-gutter-end);
     padding-top: var(--mf-topic-gutter-top);
 
     // Flush bottom. Selector specificity stays below core's

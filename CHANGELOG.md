@@ -4,6 +4,41 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.2.9] — 2026-10-27
+
+### Fixed
+
+- On a narrow window the topic box lost its gutter on one side — the right-hand
+  one in an RTL forum (owner report) — where the official theme holds a constant
+  floor on both. The gap was written as `token - --d-wrap-padding-x`, so it
+  depended on how much horizontal padding core's own `.wrap` rules contributed at
+  that width: on this box core's padding lands on `#main-outlet-wrapper` and the
+  subtraction replaced it, which left ~5px on a phone (10.7px `0.67em` taken off a
+  16px token) and less as the window narrowed further. The theme now owns the
+  gutter: core's two horizontal outlet tokens are zeroed on the wrapper — not on
+  body, so the header and footer keep core's own gutter — and the full
+  `--mf-topic-gutter` / `--mf-topic-gutter-end` are applied, giving each side its
+  16px/24px floor at every width.
+- The reading column stood on the box edge. Core gives the post body 12px of
+  inline padding (`--topic-body-width-padding`) from its `sm` breakpoint up, and
+  the theme's `padding: 4px 0 0` on `.cooked` removed it, so on a narrow window
+  the text and the post controls touched the box. The post row now keeps a floored
+  inline gutter (`--mf-post-gutter`: 12px on a phone, 17px at 1440px, capped at
+  20px), so the avatar, the name row, the body, the post controls and the topic
+  map share that one edge.
+- The topic timeline was only styled in its docked column. In the modes core uses
+  on a narrow window — full width under the reading column, pinned to the bottom
+  of the page on a phone — the `1h` chip and the read count beside it walked onto
+  the display edge. Every other timeline container, and the bar that carries the
+  read count below `md`, now keep `--mf-timeline-gutter` (12px floor) as well.
+
+### Notes
+
+- Where core places the timeline and how it moves the read count between its own
+  bar and the docked column is core's behaviour and was left untouched; the theme
+  only guarantees each mode keeps a page gutter. The live check is recorded in the
+  design log (section 18-10).
+
 ## [3.2.8] — 2026-10-27
 
 ### Fixed

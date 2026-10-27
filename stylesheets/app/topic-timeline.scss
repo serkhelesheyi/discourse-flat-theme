@@ -1,3 +1,19 @@
+// Narrow windows: core stops keeping the timeline beside the reading column and
+// gives it the full width instead — below the post stream, and pinned to the
+// bottom of the page on a phone. Only the docked column was styled, so in the
+// other modes the "1h" chip and the read count beside it walked onto the display
+// edge as the window narrowed (owner report). Every container core renders in one
+// of those modes now keeps a floored page gutter, so nothing inside can touch the
+// edge; the docked column keeps its own 8px panel padding below.
+body.archetype-regular {
+  --mf-timeline-gutter: clamp(var(--mf-space-3), 1.4vw, var(--mf-space-5));
+
+  .timeline-container:not(.timeline-docked) {
+    box-sizing: border-box;
+    padding-inline: var(--mf-timeline-gutter);
+  }
+}
+
 body.archetype-regular {
   .post-stream > .time-gap.small-action {
     display: grid;
@@ -357,6 +373,15 @@ body.archetype-regular {
 
 @include viewport.until(md) {
   body.archetype-regular {
+    // Core shows the read count in a bar of its own under the reading column
+    // here (pinned to the bottom of the page on a phone). It takes the same page
+    // gutter as every other timeline mode so neither the count nor the date chip
+    // beside it can stand on the display edge.
+    #topic-progress-wrapper {
+      box-sizing: border-box;
+      padding-inline: var(--mf-timeline-gutter);
+    }
+
     .post-stream > .time-gap.small-action {
       grid-template-columns: 1fr;
       column-gap: 0;

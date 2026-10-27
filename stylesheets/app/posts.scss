@@ -1,6 +1,7 @@
 body.archetype-regular {
   --mf-post-avatar-size: 32px;
   --mf-post-column-gap: 10px;
+  --mf-post-gutter: clamp(var(--mf-space-3), 1.2vw, var(--mf-space-5));
 
   .post-stream > .topic-post {
     margin: 0;
@@ -20,6 +21,15 @@ body.archetype-regular {
     border: 0 !important;
     border-radius: 0;
     box-shadow: none !important;
+  }
+
+  // Reading gutter: core keeps 12px on .cooked from its sm breakpoint up, but
+  // the theme set `padding: 4px 0 0`, so on a narrow window the text and the
+  // post controls stood on the box edge. The whole row keeps 12px on a phone and
+  // 20px on a wide screen, so avatar, names, body and controls share one edge.
+  .post-stream > .topic-post > article.boxed > :is(.post__row, .row) {
+    box-sizing: border-box;
+    padding-inline: var(--mf-post-gutter);
   }
 
   .post-stream > .topic-post .topic-avatar {
