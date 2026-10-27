@@ -4,6 +4,16 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.2.11] — 2026-10-28
+
+### Fixed
+
+- The docked timeline styling previously began at the generic `md` breakpoint, while Discourse switches the topic timeline to its docked side-column mode at 925px. Between those widths, the timeline age/date chip and related progress UI could be styled as if the side column were active even though the read-progress bar belongs below the post. The docked timeline styles now begin at 925px, matching core's mode switch. This targets the reported jump around 772px while preserving the core transition at 925px.
+
+### Notes
+
+- Static CSS/SCSS inspection only; visual verification on the live forum is still required at 640, 645, 768, 772, 924, 925 and 960px.
+
 ## [3.2.10] — 2026-10-27
 
 ### Fixed
