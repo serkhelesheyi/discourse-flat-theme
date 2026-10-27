@@ -1,7 +1,6 @@
 body.archetype-regular {
   --mf-post-avatar-size: 32px;
   --mf-post-column-gap: 10px;
-  --mf-post-gutter: clamp(var(--mf-space-3), 1.2vw, var(--mf-space-5));
 
   .post-stream > .topic-post {
     margin: 0;
@@ -21,15 +20,6 @@ body.archetype-regular {
     border: 0 !important;
     border-radius: 0;
     box-shadow: none !important;
-  }
-
-  // Reading gutter: core keeps 12px on .cooked from its sm breakpoint up, but
-  // the theme set `padding: 4px 0 0`, so on a narrow window the text and the
-  // post controls stood on the box edge. The whole row keeps 12px on a phone and
-  // 20px on a wide screen, so avatar, names, body and controls share one edge.
-  .post-stream > .topic-post > article.boxed > :is(.post__row, .row) {
-    box-sizing: border-box;
-    padding-inline: var(--mf-post-gutter);
   }
 
   .post-stream > .topic-post .topic-avatar {
@@ -435,7 +425,17 @@ body.archetype-regular {
       opacity: 1;
     }
 
+    // Core renders this map as a child of the post row (post.gjs:
+    // `.post__topic-map.topic-map.--op`). The row's grid has the avatar in
+    // column 1 and the body in column 2, so auto-placement gave the map a cell of
+    // the 32px avatar column and wrapped the stats into a narrow stack; the
+    // padding below was only there to push that content back under the text. It
+    // spans the row now, exactly like the post notice above it, and keeps the
+    // same inset so its content still lines up with the post body.
     .post-stream > .topic-post .topic-map.--op {
+      grid-column: 1 / -1;
+      width: 100%;
+      min-width: 0;
       padding-inline-start: calc(
         var(--mf-post-avatar-size) + var(--mf-post-column-gap)
       );

@@ -4,6 +4,45 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.2.10] — 2026-10-27
+
+### Fixed
+
+- Every element inside the topic box sat on the card edge while the post text was
+  inset — flush to the inline start, which is the right-hand side in an RTL forum
+  (owner report: the text has a gap, the other elements and the buttons have
+  none). Only the post row carried a gutter of its own, so the title, the topic
+  map, the timeline column, the footer buttons and the suggested topics touched
+  the card. The card now owns one inner gutter (`--mf-card-gutter`: 12px on a
+  phone, 20px on a wide screen) and the post row carries none, so every child has
+  the same edge and the reading inset is unchanged.
+- The read count jumped while the window was resized and was missing entirely
+  between md and 924px. Core builds the docked timeline from 925px up and renders
+  the count in a bar under the reading column below that, but the theme's "empty
+  chrome" rules were scoped to `from(md)` — so they suppressed the bar across the
+  whole 768-924px range, where core has already stopped rendering the docked
+  timeline, and the count only returned as a phone bar below 768px. Those rules
+  now sit on core's own 925px breakpoint, and the bar keeps its gutter and its
+  treatment across the entire `<=924px` range.
+- The topic map (the view count) relied on auto-placement. Core renders it twice:
+  `.topic-map.--op` inside the first post and `.topic-map.--bottom` with
+  `grid-area: posts; grid-row: 2`. The theme's post row is a grid whose column 1
+  is the 32px avatar column, so the map under the OP landed in that narrow cell
+  and wrapped its stats into a stack (the old `avatar + gap` padding only pushed
+  that wrapped content back under the text). It spans the row now, like the post
+  notice. The bottom map's placement is explicit (`grid-column: 1; grid-row: 2`),
+  so it stays under the reading column on both of core's grids instead of being
+  auto-placed beside the sticky timeline.
+
+### Notes
+
+- Core's own transition at 925px stays: above it the count lives in the docked
+  timeline column, below it in the bar under the reading column. That is core's
+  timeline mode switch and the theme does not fight it; what changed is that the
+  count no longer disappears at an intermediate width. No live check was possible
+  here (no Discourse, no browser), so the reading is recorded in design log
+  section 18-11 as inferred from core's CSS and JS.
+
 ## [3.2.9] — 2026-10-27
 
 ### Fixed

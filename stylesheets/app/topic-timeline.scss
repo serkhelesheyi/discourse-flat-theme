@@ -373,15 +373,6 @@ body.archetype-regular {
 
 @include viewport.until(md) {
   body.archetype-regular {
-    // Core shows the read count in a bar of its own under the reading column
-    // here (pinned to the bottom of the page on a phone). It takes the same page
-    // gutter as every other timeline mode so neither the count nor the date chip
-    // beside it can stand on the display edge.
-    #topic-progress-wrapper {
-      box-sizing: border-box;
-      padding-inline: var(--mf-timeline-gutter);
-    }
-
     .post-stream > .time-gap.small-action {
       grid-template-columns: 1fr;
       column-gap: 0;
@@ -398,8 +389,21 @@ body.archetype-regular {
         padding: 4px 9px;
       }
     }
+  }
+}
 
+// Core renders the read count in a bar of its own under the reading column from
+// 924px down (pinned to the bottom of the page on a phone) and only builds the
+// docked timeline from 925px up; topic-navigation.js checks that same query. The
+// bar therefore keeps one gutter and one treatment across the whole range below
+// that breakpoint instead of only below `md`, so the count has a single home at
+// every width where core takes the timeline out of its column.
+@media screen and (width <= 924px) {
+  body.archetype-regular {
     #topic-progress-wrapper {
+      box-sizing: border-box;
+      padding-inline: var(--mf-timeline-gutter);
+
       #topic-progress {
         overflow: hidden;
         color: var(--mf-ink);
@@ -421,7 +425,13 @@ body.archetype-regular {
   }
 }
 
-@include viewport.from(md) {
+// Core docks the timeline in a column of its own from 925px up, and these rules
+// belong to that column: with no timeline in it the chrome would be an empty bar.
+// Scoped to `from(md)` they also suppressed the read count between md and 924px,
+// where core has already stopped rendering the docked timeline - the count then
+// disappeared in that range and came back under the topic only on a phone (owner
+// report: the count jumped while the window was resized).
+@media screen and (width >= 925px) {
   .topic-navigation .timeline-container:empty,
   #topic-progress:empty {
     display: none;

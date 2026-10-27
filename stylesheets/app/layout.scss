@@ -67,6 +67,12 @@ body.archetype-regular {
   --mf-topic-gutter-end: calc(var(--mf-topic-gutter) + var(--mf-space-2));
   --d-main-content-gap: var(--mf-topic-gutter);
 
+  // Inner gutter of the card. Every child of the box reads it: the post text has
+  // had an inset of its own since 3.2.9, but the title, the topic map, the
+  // timeline column, the buttons and the suggested topics stayed on the card
+  // edge (owner report). 12px on a phone, 20px on a wide screen.
+  --mf-card-gutter: clamp(var(--mf-space-3), 1.2vw, var(--mf-space-5));
+
   // Outer edge of the sidebar. The full token: core's `.wrap` padding lands on
   // this element, and core's two horizontal tokens are zeroed *here* — not on
   // body — so the header and the footer keep core's own gutter.
@@ -98,8 +104,17 @@ body.archetype-regular {
   // the topic grid. Rounded like every other card in the theme (topic list,
   // rails, hero). Deliberately without `overflow: hidden`, which would break the
   // sticky timeline in the second grid column.
+  //
+  // It also owns the inner gutter. Only the post row used to be inset, so the
+  // title, the topic map, the timeline, the footer buttons and the suggested
+  // topics sat on the card edge while the post text stood 12-20px in - flush to
+  // the inline start, which is the right-hand side in an RTL forum (owner
+  // report). One token now insets every child of the card, and the post row no
+  // longer carries a padding of its own, so the reading inset is unchanged.
   #main-outlet > :has(> .container.posts),
   #main-outlet > .regular {
+    box-sizing: border-box;
+    padding-inline: var(--mf-card-gutter);
     border-radius: var(--mf-radius-xl);
   }
 }

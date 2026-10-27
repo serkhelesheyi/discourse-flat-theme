@@ -763,6 +763,16 @@ body.archetype-regular {
   }
 
   .topic-map.--bottom {
+    // Core places the map with `grid-area: posts; grid-row: 2` inside
+    // `.container.posts`. The theme turns that element into a subgrid of the
+    // topic card from 925px up, and a named area only resolves against the lines
+    // the track list actually creates - with the map's placement unresolved it
+    // was auto-placed and showed up beside the sticky timeline instead of under
+    // the reading column (owner report: the view count jumped between the two as
+    // the window narrowed). Explicit column and row: under the posts column at
+    // every width, on both of core's grids.
+    grid-column: 1;
+    grid-row: 2;
     width: 100%;
     max-width: 100%;
     min-height: 42px;
