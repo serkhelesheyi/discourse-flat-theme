@@ -250,6 +250,11 @@ body.archetype-regular {
     }
   }
 
+}
+
+// Keep the DiscoTOC sidebar styling at the regular desktop breakpoint; only the
+// docked timeline itself follows core's narrower, content-derived 925px switch.
+@include viewport.from(md) {
   // DiscoTOC sidebar: match timeline chip typography and spacing.
   .desktop-view body.archetype-regular .topic-navigation .d-toc-main {
     width: auto;
