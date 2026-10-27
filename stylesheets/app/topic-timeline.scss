@@ -54,7 +54,11 @@ body.archetype-regular {
   }
 }
 
-@include viewport.from(md) {
+// The docked timeline and its sidebar styling belong to core's 925px mode switch,
+// not the generic `md` breakpoint. Applying this at `md` made the timeline's
+// date/age chips and related progress UI jump into the side column around 768px,
+// even though core keeps the read-progress bar below the post until 925px.
+@media screen and (width >= 925px) {
   .desktop-view body.archetype-regular .topic-navigation.with-timeline {
     width: auto;
     margin-inline-start: var(--mf-space-4);
