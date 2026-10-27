@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.2.13] — 2026-10-28
+
+### Fixed
+
+- Correct the 3.2.12 scoping mistake: the inline OP topic-map width rule was still nested inside the `md` media block and therefore did not apply to the mobile block layout. The full-width flex sizing now applies across breakpoints; only grid spanning and avatar alignment remain desktop-only.
+
+### Notes
+
+- This is a targeted follow-up based on the owner's computed-width report. Recheck the live topic at 639px, 767px and 768px after updating.
+
+
 ## [3.2.12] — 2026-10-28
 
 ### Fixed
