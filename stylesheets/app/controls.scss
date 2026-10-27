@@ -217,7 +217,7 @@
 ) {
   box-sizing: border-box;
   color: var(--mf-ink);
-  background: var(--mf-surface-2) !important;
+  background: var(--mf-field) !important;
   border: 0 !important;
   border-radius: var(--mf-radius-md);
   box-shadow: none !important;
@@ -252,7 +252,7 @@
     padding: 0 var(--mf-space-3);
     overflow: hidden;
     color: var(--mf-ink);
-    background: var(--mf-surface-2) !important;
+    background: var(--mf-field) !important;
     border: 0 !important;
     border-radius: var(--mf-radius-md) !important;
     box-shadow: none !important;

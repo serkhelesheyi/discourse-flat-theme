@@ -39,3 +39,30 @@ html .loading-indicator {
 .contents > .container {
   border: none;
 }
+
+// Topic view: core wraps the topic (title, post stream, topic map, footer,
+// suggested topics) in the `#main-outlet > .regular` box that carries the
+// content background. Its distance from the display edge came entirely from
+// core's .wrap padding (--d-wrap-padding-x: 0.67em ≈ 10.7px) while the gap to
+// the sidebar was --d-main-content-gap (32px), so one side of the box sat ~11px
+// from the edge of the screen. Both sides now share one gutter, the strip above
+// is smaller than the sides, and the bottom is flush with the end of the page.
+body.archetype-regular {
+  // 12px on a phone, 24px on a wide screen: standard, never small enough to
+  // look clipped nor wide enough to squeeze the reading measure.
+  --mf-topic-gutter: clamp(var(--mf-space-3), 1.6vw, var(--mf-space-6));
+  --mf-topic-gutter-top: clamp(var(--mf-space-2), 0.9vw, var(--mf-space-3));
+  --d-main-content-gap: var(--mf-topic-gutter);
+
+  #main-outlet {
+    // Only the difference: .wrap already contributes --d-wrap-padding-x, so the
+    // box ends up exactly --mf-topic-gutter away from the edge of the screen.
+    padding-inline: calc(var(--mf-topic-gutter) - var(--d-wrap-padding-x));
+    padding-top: var(--mf-topic-gutter-top);
+
+    // Flush bottom. Selector specificity stays below core's
+    // `html.composer-open … #main-outlet` rule (1,2,1 against this 1,1,1), so an
+    // open composer still reserves its own height.
+    padding-bottom: 0;
+  }
+}

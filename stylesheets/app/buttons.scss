@@ -142,6 +142,45 @@
   }
 }
 
+// Core renders the save/revert pair that appears beside a changed site setting
+// as two icon-only neutral buttons — `class="ok setting-controls__ok"` with
+// @icon="check" and `class="cancel setting-controls__cancel"` with @icon="xmark"
+// (admin site settings, and the same pair in theme settings). Both classes were
+// in the :not() list above, so the pair inherited the icon-only "no box" rule:
+// with a transparent fill on a transparent row there was nothing to see in
+// either scheme (owner report: "neither is visible in the dark theme"). They are
+// ordinary neutral controls, so they get the same fill, boundary and ink as
+// every other default button. Flat / transparent / discard variants keep opting
+// out, so nothing that is meant to read as a link gains a box.
+.btn:is(.ok, .cancel, .setting-controls__ok, .setting-controls__cancel):not(
+    .btn-flat,
+    .btn-transparent,
+    .btn-link,
+    .btn-text,
+    .discard-button
+  ) {
+  color: var(--d-button-default-text-color) !important;
+  background: var(--d-button-default-bg-color) !important;
+  border: var(--d-button-default-border) !important;
+  box-shadow: none !important;
+
+  .d-icon {
+    color: inherit !important;
+    opacity: 1;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--d-button-default-text-color--hover) !important;
+    background: var(--d-button-default-bg-color--hover) !important;
+    border-color: var(--mf-ink-faint) !important;
+  }
+
+  &:active {
+    background: var(--mf-fill-active) !important;
+  }
+}
+
 .btn-primary {
   font-weight: var(--mf-weight-semibold);
 

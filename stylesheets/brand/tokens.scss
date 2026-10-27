@@ -111,6 +111,24 @@
   // every surface a control uses: 3.35:1 on the light panel, 3.84:1 on the dark
   // panel, 3.10:1 on the darkest light field fill.
   --mf-control-line: color-mix(in srgb, var(--primary) 55%, var(--secondary));
+
+  // Fill of a field (text input, textarea, select, composer editor). The old
+  // 10%-ink fill measured #313131 on a #313131 --mf-surface-2 card and #2f2f2f
+  // on a --mf-surface-elevated modal in the dark scheme, i.e. no fill at all —
+  // which is the "the box is invisible" report from the settings rows and the
+  // install-theme dialog. The dark stop is an *inset* (#151515), darker than
+  // every surface, so it reads as a well on a card and inside a modal; the light
+  // stop keeps the 9% tint fields already had.
+  --mf-field: light-dark(
+    color-mix(in srgb, var(--secondary) 91%, var(--primary)),
+    color-mix(in srgb, var(--secondary) 80%, #000)
+  );
+
+  // Core's newer form-kit controls (site settings, install-theme, sidebar search)
+  // read these design tokens instead of --d-input-*; left unset they kept the
+  // palette's own field colour, which the theme does not control.
+  --token-color-background-input: var(--mf-field);
+  --token-color-border-input: var(--mf-control-line);
   --mf-ink: var(--primary);
 
   // Muted text scale. Each step clears WCAG AA (4.5:1) on every surface it is

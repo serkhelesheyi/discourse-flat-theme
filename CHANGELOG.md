@@ -4,6 +4,42 @@ All notable changes to Oniel's Flat Theme are documented here. The format follow
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the theme uses
 [Semantic Versioning](https://semver.org/).
 
+## [3.2.6] — 2026-10-27
+
+### Fixed
+
+- The save/revert pair that appears beside a changed admin setting (site settings
+  and theme settings) was invisible in both schemes. Core renders it as two
+  icon-only neutral buttons — `class="ok setting-controls__ok"` with
+  `@icon="check"` and `class="cancel setting-controls__cancel"` with
+  `@icon="xmark"` — and both classes sat in the `:not()` list that opts a button
+  out of the neutral fill and the control line, so the pair fell through to the
+  icon-only "no box" rule and stood on a transparent row with nothing to see.
+  They now take the same fill, boundary and ink as every other default button;
+  flat, transparent, link, text and discard variants still opt out, so nothing
+  that is meant to read as a link gains a box.
+- Text fields had no fill of their own in the dark scheme. The fill was
+  `--mf-surface-2`, which measures #313131 against a #313131 `--mf-surface-2`
+  card and #2f2f2f against a `--mf-surface-elevated` modal: a two-level
+  difference, so a field inside a card or a dialog — including the repository
+  URL field of *Install theme from a git repository* — read as the same colour
+  as its surroundings. Fields now use a dedicated `--mf-field` token: the 9% tint
+  in the light scheme (unchanged) and an inset #151515 in the dark one, darker
+  than every surface. Core's newer design tokens
+  `--token-color-background-input` / `--token-color-border-input`, which form-kit
+  controls read instead of `--d-input-*`, are wired to the same values so a
+  component core styles on its own follows the theme too.
+
+### Changed
+
+- The topic view is inset from the display edge by one standard gutter on both
+  sides (12px on a phone, 24px on a wide screen) instead of core's
+  `--d-wrap-padding-x` (0.67em ≈ 10.7px) on the outer side and a 32px sidebar gap
+  on the other. The strip above the content box is smaller than the sides (8–12px)
+  and the bottom is flush with the end of the page, matching the boxed layout of
+  the official theme. Selector specificity stays below core's composer rule, so an
+  open reply editor still reserves its height.
+
 ## [3.2.5] — 2026-10-25
 
 ### Changed

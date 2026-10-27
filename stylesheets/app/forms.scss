@@ -1,10 +1,11 @@
 :root {
-  --d-input-bg-color: var(--mf-surface-3);
+  --d-input-bg-color: var(--mf-field);
   --d-input-bg-color--focus: var(--mf-panel-hover);
   --d-input-text-color: var(--mf-ink);
 
-  // Fields are filled with --mf-surface-3; on a panel of the same tone the box
-  // disappeared. A control line keeps every field visible in both schemes.
+  // Fields are filled with --mf-field (an inset in the dark scheme) and ringed
+  // with a control line; without both, a field on a panel of the same tone
+  // disappeared until hover.
   --d-input-border: 1px solid var(--mf-control-line);
   --d-input-border-radius: var(--mf-radius-md);
   --d-input-focused-color: var(--mf-accent);
