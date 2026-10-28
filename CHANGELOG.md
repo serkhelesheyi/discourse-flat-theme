@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.2.34] — 2026-10-29
+
+### Changed
+
+- Replace the previous hadith alignment selector with narrowly scoped, higher-specificity RTL rules and explicit priority for the Arabic text, Persian translation, and source line after the user reported all three remained left-aligned.
+
+### Notes
+
+- This is a targeted CSS correction; it still requires verification after the theme update and a hard refresh on the live forum. The profile card's missing topic/post counts remain unresolved pending inspection of the live user-card response.
+
 ## [3.2.33] — 2026-10-28
 
 ### Changed
