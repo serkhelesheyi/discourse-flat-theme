@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.2.35] — 2026-10-29
+
+### Changed
+
+- Set RTL direction and right text alignment directly on the hadith, translation, and source elements as well as in the stylesheet, so alignment does not depend solely on the compiled SCSS selector.
+
+### Notes
+
+- The previous stylesheet-only correction did not change the user's live result. This markup-level fallback must still be verified after updating the theme. Profile topic/post counts remain unresolved pending inspection of the live user-card payload.
+
+
 ## [3.2.34] — 2026-10-29
 
 ### Changed
