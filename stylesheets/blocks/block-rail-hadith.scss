@@ -1,0 +1,64 @@
+.block-rail-hadith {
+  min-width: 0;
+
+  &__body {
+    min-width: 0;
+    margin-top: var(--mf-space-3);
+    overflow-wrap: anywhere;
+
+    &.is-collapsed {
+      max-height: 9.5rem;
+      overflow: hidden;
+    }
+  }
+
+  &__arabic {
+    margin: 0;
+    color: var(--mf-ink);
+    font-size: var(--mf-text-md);
+    font-weight: var(--mf-weight-medium);
+    line-height: 2;
+    text-align: right;
+    unicode-bidi: plaintext;
+  }
+
+  &__translation {
+    margin: var(--mf-space-3) 0 0;
+    color: var(--mf-ink-2);
+    font-size: var(--mf-text-sm);
+    line-height: 1.8;
+    text-align: right;
+    unicode-bidi: plaintext;
+  }
+
+  &__source {
+    margin: var(--mf-space-2) 0 0;
+    color: var(--mf-ink-faint);
+    font-size: var(--mf-text-xs);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+
+  &__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: var(--mf-space-2);
+    padding: 4px 0;
+    color: var(--mf-accent);
+    font-size: var(--mf-text-sm);
+    font-weight: var(--mf-weight-medium);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--mf-accent-hover);
+    }
+
+    .d-icon {
+      font-size: var(--mf-text-xs);
+    }
+  }
+}
