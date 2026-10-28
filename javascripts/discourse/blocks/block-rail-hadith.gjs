@@ -28,12 +28,12 @@ export default class BlockRailHadith extends Component {
           <span>{{i18n (themePrefix "rail.hadith_title")}}</span>
         </h4>
         <div class="block-rail-hadith__body {{if this.isExpanded 'is-expanded' 'is-collapsed'}}">
-          <p class="block-rail-hadith__arabic" lang="ar" dir="rtl" style="direction: rtl; text-align: right;">{{this.hadith.arabic}}</p>
+          <p class="block-rail-hadith__arabic" lang="ar" dir="rtl">{{this.hadith.arabic}}</p>
           {{#if this.hadith.translation}}
-            <p class="block-rail-hadith__translation" lang="fa" dir="rtl" style="direction: rtl; text-align: right;">{{this.hadith.translation}}</p>
+            <p class="block-rail-hadith__translation" lang="fa" dir="rtl">{{this.hadith.translation}}</p>
           {{/if}}
         </div>
-        <p class="block-rail-hadith__source" dir="rtl" style="direction: rtl; text-align: right;">{{this.hadith.source}}</p>
+        <p class="block-rail-hadith__source" dir="rtl">{{this.hadith.source}}</p>
         <button
           type="button"
           class="block-rail-hadith__toggle"
