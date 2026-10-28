@@ -12,6 +12,14 @@
     }
   }
 
+  // Keep RTL text aligned right even when generic panel paragraph rules apply.
+  & &__arabic,
+  & &__translation,
+  & &__source {
+    direction: rtl;
+    text-align: right;
+  }
+
   &__arabic {
     margin: 0;
     color: var(--mf-ink);
