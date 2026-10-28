@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.2.36] — 2026-10-29
+
+### Fixed
+
+- Correct the hadith card's RTL alignment at its source: remove the ineffective high-specificity override and inline alignment styles added in 3.2.34–3.2.35. The live RTL stylesheet showed that direction and text alignment had been transformed to `ltr` and `left`; the card now relies on its existing `dir="rtl"` markup and uses logical `text-align: start`, avoiding a physical left/right value that can be flipped during RTL CSS processing.
+
+### Reverted
+
+- Removed the extra selector override from 3.2.34 and the redundant inline styles from 3.2.35. No profile-card data behavior was changed; topic/post counts remain unresolved.
+
+### Verification
+
+- Source and documentation updated on branch `freebuff-3.1.0`. The generated CSS and live forum still need to be checked after the theme update; no live verification is claimed.
+
 ## [3.2.35] — 2026-10-29
 
 ### Changed
