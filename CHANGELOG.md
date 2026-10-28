@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.2.29] — 2026-10-28
+
+### Changed
+
+- Widen the homepage discovery rail slightly (300px → 308px) while tightening the inter-column gap (24px → 16px). Keeping the combined rail-plus-gap width unchanged preserves the topic list's available width at the same overall content width.
+
+### Notes
+
+- CSS-only, using shared design tokens. Verify wide and narrow desktop, tablet, and mobile layouts after installation.
+
 ## [3.2.28] — 2026-10-28
 
 ### Changed
