@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.2.27] — 2026-10-28
+
+### Fixed
+
+- Add one logical inline gutter to the user-preferences wrapper so settings text and controls do not sit flush against the container edge in RTL. The same logical padding supports LTR without direction-specific duplicate rules; child sections are not given another shared gutter.
+
+### Notes
+
+- CSS-only. Uses the existing spacing tokens, with a smaller gutter below the medium breakpoint. Verify profile/preferences sections on desktop and mobile, including fields, checkboxes, tables, and warning/help text, after installing. No live verification has been claimed.
+
+
+# Changelog
+
 ## [3.2.26] — 2026-10-28
 
 ### Fixed

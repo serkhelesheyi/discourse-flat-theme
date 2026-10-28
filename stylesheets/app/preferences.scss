@@ -1,3 +1,14 @@
+// Give the preferences form one shared inline gutter in RTL and LTR.
+// Keep child controls and sections unpadded here to avoid stacking gutters.
+.user-preferences {
+  box-sizing: border-box;
+  padding-inline: var(--mf-space-5);
+
+  @include viewport.until(md) {
+    padding-inline: var(--mf-space-4);
+  }
+}
+
 .user-preferences .instructions {
   color: var(--mf-ink-3);
   font-size: var(--mf-text-xs);
