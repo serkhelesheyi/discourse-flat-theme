@@ -62,3 +62,20 @@
     }
   }
 }
+
+// Keep hadith content RTL even if an older/generated theme rule applies
+// direction: ltr !important and text-align: left !important to these paragraphs.
+// The html[dir="rtl"] prefix raises specificity without changing global RTL behavior.
+html[dir="rtl"] {
+  .block-rail-hadith.block-rail-panel
+    .block-rail-hadith__body
+    > p.block-rail-hadith__arabic,
+  .block-rail-hadith.block-rail-panel
+    .block-rail-hadith__body
+    > p.block-rail-hadith__translation,
+  .block-rail-hadith.block-rail-panel
+    > p.block-rail-hadith__source {
+    direction: rtl !important;
+    text-align: start !important;
+  }
+}
