@@ -1,31 +1,15 @@
 import Component from "@glimmer/component";
 import { action } from "@ember/object";
+import { on } from "@ember/modifier";
 import { tracked } from "@glimmer/tracking";
 import { themePrefix } from "virtual:theme";
 import { block } from "discourse/blocks";
+import HADITHS from "../data/hadiths";
 import dIcon from "discourse/ui-kit/helpers/d-icon";
 import { i18n } from "discourse-i18n";
 
-const HADITHS = [
-  {
-    arabic: "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ",
-    source: "صحيح البخاري، حديث ١",
-    translation: "ارزش اعمال به نیت‌هاست.",
-  },
-  {
-    arabic: "الدِّينُ النَّصِيحَةُ",
-    source: "صحيح مسلم، حديث ٥٥",
-    translation: "دین، خیرخواهی است.",
-  },
-  {
-    arabic: "مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
-    source: "صحيح البخاري، حديث ٦٠١٨؛ صحيح مسلم، حديث ٤٧",
-    translation: "هر کس به خدا و روز واپسین ایمان دارد، باید سخن نیک بگوید یا سکوت کند.",
-  },
-];
-
 @block("theme:flat-theme:rail-hadith", {
-  description: "Random short hadith from a local list; no network request",
+  description: "Random short hadith from a local bundled list; no network request",
 })
 export default class BlockRailHadith extends Component {
   @tracked isExpanded = false;
