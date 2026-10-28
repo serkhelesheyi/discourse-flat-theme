@@ -95,20 +95,22 @@
   border-radius: var(--mf-radius-lg);
 }
 
-// Discovery surfaces: avoid a second dark tile behind the navigation bar.
-.discovery-layout__navigation {
-  .list-controls,
-  .list-controls > .container {
-    background: transparent;
-  }
+// Discovery page: remove the core/theme fill from the navigation wrapper itself.
+// Scope to the direct wrapper reported in live DevTools; keep category cards intact.
+.discovery-layout__navigation > div,
+.discovery-layout__navigation .list-controls,
+.discovery-layout__navigation .list-controls > .container {
+  background: transparent !important;
+  border-color: transparent;
+  box-shadow: none !important;
 }
 
-// Keep the category grid visually light; individual category cards retain their own surface.
+// Flatten only the category-boxes wrapper; preserve each category card's surface.
 .discovery-layout__content .category-boxes-with-topics {
-  background: transparent;
-  border: 0;
+  background: transparent !important;
+  border: 0 !important;
   border-radius: var(--mf-radius-xl);
-  box-shadow: none;
+  box-shadow: none !important;
 }
 
 .list-controls .navigation-container {
