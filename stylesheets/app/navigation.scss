@@ -95,6 +95,22 @@
   border-radius: var(--mf-radius-lg);
 }
 
+// Discovery surfaces: avoid a second dark tile behind the navigation bar.
+.discovery-layout__navigation {
+  .list-controls,
+  .list-controls > .container {
+    background: transparent;
+  }
+}
+
+// Keep the category grid visually light; individual category cards retain their own surface.
+.discovery-layout__content .category-boxes-with-topics {
+  background: transparent;
+  border: 0;
+  border-radius: var(--mf-radius-xl);
+  box-shadow: none;
+}
+
 .list-controls .navigation-container {
   display: flex;
   align-items: center;
