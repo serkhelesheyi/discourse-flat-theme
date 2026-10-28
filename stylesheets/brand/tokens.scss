@@ -65,8 +65,8 @@
   --mf-dur-slow: 240ms;
   --mf-content-width: #{$content_max_width}px;
   --mf-discovery-rail-min: 220px;
-  --mf-discovery-rail-width: 276px;
-  --mf-discovery-gap: var(--mf-space-8);
+  --mf-discovery-rail-width: 300px;
+  --mf-discovery-gap: var(--mf-space-6);
   --mf-surface: light-dark(
     var(--secondary),
     color-mix(in srgb, var(--secondary) 95%, var(--primary))

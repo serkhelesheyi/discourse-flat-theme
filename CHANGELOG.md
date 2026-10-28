@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.2.28] — 2026-10-28
+
+### Changed
+
+- Give the homepage discovery rail a little more room (276px → 300px) and reduce the gap between it and the topic list (32px → 24px). Both values use the existing shared design tokens, preserving a consistent gutter and responsive grid behavior.
+
+### Notes
+
+- CSS-only; no new assets or requests. Verify the homepage at wide desktop, narrower desktop/tablet, and mobile widths to ensure the topic list remains usable and the rail does not overflow.
+
 ## [3.2.27] — 2026-10-28
 
 ### Fixed
