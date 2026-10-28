@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.2.25] — 2026-10-28
+
+### Fixed
+
+- Clip the category-grid wrapper to its existing rounded corners with `overflow: hidden`, preventing the dark surface beneath category tiles from showing sharp outer corners. Individual category cards are unchanged.
+
+### Notes
+
+- CSS-only change. Verify the category view in light and dark mode after updating the theme.
+
+
 ## [3.2.24] — 2026-10-28
 
 ### Fixed
