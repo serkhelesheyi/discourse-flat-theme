@@ -4,6 +4,7 @@ import BlockRailContributors from "../blocks/block-rail-contributors";
 import BlockRailCta from "../blocks/block-rail-cta";
 import BlockRailEvents from "../blocks/block-rail-events";
 import BlockRailHotTopics from "../blocks/block-rail-hot-topics";
+import BlockRailHadith from "../blocks/block-rail-hadith";
 import BlockRailLinks from "../blocks/block-rail-links";
 import BlockRailOnline from "../blocks/block-rail-online";
 import BlockRailProfile from "../blocks/block-rail-profile";
@@ -32,6 +33,7 @@ export default apiInitializer((api) => {
         },
         { block: BlockRailCta },
         { block: BlockRailEvents },
+        { block: BlockRailHadith },
         { block: BlockRailHotTopics },
         {
           block: BlockRailContributors,
