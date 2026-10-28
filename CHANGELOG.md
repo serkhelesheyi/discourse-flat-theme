@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.24] — 2026-10-28
+
+### Fixed
+
+- Strengthen the discovery-page transparent-wrapper override for `.discovery-layout__navigation > div` and `.category-boxes-with-topics`, including `!important` against competing core/theme background declarations.
+
+### Notes
+
+- Category cards themselves are not modified. Verify the initial transition/flash and the category view in light/dark mode after updating.
+
+
+
 ## [3.2.23] — 2026-10-28
 
 ### Changed
