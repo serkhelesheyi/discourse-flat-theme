@@ -420,3 +420,13 @@ body.navigation-filter .list-controls .navigation-container {
     }
   }
 }
+
+
+// Category discovery: remove the core content surface behind category cards only.
+// Confirmed in live DevTools: #list-area paints the unwanted dark rectangle.
+.discovery-layout__content
+  .discovery-layout__list
+  .container.list-container.--categories
+  #list-area {
+  background: transparent;
+}

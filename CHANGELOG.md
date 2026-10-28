@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.2.26] — 2026-10-28
+
+### Fixed
+
+- Remove the extra dark surface painted by core's `#list-area { background: var(--d-content-background) }` only on the category discovery view. The selector is scoped to the observed category-list DOM, so other discovery pages and content surfaces retain their existing backgrounds.
+
+### Notes
+
+- Based on a live DevTools toggle confirming that disabling the `#list-area` background removes the unwanted rectangle. CSS-only; verify category cards and light/dark schemes after installing the theme. No live post-deployment verification has been claimed.
+
+
+# Changelog
+
 ## [3.2.25] — 2026-10-28
 
 ### Fixed
