@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.2.33] — 2026-10-28
+
+### Changed
+
+- Strengthen the hadith card's Arabic/Persian text alignment with a more specific RTL rule, including the source line, so generic panel paragraph styling cannot override it.
+
+### Notes
+
+- Live visual verification is still pending. The profile card showed join/last-post dates, but topic/post counts were not visible in the user's test; inspect the actual live user-card payload before changing the data source. Contributor card behavior was confirmed by the user. Mobile cards remain hidden as intended.
+
+
 ## [3.2.32] — 2026-10-28
 
 ### Changed
