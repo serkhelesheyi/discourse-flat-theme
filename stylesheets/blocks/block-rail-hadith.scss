@@ -12,12 +12,13 @@
     }
   }
 
-  // Keep RTL text aligned right even when generic panel paragraph rules apply.
-  & &__arabic,
-  & &__translation,
-  & &__source {
-    direction: rtl;
-    text-align: right;
+  // Force RTL alignment against broad/global paragraph rules used by the theme.
+  // Keep this narrowly scoped to the three textual lines in this card.
+  &.block-rail-panel .block-rail-hadith__body > p.block-rail-hadith__arabic,
+  &.block-rail-panel .block-rail-hadith__body > p.block-rail-hadith__translation,
+  &.block-rail-panel > p.block-rail-hadith__source {
+    direction: rtl !important;
+    text-align: right !important;
   }
 
   &__arabic {
