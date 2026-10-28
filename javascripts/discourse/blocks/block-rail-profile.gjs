@@ -10,7 +10,6 @@ import User from "discourse/models/user";
 import { or } from "discourse/truth-helpers";
 import DAsyncContent from "discourse/ui-kit/d-async-content";
 import dBoundAvatarTemplate from "discourse/ui-kit/helpers/d-bound-avatar-template";
-import dFormatDuration from "discourse/ui-kit/helpers/d-format-duration";
 import dIcon from "discourse/ui-kit/helpers/d-icon";
 import { i18n } from "discourse-i18n";
 
@@ -61,10 +60,8 @@ export default class BlockRailProfile extends Component {
       trustLevelName,
       lastPostedAt: this.#formatDate(user.last_posted_at),
       createdAt: this.#formatDate(user.created_at),
-      // Both come from plugins (discourse-follow, discourse-gamification),
-      // so treat them as optional rather than assuming they are serialized.
-      followers: this.#formatCount(user.total_followers),
-      points: this.#formatCount(user.gamification_score),
+      topics: this.#formatCount(user.topic_count),
+      posts: this.#formatCount(user.post_count),
       badges,
       moreBadgesCount: Math.max((user.badge_count ?? 0) - badges.length, 0),
     };
@@ -212,37 +209,20 @@ export default class BlockRailProfile extends Component {
                     {{model.createdAt}}
                   </div>
                 {{/if}}
-                {{#if model.user.time_read}}
-                  <div>
-                    <span class="desc">{{i18n "time_read"}}</span>
-                    {{dFormatDuration model.user.time_read}}
-                  </div>
-                {{/if}}
               </div>
 
-              {{#if (or model.followers model.points)}}
+              {{#if (or model.topics model.posts)}}
                 <div class="block-rail-profile__stats">
-                  {{#if model.followers}}
-                    <a
-                      class="block-rail-profile__stat"
-                      href={{concat "/u/" model.user.username "/followers"}}
-                    >
-                      <span
-                        class="block-rail-profile__stat-value"
-                      >{{model.followers}}</span>
-                      <span class="block-rail-profile__stat-label">{{i18n
-                          (themePrefix "rail.followers")
-                        }}</span>
-                    </a>
-                  {{/if}}
-                  {{#if model.points}}
+                  {{#if model.topics}}
                     <span class="block-rail-profile__stat">
-                      <span
-                        class="block-rail-profile__stat-value"
-                      >{{model.points}}</span>
-                      <span class="block-rail-profile__stat-label">{{i18n
-                          (themePrefix "rail.points")
-                        }}</span>
+                      <span class="block-rail-profile__stat-value">{{model.topics}}</span>
+                      <span class="block-rail-profile__stat-label">{{i18n (themePrefix "rail.topics")}}</span>
+                    </span>
+                  {{/if}}
+                  {{#if model.posts}}
+                    <span class="block-rail-profile__stat">
+                      <span class="block-rail-profile__stat-value">{{model.posts}}</span>
+                      <span class="block-rail-profile__stat-label">{{i18n (themePrefix "rail.posts")}}</span>
                     </span>
                   {{/if}}
                 </div>
