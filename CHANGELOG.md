@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.2.32] — 2026-10-28
+
+### Changed
+
+- Move hadith records out of the component into a dedicated local data module, so a larger reviewed collection can be maintained without mixing content and rendering logic.
+- Import Ember's `on` modifier explicitly in the hadith component.
+- Keep profile topic/post counts optional: do not add another request or display misleading zero values when the user-card payload omits them. Confirm the actual payload on the live forum before choosing a supported data source.
+
+### Notes
+
+- The hadith list still contains only three starter records. Source text, collection numbering, and translations need review before expanding the collection. Lint/build and live visual tests have not yet been run.
+
+
 ## [3.2.31] — 2026-10-28
 
 ### Changed
