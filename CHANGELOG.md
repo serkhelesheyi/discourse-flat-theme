@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.23] — 2026-10-28
+
+### Changed
+
+- Remove the extra discovery-navigation wrapper fill and flatten the outer category-grid wrapper so the navigation and category cards read as one cleaner composition in light and dark schemes. Individual category cards retain their own styling.
+
+### Notes
+
+- CSS-only, scoped to the discovery page. Verify the live homepage in light/dark mode and at desktop/mobile widths after updating the theme.
+
+
+
 ## [3.2.22] — 2026-10-28
 
 ### Fixed
