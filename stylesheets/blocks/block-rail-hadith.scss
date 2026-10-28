@@ -12,22 +12,13 @@
     }
   }
 
-  // Force RTL alignment against broad/global paragraph rules used by the theme.
-  // Keep this narrowly scoped to the three textual lines in this card.
-  &.block-rail-panel .block-rail-hadith__body > p.block-rail-hadith__arabic,
-  &.block-rail-panel .block-rail-hadith__body > p.block-rail-hadith__translation,
-  &.block-rail-panel > p.block-rail-hadith__source {
-    direction: rtl !important;
-    text-align: right !important;
-  }
-
   &__arabic {
     margin: 0;
     color: var(--mf-ink);
     font-size: var(--mf-text-md);
     font-weight: var(--mf-weight-medium);
     line-height: 2;
-    text-align: right;
+    text-align: start;
     unicode-bidi: plaintext;
   }
 
@@ -36,7 +27,7 @@
     color: var(--mf-ink-2);
     font-size: var(--mf-text-sm);
     line-height: 1.8;
-    text-align: right;
+    text-align: start;
     unicode-bidi: plaintext;
   }
 
