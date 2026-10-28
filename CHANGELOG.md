@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.31] — 2026-10-28
+
+### Changed
+
+- Simplify the profile rail card: keep identity and trust level, make join/last-post dates secondary, and show core topic/post counts instead of plugin-dependent follower/point metrics and reading time.
+- Replace the all-time contributor list with a weekly leaderboard, better suited to a small community.
+- Add a compact random-hadith card using a local bundled list, with optional Persian translation and an expand/collapse control for longer text. No API request or external asset is added.
+
+### Notes
+
+- Seeded with three short examples and their source references; the list can be expanded later. Build/lint and live visual checks remain necessary; live verification is not claimed.
+
 ## [3.2.30] — 2026-10-29
 
 ### Changed
