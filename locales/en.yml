@@ -33,6 +33,8 @@ en:
     active_week: "active this week"
     all_categories: "All categories"
     about: "About the community"
+  user_card:
+    trust_level: "Trust level"
   theme_metadata:
     description: "Oniel's Flat Theme — a fast and calm Discourse theme with a responsive feed, compact search, and useful information rail."
     settings:
