@@ -7,16 +7,20 @@
 // edge; the docked column keeps its own 8px panel padding below.
 body.archetype-regular {
   --mf-timeline-gutter: clamp(var(--mf-space-3), 1.4vw, var(--mf-space-5));
+}
 
-  // Only add the page gutter when the timeline contains actual timeline
-  // content. A controls-only timeline (for example, the lone admin wrench)
-  // has no timeline column to inset; padding it changes the control's position
-  // when core removes `timeline-docked` during scrolling.
-  .timeline-container:not(.timeline-docked):has(
-    .topic-timeline > :not(.timeline-controls)
-  ) {
-    box-sizing: border-box;
-    padding-inline: var(--mf-timeline-gutter);
+// Below the desktop docking breakpoint, the timeline occupies the page layout
+// rather than the narrow topic-navigation sidebar. Keep its page gutter there;
+// on desktop, adding inline padding when core removes `timeline-docked` during
+// scrolling increases the sidebar's intrinsic width and shifts it horizontally.
+@media screen and (width <= 924px) {
+  body.archetype-regular {
+    .timeline-container:not(.timeline-docked):has(
+      .topic-timeline > :not(.timeline-controls)
+    ) {
+      box-sizing: border-box;
+      padding-inline: var(--mf-timeline-gutter);
+    }
   }
 }
 
