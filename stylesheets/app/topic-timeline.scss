@@ -83,11 +83,7 @@ body.archetype-regular {
 
       &:has(.topic-timeline) {
         padding: 8px;
-        background: color-mix(
-          in srgb,
-          var(--mf-panel, var(--secondary)) 96%,
-          var(--mf-accent)
-        );
+        background: transparent;
         border-radius: var(--mf-radius-xl);
       }
     }
@@ -144,7 +140,7 @@ body.archetype-regular {
     .timeline-scroller {
       width: calc(100% + 2px);
       margin-inline-start: 0;
-      background: var(--mf-panel-strong, var(--mf-surface-2));
+      background: transparent;
       border-radius: var(--mf-radius-lg);
       box-shadow: none;
       box-sizing: border-box;
