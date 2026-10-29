@@ -315,7 +315,7 @@ body.archetype-regular {
 @media screen and (width >= 925px) {
   .desktop-view body.archetype-regular
     .topic-navigation.with-timeline
-    .timeline-container.timeline-docked
+    .timeline-container
     .timeline-controls:not(:has(.btn-toggle-localized-content))
     .topic-admin-menu-trigger {
     display: inline-flex;
@@ -339,7 +339,7 @@ body.archetype-regular {
 
   .desktop-view body.archetype-regular
     .topic-navigation.with-timeline
-    .timeline-container.timeline-docked
+    .timeline-container
     .timeline-controls:not(:has(.btn-toggle-localized-content))
     .topic-admin-menu-trigger:hover {
     color: var(--mf-accent);
@@ -349,7 +349,7 @@ body.archetype-regular {
 
   .desktop-view body.archetype-regular
     .topic-navigation.with-timeline
-    .timeline-container.timeline-docked
+    .timeline-container
     .timeline-controls:not(:has(.btn-toggle-localized-content))
     .topic-admin-menu-trigger:focus-visible {
     outline: 2px solid var(--mf-accent);
@@ -358,7 +358,7 @@ body.archetype-regular {
 
   .desktop-view body.archetype-regular
     .topic-navigation.with-timeline
-    .timeline-container.timeline-docked
+    .timeline-container
     .timeline-controls:not(:has(.btn-toggle-localized-content))
     .topic-admin-menu-trigger .d-icon {
     width: 14px;
