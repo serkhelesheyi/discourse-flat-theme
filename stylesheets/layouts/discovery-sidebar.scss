@@ -161,23 +161,16 @@
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 0 2px 0 0;
+  // Keep the rail cards aligned with the navigation panel. A visible native
+  // scrollbar takes a few pixels from the scrollport and can make card widths
+  // appear to change when the OS auto-hides it. Scrolling remains enabled.
+  padding: 0;
   background: transparent;
   border-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: var(--mf-accent-line) transparent;
+  scrollbar-width: none;
 
   &::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--mf-accent-line);
-    border-radius: var(--mf-radius-pill);
+    display: none;
   }
 }
 
