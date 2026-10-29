@@ -93,9 +93,8 @@ body.welcome-banner--visible .above-main-container-outlet {
     }
   }
 
-  // Keep the native search input visually integrated with the form surface.
-  // The extra selector specificity prevents core input[type="search"] styles
-  // from reintroducing a much darker inset field in dark mode.
+  // The global field rule uses !important, so the hero search needs a scoped
+  // important override to stay transparent and share the form's surface color.
   &__search input[name="q"][type="search"] {
     flex: 1 1 auto;
     min-width: 0;
@@ -104,8 +103,8 @@ body.welcome-banner--visible .above-main-container-outlet {
     padding: 0;
     color: var(--mf-ink);
     font-size: var(--mf-text-base);
-    background: transparent;
-    background-color: transparent;
+    background: transparent !important;
+    background-color: transparent !important;
     border: 0;
     box-shadow: none;
     outline: 0;
