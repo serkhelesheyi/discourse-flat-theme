@@ -9,10 +9,22 @@ body.archetype-regular {
   --mf-timeline-gutter: clamp(var(--mf-space-3), 1.4vw, var(--mf-space-5));
 }
 
+// Core removes `timeline-docked` while scrolling. Preserve the docked
+// container's 8px inline padding on desktop so its 96px timeline content does
+// not shrink the navigation column from 112px to 96px and shift its left edge.
+@media screen and (width >= 925px) {
+  .desktop-view body.archetype-regular
+    .topic-navigation.with-timeline
+    .timeline-container:not(.timeline-docked):has(
+      .topic-timeline > :not(.timeline-controls)
+    ) {
+    box-sizing: border-box;
+    padding-inline: 8px;
+  }
+}
+
 // Below the desktop docking breakpoint, the timeline occupies the page layout
-// rather than the narrow topic-navigation sidebar. Keep its page gutter there;
-// on desktop, adding inline padding when core removes `timeline-docked` during
-// scrolling increases the sidebar's intrinsic width and shifts it horizontally.
+// rather than the narrow topic-navigation sidebar. Keep its page gutter there.
 @media screen and (width <= 924px) {
   body.archetype-regular {
     .timeline-container:not(.timeline-docked):has(
