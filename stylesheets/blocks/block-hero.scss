@@ -78,7 +78,8 @@ body.welcome-banner--visible .above-main-container-outlet {
 
     &:focus-within {
       background: var(--mf-surface-3);
-      box-shadow: var(--shadow-focus);
+      // Keep the focus indicator visible without the heavy, bright global ring.
+      box-shadow: 0 0 0 2px color-mix(in srgb, #7DD3FC 38%, transparent);
     }
   }
 
