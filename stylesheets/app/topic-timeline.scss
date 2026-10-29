@@ -14,15 +14,17 @@ body.archetype-regular {
   }
 }
 
-// When core removes `timeline-docked` during scrolling, the RTL timeline
-// keeps its right edge anchored. The generic inline gutter adds right-side
-// padding in RTL and shifts the timeline (and wrench) left by that gutter. Keep
-// the left gutter for safety, but remove the inline-start gutter in desktop RTL.
+// When core removes `timeline-docked` during scrolling, the lone RTL admin
+// wrench should stay aligned with its docked position. The generic inline gutter
+// otherwise adds padding on both sides and shifts the control horizontally.
 @media screen and (width >= 925px) {
   .desktop-view body.archetype-regular
     .topic-navigation.with-timeline:dir(rtl)
-    .timeline-container:not(.timeline-docked) {
-    padding-inline-start: 0;
+    .timeline-container:not(.timeline-docked):has(
+      .timeline-controls:not(:has(.btn-toggle-localized-content))
+        .topic-admin-menu-trigger
+    ) {
+    padding-inline: 0;
   }
 }
 
