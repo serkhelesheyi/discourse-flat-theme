@@ -40,6 +40,12 @@
     color: var(--mf-ink-3);
   }
 
+  .metadata__trust-level .user-card-trust-level-value {
+    color: var(--mf-ink-2);
+    font-weight: var(--mf-weight-medium);
+    font-variant-numeric: tabular-nums;
+  }
+
   .badge-section .user-badge,
   .user-card-badges .user-badge {
     background: var(--mf-surface-2);
