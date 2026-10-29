@@ -72,8 +72,8 @@ export default class BlockRailProfile extends Component {
       trustLevelName,
       lastPostedAt: this.#formatDate(user.last_posted_at),
       createdAt: this.#formatDate(user.created_at),
-      topics: this.#formatCount(summary.topic_count),
-      posts: this.#formatCount(summary.post_count),
+      topics: this.#formatCount(summary.user_summary?.topic_count),
+      posts: this.#formatCount(summary.user_summary?.post_count),
       badges,
       moreBadgesCount: Math.max((user.badge_count ?? 0) - badges.length, 0),
     };
