@@ -1203,6 +1203,16 @@ html.desktop-view .suggested-topics-wrapper,
     }
   }
 
+  // Mobile topic-list links must remain tappable even when core disables
+  // pointer events on the stats row. Keep this override local to these links.
+  .topic-item-stats__category-tags {
+    .discourse-tag,
+    .badge-wrapper,
+    .badge-category__wrapper {
+      pointer-events: auto !important;
+    }
+  }
+
   // Category and tags share one line that scrolls sideways. Wrapping them onto
   // a second row used to push the title down and make rows different heights, so
   // a row with three tags never lined up with its neighbours.
