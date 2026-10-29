@@ -107,8 +107,14 @@ body.welcome-banner--visible .above-main-container-outlet {
     background: transparent !important;
     background-color: transparent !important;
     border: 0;
-    box-shadow: none;
-    outline: 0;
+    box-shadow: none !important;
+    outline: 0 !important;
+
+    &:focus,
+    &:focus-visible {
+      box-shadow: none !important;
+      outline: 0 !important;
+    }
 
     &::placeholder {
       color: var(--mf-ink-faint);
