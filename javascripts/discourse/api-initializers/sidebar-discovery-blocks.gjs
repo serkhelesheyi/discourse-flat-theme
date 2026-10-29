@@ -8,7 +8,6 @@ import BlockRailHadith from "../blocks/block-rail-hadith";
 import BlockRailLinks from "../blocks/block-rail-links";
 import BlockRailOnline from "../blocks/block-rail-online";
 import BlockRailProfile from "../blocks/block-rail-profile";
-import BlockRailTags from "../blocks/block-rail-tags";
 
 export default apiInitializer((api) => {
   api.renderBlocks("sidebar-discovery", [
@@ -41,7 +40,6 @@ export default apiInitializer((api) => {
             leaderboardId: settings.rail_leaderboard_id ?? 1,
           },
         },
-        { block: BlockRailTags },
         {
           block: BlockRailLinks,
           args: { links: settings.rail_links ?? [] },
