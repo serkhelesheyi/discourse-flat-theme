@@ -4,9 +4,11 @@ import { service } from "@ember/service";
 import { themePrefix } from "virtual:theme";
 import { block } from "discourse/blocks";
 import UserBadge from "discourse/components/user-badge";
+import { ajax } from "discourse/lib/ajax";
 import { bind } from "discourse/lib/decorators";
 import { prioritizeNameInUx } from "discourse/lib/settings";
 import User from "discourse/models/user";
+import { userPath } from "discourse/lib/url";
 import { or } from "discourse/truth-helpers";
 import DAsyncContent from "discourse/ui-kit/d-async-content";
 import dBoundAvatarTemplate from "discourse/ui-kit/helpers/d-bound-avatar-template";
@@ -45,6 +47,16 @@ export default class BlockRailProfile extends Component {
       return null;
     }
 
+    // The card serializer intentionally omits topic_count/post_count. The
+    // summary endpoint exposes them only when the viewer may see summary stats.
+    // Keep the profile card usable if that optional request fails.
+    let summary = {};
+    try {
+      summary = await ajax(userPath(`${username}/summary.json`));
+    } catch {
+      // Counts are optional; identity, dates and badges should still render.
+    }
+
     const nameFirst = prioritizeNameInUx(user.name);
     const badges = (user.featured_user_badges || [])
       .filter(Boolean)
@@ -60,8 +72,8 @@ export default class BlockRailProfile extends Component {
       trustLevelName,
       lastPostedAt: this.#formatDate(user.last_posted_at),
       createdAt: this.#formatDate(user.created_at),
-      topics: this.#formatCount(user.topic_count),
-      posts: this.#formatCount(user.post_count),
+      topics: this.#formatCount(summary.topic_count),
+      posts: this.#formatCount(summary.post_count),
       badges,
       moreBadgesCount: Math.max((user.badge_count ?? 0) - badges.length, 0),
     };
