@@ -8,23 +8,15 @@
 body.archetype-regular {
   --mf-timeline-gutter: clamp(var(--mf-space-3), 1.4vw, var(--mf-space-5));
 
-  .timeline-container:not(.timeline-docked) {
+  // Only add the page gutter when the timeline contains actual timeline
+  // content. A controls-only timeline (for example, the lone admin wrench)
+  // has no timeline column to inset; padding it changes the control's position
+  // when core removes `timeline-docked` during scrolling.
+  .timeline-container:not(.timeline-docked):has(
+    .topic-timeline > :not(.timeline-controls)
+  ) {
     box-sizing: border-box;
     padding-inline: var(--mf-timeline-gutter);
-  }
-}
-
-// When core removes `timeline-docked` during scrolling, the lone RTL admin
-// wrench should stay aligned with its docked position. The generic inline gutter
-// otherwise adds padding on both sides and shifts the control horizontally.
-@media screen and (width >= 925px) {
-  .desktop-view body.archetype-regular
-    .topic-navigation.with-timeline:dir(rtl)
-    .timeline-container:not(.timeline-docked):has(
-      .timeline-controls:not(:has(.btn-toggle-localized-content))
-        .topic-admin-menu-trigger
-    ) {
-    padding-inline: 0;
   }
 }
 
