@@ -1,5 +1,17 @@
 # Changelog
 
+## [Unreleased] — 2026-10-29
+
+### Fixed
+
+- Align the discovery sidebar rail cards with the navigation panel by removing the rail scrollport's 2px inline padding and hiding its scrollbar chrome. Vertical scrolling remains enabled; only the scrollbar indicator is hidden. The owner confirmed the card widths now match the navigation rectangle in the live theme.
+- Record the live-confirmed mobile topic-list tag tap-target fix: the tag links remain interactive when core disables pointer events on the surrounding stats row.
+
+### Verification
+
+- The owner confirmed both fixes on the live forum. The sidebar width issue is closed; no column-width or navigation-width changes were needed.
+
+
 ## [3.2.36] — 2026-10-29
 
 ### Fixed
