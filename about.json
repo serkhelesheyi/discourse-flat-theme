@@ -1,5 +1,5 @@
 {
-  "name": "Oniel's Flat Theme",
+  "name": "Axiom",
   "component": false,
   "about_url": "https://github.com/0niel/discourse-flat-theme",
   "license_url": "https://github.com/0niel/discourse-flat-theme/blob/main/LICENSE",
@@ -26,7 +26,7 @@
     ]
   },
   "color_schemes": {
-    "Oniel's Flat Theme": {
+    "Axiom": {
       "primary": "16181d",
       "secondary": "ffffff",
       "tertiary": "2563eb",
@@ -40,7 +40,7 @@
       "success": "1a7f37",
       "love": "e5484d"
     },
-    "Oniel's Flat Theme Dark": {
+    "Axiom Dark": {
       "primary": "edeef0",
       "secondary": "0a0b0d",
       "tertiary": "5b8cff",
