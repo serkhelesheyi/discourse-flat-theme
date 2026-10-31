@@ -4,7 +4,7 @@
 
 ### Fixed
 
-- Prevent the empty DiscoTOC outlet from rendering as a padded navigation tile. The reset is scoped to `.d-toc-main` instances without a `#d-toc` root, preserving the styled panel whenever the table of contents is present. The check uses `:not(:has(#d-toc))` rather than `:empty`, because the live empty outlet contains whitespace and an Ember comment node.
+- Prevent the empty `.d-toc-main` outlet from rendering as a padded, colored tile. The reset uses `:empty` and removes only padding, background, and border; the existing styling remains in effect when the outlet contains content.
 
 ### Verification
 
