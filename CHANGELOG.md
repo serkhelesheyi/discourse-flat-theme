@@ -1,5 +1,16 @@
 # Changelog
 
+## [Unreleased]
+
+### Fixed
+
+- Prevent the empty `.d-toc-main` outlet from rendering as a padded, colored tile. The reset uses `:empty` and removes only padding, background, and border; the existing styling remains in effect when the outlet contains content.
+
+### Verification
+
+- Based on the owner's live DOM and computed-style comparison: the empty Axiom element had 8px padding and a colored background (16px resulting height), while the official theme's corresponding element had zero padding and height. Live verification after theme update remains pending.
+
+
 ## [Unreleased] — 2026-10-29
 
 ### Fixed

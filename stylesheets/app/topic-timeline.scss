@@ -402,6 +402,13 @@ body.archetype-regular {
     border-radius: var(--mf-radius-xl);
     box-sizing: border-box;
 
+    // Keep the styled panel only when the outlet has content.
+    &:empty {
+      padding: 0;
+      background: none;
+      border: 0;
+    }
+
     #d-toc {
       max-height: calc(100vh - 4.5em - var(--header-offset));
       border-inline-start: 0;
