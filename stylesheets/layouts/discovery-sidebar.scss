@@ -161,6 +161,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
+
   // Keep the rail cards aligned with the navigation panel. A visible native
   // scrollbar takes a few pixels from the scrollport and can make card widths
   // appear to change when the OS auto-hides it. Scrolling remains enabled.
