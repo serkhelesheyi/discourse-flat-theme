@@ -402,16 +402,11 @@ body.archetype-regular {
     border-radius: var(--mf-radius-xl);
     box-sizing: border-box;
 
-    // The outlet remains mounted when DiscoTOC has no content. Its whitespace
-    // and Ember comment nodes make :empty unreliable, so detect the actual TOC
-    // root instead; an empty outlet must not render a padded, colored tile.
-    &:not(:has(#d-toc)) {
-      min-width: 0;
-      max-width: none;
+    // Keep the styled panel only when the outlet has content.
+    &:empty {
       padding: 0;
-      background: transparent;
+      background: none;
       border: 0;
-      border-radius: 0;
     }
 
     #d-toc {
