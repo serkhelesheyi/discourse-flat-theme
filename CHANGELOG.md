@@ -4,6 +4,8 @@
 
 ### Fixed
 
+- Prevent the empty `.d-toc-main` outlet from rendering as a padded, colored tile by resetting its padding, background, and border only when it is empty. The existing panel styling remains unchanged when content is present.
+
 - Align the discovery sidebar rail cards with the navigation panel by removing the rail scrollport's 2px inline padding and hiding its scrollbar chrome. Vertical scrolling remains enabled; only the scrollbar indicator is hidden. The owner confirmed the card widths now match the navigation rectangle in the live theme.
 - Record the live-confirmed mobile topic-list tag tap-target fix: the tag links remain interactive when core disables pointer events on the surrounding stats row.
 
