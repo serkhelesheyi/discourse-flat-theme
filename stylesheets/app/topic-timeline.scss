@@ -402,6 +402,13 @@ body.archetype-regular {
     border-radius: var(--mf-radius-xl);
     box-sizing: border-box;
 
+    // Do not render a tile when the DiscoTOC outlet has no content.
+    &:empty {
+      padding: 0;
+      background: none;
+      border: 0;
+    }
+
     #d-toc {
       max-height: calc(100vh - 4.5em - var(--header-offset));
       border-inline-start: 0;
