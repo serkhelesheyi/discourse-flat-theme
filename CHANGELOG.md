@@ -1,5 +1,16 @@
 # Changelog
 
+## [Unreleased]
+
+### Fixed
+
+- Prevent the empty DiscoTOC outlet from rendering as a padded navigation tile. The reset is scoped to `.d-toc-main` instances without a `#d-toc` root, preserving the styled panel whenever the table of contents is present. The check uses `:not(:has(#d-toc))` rather than `:empty`, because the live empty outlet contains whitespace and an Ember comment node.
+
+### Verification
+
+- Based on the owner's live DOM and computed-style comparison: the empty Axiom element had 8px padding and a colored background (16px resulting height), while the official theme's corresponding element had zero padding and height. Live verification after theme update remains pending.
+
+
 ## [Unreleased] — 2026-10-29
 
 ### Fixed
