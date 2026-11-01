@@ -1109,8 +1109,10 @@ html.desktop-view .suggested-topics-wrapper,
     ) !important;
   }
 
-  &.bulk-selected,
-  &.selected {
+  // Core also uses .selected when a title link regains pointer focus after
+  // browser Back. Keep the persistent fill for explicit bulk selection only;
+  // keyboard focus remains indicated by :focus-visible above.
+  &.bulk-selected {
     background: var(--mf-fill-selected) !important;
   }
 
@@ -1378,8 +1380,9 @@ html.desktop-view .suggested-topics-wrapper,
     background: var(--mf-accent-tint-soft) !important;
   }
 
-  &.bulk-selected > .topic-list-data:only-child,
-  &.selected > .topic-list-data:only-child {
+  // .selected can represent restored pointer focus, not explicit selection.
+  // Preserve the fill for bulk selection; retain the core focus behavior.
+  &.bulk-selected > .topic-list-data:only-child {
     background: var(--mf-fill-selected) !important;
   }
 }

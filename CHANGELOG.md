@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.38] — 2026-11-01
+
+### Fixed
+
+- Remove the persistent selected-row fill from the generic `.selected` state in desktop and mobile topic lists. Discourse can add this class when a topic-title link receives focus; browser Back may restore pointer-originated focus and leave a misleading blue row background.
+- Keep the selected fill for `.bulk-selected`, which represents explicit bulk selection. Preserve the `.selected` class and core focus behavior; the existing `:focus-within:has(:focus-visible)` outline remains the keyboard-visible focus indicator.
+
+### Verification
+
+- Live-browser snapshots reproduced the cause: after returning to the list, the affected row gained `.selected`; its computed background changed from 7.5% to 10% accent opacity and remained at 10% through 1500 ms.
+- The corrected stylesheet has not yet been tested live. Verify Back/pointer navigation, Tab/Shift+Tab, bulk selection, unread/new and pinned rows, and desktop/mobile layouts after updating.
+
 ## [3.2.37] — 2026-11-01
 
 ### Fixed
