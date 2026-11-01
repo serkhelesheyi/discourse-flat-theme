@@ -85,7 +85,10 @@
     }
   }
 
-  &:focus-within {
+  // Show the row outline only for keyboard-visible focus. Pointer-triggered
+  // navigation can restore focus to the title link after browser Back; that
+  // focus should not look like an unread or selected topic.
+  &:focus-within:has(:focus-visible) {
     outline: 2px solid var(--mf-accent-line);
     outline-offset: -2px;
   }
