@@ -63,7 +63,7 @@ console.log({
 ```bash
 git switch freebuff-3.1.0
 git pull --ff-only origin freebuff-3.1.0
-git revert --no-commit 5d6fd8c^..0ba6e97
+git revert --no-commit 5d6fd8c^..704ec3e
 git commit -m "revert: restore topic-list highlight and focus behavior"
 git push origin freebuff-3.1.0
 ```
