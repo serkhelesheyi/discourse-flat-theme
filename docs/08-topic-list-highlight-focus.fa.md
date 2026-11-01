@@ -58,12 +58,13 @@ console.log({
 
 ## بازگشت امن
 
-روش پیشنهادی پس از دریافت commit نهایی این اصلاح:
+روش پیشنهادی برای بازگرداندن کامل این مجموعه تغییرات (از نخستین commit کد تا آخرین commit مستندات):
 
 ```bash
 git switch freebuff-3.1.0
 git pull --ff-only origin freebuff-3.1.0
-git revert <FIX_COMMIT_SHA>
+git revert --no-commit 5d6fd8c^..0ba6e97
+git commit -m "revert: restore topic-list highlight and focus behavior"
 git push origin freebuff-3.1.0
 ```
 
