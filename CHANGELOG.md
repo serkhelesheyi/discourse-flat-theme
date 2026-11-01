@@ -11,7 +11,7 @@
 
 ### Verification
 
-- The owner confirmed the sidebar width fix on the live forum. For DiscoTOC, a temporary DevTools rule using `:not(:has(> *))` removed the empty tile and produced `padding: 0`, transparent background, and `height: 0`; the permanent theme update and post-deployment verification remain pending.
+- The owner verified the DiscoTOC selector in the live browser with DevTools: `:empty` was `false`, while `:not(:has(> *))` matched; computed padding became `0`, the background became transparent, the element height became `0`, and the empty tile disappeared. This confirms the selector diagnosis and CSS behavior. Verification against the permanently updated theme, including a populated DiscoTOC, remains a post-deployment check.
 
 
 ## [3.2.36] — 2026-10-29
