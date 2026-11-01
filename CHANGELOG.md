@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.2.39] — 2026-11-01
+
+### Fixed
+
+- Restore Discourse's native 2.5-second `background-fade-highlight` when returning to a topic list. Transparent, hover, unread, pinned, and bulk-selection overrides no longer mask the highlighted row on desktop, mobile, and suggested-topic lists.
+- Restore the row `:focus-within` indicator instead of suppressing pointer-restored focus with `:has(:focus-visible)`. Remove the legacy generic `.selected` cell fill while preserving explicit `.bulk-selected` styling.
+
+### Verification
+
+- Live-browser traces established that both themes add `.highlighted` and run `background-fade-highlight` for 2.5s; the custom theme computed a fully transparent background throughout the animation.
+- Source and rollback documentation are updated. Live verification and local lint/build after this change remain pending; see `docs/08-topic-list-highlight-focus.fa.md`.
+
+
 ## [3.2.38] — 2026-11-01
 
 ### Fixed
