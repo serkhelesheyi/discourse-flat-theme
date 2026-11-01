@@ -10,7 +10,7 @@
 ### Verification
 
 - Live-browser traces established that both themes add `.highlighted` and run `background-fade-highlight` for 2.5s; the custom theme computed a fully transparent background throughout the animation.
-- Source and rollback documentation are updated. Live verification and local lint/build after this change remain pending; see `docs/08-topic-list-highlight-focus.fa.md`.
+- Source and rollback documentation are updated. Live verification and local lint/build after this change remain pending; see section 12 of `docs/04-design-log.fa.md`.
 
 
 ## [3.2.38] — 2026-11-01
