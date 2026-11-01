@@ -113,6 +113,7 @@ The `docs/` folder holds the project's working memory (written in Persian):
 | `05-optimization-log.fa.md` | Stylesheet size, `!important` and dead-code metrics. |
 | `06-live-test-plan.fa.md` | Live-test matrix, page checklists and how to close the final phase. |
 | `07-jalali-calendar-report.fa.md` | Feasibility report on showing forum dates in the Persian (Jalali) calendar. |
+| `08-topic-list-highlight-focus.fa.md` | Root-cause evidence, live-test matrix, and rollback procedure for topic-list highlight and focus behavior. |
 
 ## Changelog
 
