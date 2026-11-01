@@ -85,10 +85,8 @@
     }
   }
 
-  // Show the row outline only for keyboard-visible focus. Pointer-triggered
-  // navigation can restore focus to the title link after browser Back; that
-  // focus should not look like an unread or selected topic.
-  &:focus-within:has(:focus-visible) {
+  // Preserve the native row focus indicator for pointer and keyboard focus.
+  &:focus-within {
     outline: 2px solid var(--mf-accent-line);
     outline-offset: -2px;
   }
@@ -554,7 +552,7 @@ a.discourse-tag.box,
   }
 }
 
-.topic-list-item.bulk-selected > td {
+.topic-list-item.bulk-selected:not(.highlighted) > td {
   background: var(--mf-fill-selected);
 }
 
@@ -804,7 +802,10 @@ html.desktop-view .suggested-topics-wrapper,
   margin: 0;
   padding: 14px 24px;
   box-sizing: border-box;
-  background: transparent !important;
+  // Let Discourse's native background-fade-highlight paint during Back navigation.
+  &:not(.highlighted) {
+    background: transparent !important;
+  }
   border: 0 !important;
   border-radius: 0;
   box-shadow: none !important;
@@ -814,7 +815,7 @@ html.desktop-view .suggested-topics-wrapper,
     border-top: 0 !important;
   }
 
-  &:hover {
+  &:hover:not(.highlighted) {
     background: var(--mf-fill-hover) !important;
   }
 
@@ -1084,10 +1085,10 @@ html.desktop-view .suggested-topics-wrapper,
     }
   }
 
-  &.unread,
-  &.unread-posts,
-  &.unseen-topic,
-  &.new-topic {
+  &.unread:not(.highlighted),
+  &.unread-posts:not(.highlighted),
+  &.unseen-topic:not(.highlighted),
+  &.new-topic:not(.highlighted) {
     background: var(--mf-accent-tint-soft) !important;
 
     .main-link a.title {
@@ -1101,7 +1102,7 @@ html.desktop-view .suggested-topics-wrapper,
     }
   }
 
-  &.pinned {
+  &.pinned:not(.highlighted) {
     background: color-mix(
       in srgb,
       var(--mf-surface-2) 55%,
@@ -1112,7 +1113,7 @@ html.desktop-view .suggested-topics-wrapper,
   // Core also uses .selected when a title link regains pointer focus after
   // browser Back. Keep the persistent fill for explicit bulk selection only;
   // keyboard focus remains indicated by :focus-visible above.
-  &.bulk-selected {
+  &.bulk-selected:not(.highlighted) {
     background: var(--mf-fill-selected) !important;
   }
 
@@ -1145,7 +1146,9 @@ html.desktop-view .suggested-topics-wrapper,
   min-height: 0;
   margin: 0;
   padding: 0;
-  background: transparent !important;
+  &:not(.highlighted) {
+    background: transparent !important;
+  }
   border: 0 !important;
   border-radius: 0;
   box-shadow: none !important;
@@ -1174,7 +1177,7 @@ html.desktop-view .suggested-topics-wrapper,
     border-radius: 0;
   }
 
-  &:hover > .topic-list-data:only-child {
+  &:hover:not(.highlighted) > .topic-list-data:only-child {
     background: var(--mf-fill-hover) !important;
   }
 
@@ -1373,16 +1376,16 @@ html.desktop-view .suggested-topics-wrapper,
     }
   }
 
-  &.unread > .topic-list-data:only-child,
-  &.unread-posts > .topic-list-data:only-child,
-  &.unseen-topic > .topic-list-data:only-child,
-  &.new-topic > .topic-list-data:only-child {
+  &.unread:not(.highlighted) > .topic-list-data:only-child,
+  &.unread-posts:not(.highlighted) > .topic-list-data:only-child,
+  &.unseen-topic:not(.highlighted) > .topic-list-data:only-child,
+  &.new-topic:not(.highlighted) > .topic-list-data:only-child {
     background: var(--mf-accent-tint-soft) !important;
   }
 
   // .selected can represent restored pointer focus, not explicit selection.
   // Preserve the fill for bulk selection; retain the core focus behavior.
-  &.bulk-selected > .topic-list-data:only-child {
+  &.bulk-selected:not(.highlighted) > .topic-list-data:only-child {
     background: var(--mf-fill-selected) !important;
   }
 }
