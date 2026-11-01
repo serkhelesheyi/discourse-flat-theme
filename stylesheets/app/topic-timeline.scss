@@ -402,8 +402,9 @@ body.archetype-regular {
     border-radius: var(--mf-radius-xl);
     box-sizing: border-box;
 
-    // Do not render a tile when the DiscoTOC outlet has no content.
-    &:empty {
+    // Ignore whitespace text nodes and comments; only element children mean
+    // the DiscoTOC outlet has content worth rendering as a panel.
+    &:not(:has(> *)) {
       padding: 0;
       background: none;
       border: 0;
