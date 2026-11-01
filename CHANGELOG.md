@@ -1,5 +1,15 @@
 # Changelog
 
+## [Unreleased] — 2026-11-01
+
+### Fixed (pending live verification)
+
+- Add a narrowly scoped `.post-infos .read-state { position: static; }` rule so Discourse core's absolutely positioned unread indicator participates in the post metadata flex row and reserves space beside the relative date. This is a provisional fix: the owner could not test it because there are currently no unread topics. If the live test fails, remove this exact rule from `stylesheets/app/posts.scss`; no other source change is required to roll it back.
+
+### Verification
+
+- Not tested with an actual unread topic. The owner previously applied the same `position: static !important` override temporarily in DevTools and observed the relative date shift slightly to the right, consistent with the indicator re-entering flex layout. That observation does not establish that the blue dot is correctly positioned or that the permanent stylesheet rule wins in the compiled RTL CSS. Explicit live confirmation is pending.
+
 ## [Unreleased] — 2026-10-29
 
 ### Fixed
