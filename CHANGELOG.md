@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.37] — 2026-11-01
+
+### Fixed
+
+- Topic-list focus outline now requires a descendant matching `:focus-visible`, rather than appearing for every `:focus-within` state. This prevents pointer-triggered topic navigation from leaving a misleading blue outline on the row when the browser restores focus to the title link after Back, while preserving the outline for keyboard navigation with Tab and Shift+Tab.
+- The change affects only the focus outline. Unread-topic backgrounds and the `.new-topic` unread indicator remain unchanged.
+
+### Verification
+
+- Existing live-browser observations established that a title-link focus restored by Back can have `:focus-visible = false`, while Tab navigation produces `:focus-visible = true` on a descendant of the row. The new selector follows that distinction.
+- Permanent live verification after updating the theme is still required for pointer navigation and keyboard navigation.
+
 ## [Unreleased] — 2026-11-01
 
 ### Fixed (pending live verification)
