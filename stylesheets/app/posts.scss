@@ -90,6 +90,12 @@ body.archetype-regular {
     padding-inline-start: var(--mf-space-2);
   }
 
+  // Core positions .read-state absolutely; restore it to the flex row so it
+  // reserves space beside the date instead of overlapping it.
+  .post-stream > .topic-post .post-infos .read-state {
+    position: static;
+  }
+
   .post-stream > .topic-post .post-infos .post-info,
   .post-stream > .topic-post .post-date,
   .post-stream > .topic-post .relative-date {
