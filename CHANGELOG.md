@@ -4,14 +4,14 @@
 
 ### Fixed
 
-- Prevent the empty `.d-toc-main` outlet from rendering as a padded, colored tile by resetting its padding, background, and border only when it is empty. The existing panel styling remains unchanged when content is present.
+- Prevent the empty `.d-toc-main` outlet from rendering as a padded, colored tile. The outlet contains whitespace text nodes, so `:empty` does not match; `:not(:has(> *))` now detects the absence of element children and resets padding, background, and border. The existing panel styling remains unchanged when content is present.
 
 - Align the discovery sidebar rail cards with the navigation panel by removing the rail scrollport's 2px inline padding and hiding its scrollbar chrome. Vertical scrolling remains enabled; only the scrollbar indicator is hidden. The owner confirmed the card widths now match the navigation rectangle in the live theme.
 - Record the live-confirmed mobile topic-list tag tap-target fix: the tag links remain interactive when core disables pointer events on the surrounding stats row.
 
 ### Verification
 
-- The owner confirmed both fixes on the live forum. The sidebar width issue is closed; no column-width or navigation-width changes were needed.
+- The owner confirmed the sidebar width fix on the live forum. For DiscoTOC, a temporary DevTools rule using `:not(:has(> *))` removed the empty tile and produced `padding: 0`, transparent background, and `height: 0`; the permanent theme update and post-deployment verification remain pending.
 
 
 ## [3.2.36] — 2026-10-29
