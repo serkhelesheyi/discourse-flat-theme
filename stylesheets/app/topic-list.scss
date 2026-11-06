@@ -794,9 +794,10 @@ html.desktop-view .suggested-topics-wrapper,
 .desktop-view .more-topics__list .topic-list-item,
 .desktop-view .suggested-topics .topic-list-item {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  // Fixed stats tracks keep poster alignment independent of date/count length.
+  grid-template-columns: minmax(0, 1fr) max-content 51px 96px;
   grid-template-rows: auto;
-  gap: 2px var(--mf-space-2);
+  gap: 2px 4px;
   align-items: center;
   min-height: 0;
   margin: 0;
@@ -1069,12 +1070,14 @@ html.desktop-view .suggested-topics-wrapper,
   .topic-list-data.activity {
     grid-column: 4;
     grid-row: 1;
-    justify-self: end;
+    justify-self: center;
     align-self: center;
     justify-content: flex-end;
-    width: auto !important;
-    min-width: 0 !important;
-    max-width: max-content;
+    width: 96px !important;
+    min-width: 96px !important;
+    max-width: 96px !important;
+    box-sizing: border-box !important;
+    text-align: right !important;
     padding: 0 !important;
     color: var(--mf-ink-faint);
     font-size: var(--mf-text-xs);
