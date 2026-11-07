@@ -5,6 +5,7 @@ A modern, responsive, full Discourse theme focused on clarity, density, and cons
 ## Features
 
 - Responsive topic lists, categories, topic pages, profiles, groups, badges, notifications, composer, authentication, and administration screens.
+- Desktop topic lists use fixed statistics tracks, with activity dates centered inside a full-width link so variable date lengths do not shift the alignment.
 - Compact discovery hero with search and popular category shortcuts.
 - Optional information rail with upcoming events, hot topics, contributors, popular tags, quick links, and online users.
 - Shared design tokens and reusable control primitives for tabs, fields, buttons, dialogs, and status banners.
