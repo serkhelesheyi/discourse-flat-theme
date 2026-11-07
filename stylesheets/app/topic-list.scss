@@ -1072,16 +1072,33 @@ html.desktop-view .suggested-topics-wrapper,
     grid-row: 1;
     justify-self: center;
     align-self: center;
-    justify-content: flex-end;
+    display: flex !important;
+    justify-content: flex-start !important;
     width: 96px !important;
     min-width: 96px !important;
     max-width: 96px !important;
     box-sizing: border-box !important;
-    text-align: right !important;
     padding: 0 !important;
     color: var(--mf-ink-faint);
     font-size: var(--mf-text-xs);
     font-weight: var(--mf-weight-normal);
+
+    // The activity cell is a flex container. Make its link fill the fixed
+    // track, then center the date inside that full-width link; aligning only
+    // the cell leaves the content-sized link pinned to one side in RTL.
+    > a.post-activity {
+      display: flex !important;
+      flex: 1 1 auto !important;
+      width: 100% !important;
+      min-width: 0 !important;
+      justify-content: flex-start !important;
+
+      > .relative-date {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+      }
+    }
 
     &::before {
       display: none;
