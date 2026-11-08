@@ -1120,3 +1120,63 @@ git branch backup/topic-list-highlight-before-revert HEAD
 - trace مقایسه‌ای تم رسمی و سفارشی: انجام شده؛ علت شفاف‌بودن پس‌زمینه تأیید شده است.
 - قواعد استثنای `.highlighted` در سورس شاخه: بررسی شده‌اند.
 - lint/build محلی و آزمون زنده پس از نصب نسخهٔ فعلی: هنوز انجام/تأیید نشده‌اند؛ نباید موفق فرض شوند.
+
+---
+
+## ۱۶) حفظ شکل دایره‌ای نشان موضوع جدید در پیشنهادهای موبایل — نسخهٔ ۳٫۲٫۴۰ (۲۰۲۶-۱۱-۰۸)
+
+### شواهد و علت
+
+- در تم رسمی و تم سفارشی، عنصر اصلی
+  .badge-notification.new-topic ابعاد یکسان 9.2 × 18.3833px داشت.
+- pseudo-elementِ ::before در هر دو تم یک نشانگر 8 × 8px با
+  border-radius: 50% می‌ساخت؛ ::after محتوای مؤثری نداشت.
+- تفاوت تعیین‌کننده در پس‌زمینهٔ عنصر اصلی بود: در تم رسمی background: none
+  و در تم سفارشی background: rgb(91, 140, 255) محاسبه شد. با غیرفعال‌کردن
+  پس‌زمینهٔ عنصر اصلی در DevTools، دایرهٔ آبی بدون تغییر ابعاد ظاهر شد.
+- بنابراین مشکل از اندازه یا شعاع pseudo-element نبود؛ fill آبی روی جعبهٔ
+  بلند عنصر والد، دایره را به شکل میلهٔ عمودی می‌پوشاند. قاعدهٔ پایه در
+  badges.scss از قبل پس‌زمینهٔ new-topic را شفاف تعریف کرده بود؛ یک قاعدهٔ
+  موبایل با اولویت بالاتر در CSS کامپایل‌شده بر آن غلبه می‌کرد.
+
+### اصلاح محدود
+
+- در stylesheets/app/mobile-responsive.scss و داخل breakpoint موبایل،
+  پس‌زمینهٔ عنصر .badge-notification.new-topic فقط در این دو مسیر خنثی شد:
+  #suggested-topics و .more-topics__list، با محدودیت
+  .mobile-view body.archetype-regular.
+- selector جدید کلاس new-topic را نیز هدف می‌گیرد و از قاعدهٔ مزاحم
+  .badge-notification اختصاصی‌تر است؛ background: transparent !important
+  فقط روی عنصر اصلی اعمال می‌شود.
+- ::before، رنگ accent، اندازه و شکل دایره، ::after، سایر badgeها،
+  پس‌زمینهٔ ردیف موضوع و تمام قواعد دسکتاپ دست‌نخورده‌اند.
+- قاعده در لایهٔ mobile-responsive قرار گرفت که پس از ماژول‌های اصلی SCSS
+  import می‌شود؛ هیچ تغییر سراسری در badges.scss لازم نبود.
+
+### اعتبارسنجی و وضعیت
+
+- مقایسهٔ Computed Styles تم رسمی و سفارشی و آزمایش موقت خاموش‌کردن background
+  در DevTools علت را تأیید کرد.
+- پس از استقرار نسخهٔ ۳٫۲٫۴۰ باید در موبایل، هر دو محل «موضوعات پیشنهادی» و
+  «موضوعات بیشتر» با نشان خوانده‌نشده بررسی شوند. انتظار: دایرهٔ آبی ۸×۸
+  دیده شود و هیچ میلهٔ عمودی باقی نماند. همچنین در دسکتاپ و سایر badgeها
+  نبود رگرسیون کنترل شود.
+- lint/build محلی در این مرحله اجرا نشده است؛ ویرایش از طریق GitHub انجام شد
+  و محیط clone محلی برای اجرای pnpm lint در دسترس نبود.
+
+### بازگشت دقیق
+
+اگر آزمون پس از استقرار رگرسیون نشان داد، فقط بلوک زیر را از انتهای
+stylesheets/app/mobile-responsive.scss (داخل @include viewport.until(md))
+حذف کنید؛ سایر قواعد و فایل‌ها را تغییر ندهید:
+
+```scss
+  // Core/theme mobile cascade can paint the tall badge box itself. Keep only
+  // the native circular ::before marker visible in suggested-topic lists.
+  .mobile-view body.archetype-regular #suggested-topics
+    .topic-list-item .badge-notification.new-topic,
+  .mobile-view body.archetype-regular .more-topics__list
+    .topic-list-item .badge-notification.new-topic {
+    background: transparent !important;
+  }
+```
