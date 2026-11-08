@@ -1,5 +1,34 @@
 # Changelog
 
+## [3.2.40] — 2026-11-08
+
+### Fixed
+
+- Keep the unread new-topic marker circular in mobile suggested-topic lists. The
+  mobile cascade had painted the tall .badge-notification.new-topic element
+  itself with the accent fill, turning its narrow line box into a vertical bar.
+  The scoped override clears only that element's background; Discourse's
+  circular ::before marker, its accent color, and the existing dimensions are
+  preserved.
+- Limit the correction to .mobile-view body.archetype-regular inside
+  #suggested-topics and .more-topics__list. Desktop, other badge types,
+  topic-row backgrounds, and the base badge styling are unchanged.
+
+### Verification
+
+- The official and customized themes reported the same badge dimensions
+  (9.2 × 18.3833px) and the same 8 × 8px, border-radius: 50% ::before
+  marker. Only the customized theme painted the parent badge background
+  (rgb(91, 140, 255)); disabling that background in DevTools restored the
+  circular marker.
+- The base .badge-notification.new-topic rule in stylesheets/app/badges.scss
+  already declares a transparent background. The fix therefore lives in the
+  late-imported mobile-responsive layer and uses a more specific selector to
+  neutralize the competing mobile declaration without changing the pseudo-element.
+- The permanent stylesheet change still requires a post-deployment browser check;
+  the DevTools toggle is evidence for the cause, not verification of the committed fix.
+
+
 ## [3.2.39] — 2026-11-01
 
 ### Fixed
