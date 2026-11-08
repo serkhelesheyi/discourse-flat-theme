@@ -207,4 +207,13 @@
       margin-inline-start: 0;
     }
   }
+
+  // Core/theme mobile cascade can paint the tall badge box itself. Keep only
+  // the native circular ::before marker visible in suggested-topic lists.
+  .mobile-view body.archetype-regular #suggested-topics
+    .topic-list-item .badge-notification.new-topic,
+  .mobile-view body.archetype-regular .more-topics__list
+    .topic-list-item .badge-notification.new-topic {
+    background: transparent !important;
+  }
 }
