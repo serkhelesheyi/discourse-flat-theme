@@ -142,6 +142,35 @@
   }
 }
 
+// Icon-only primary buttons must retain the primary action's filled treatment.
+// The generic .btn.no-text rule above intentionally clears backgrounds for neutral
+// icon controls, but its specificity otherwise also erases .btn-primary's fill.
+// Keep primary icon buttons (including title-edit save) on the same design tokens
+// as text-bearing primary buttons; neutral cancel controls remain flat.
+.btn.no-text.btn-primary {
+  color: var(--d-button-primary-text-color);
+  background: var(--d-button-primary-bg-color);
+
+  .d-icon {
+    color: var(--d-button-primary-icon-color);
+    opacity: 1;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--d-button-primary-text-color--hover);
+    background: var(--d-button-primary-bg-color--hover);
+
+    .d-icon {
+      color: var(--d-button-primary-icon-color--hover);
+    }
+  }
+
+  &:active {
+    background: var(--mf-accent-press);
+  }
+}
+
 // Core renders the save/revert pair that appears beside a changed setting as two
 // icon-only neutral buttons — `class="ok setting-controls__ok"` with
 // @icon="check" and `class="cancel setting-controls__cancel"` with @icon="xmark"
