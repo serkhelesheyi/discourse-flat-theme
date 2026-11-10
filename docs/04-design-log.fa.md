@@ -1204,3 +1204,28 @@ stylesheets/app/mobile-responsive.scss (داخل @include viewport.until(md))
 - علت از روی cascade سورس و کلاس‌های DOM گزارش‌شده مشخص است؛ نتیجهٔ پس از استقرار هنوز نیازمند تأیید زنده در حالت تیره و روشن است.
 - پس از به‌روزرسانی تم بررسی شود: ذخیره در حالت عادی، hover، Tab/focus-visible و active؛ لغو در حالت عادی و hover؛ همچنین ویرایش عنوان در RTL و LTR.
 - اگر رگرسیونی مشاهده شد، فقط بلوک `.btn.no-text.btn-primary` افزوده‌شده در `stylesheets/app/buttons.scss` حذف شود. قاعدهٔ عمومی `.btn.no-text` و سایر کنترل‌ها دست‌نخورده بمانند.
+
+
+---
+
+## ۱۸) حفظ fill دکمه‌های آیکونی success/danger در ویرایش عنوان
+
+### شواهد و علت
+
+- DOM گزارش‌شده برای ذخیره: `button.btn.no-text.btn-icon.btn-success.btn-small.submit-edit`؛ برای لغو: `button.btn.no-text.btn-icon.btn-danger.btn-small.cancel-edit`.
+- هر دو دکمه `.btn.no-text` هستند؛ قاعدهٔ عمومی آیکون‌تنها در `buttons.scss` پس‌زمینه را `transparent` می‌کند.
+- توکن‌های variantهای success و danger از قبل در `:root` تعریف شده‌اند، اما قاعدهٔ عمومی no-text با اختصاصیت بیشتر از selectorهای سادهٔ variant هسته برنده می‌شود. قاعدهٔ `:active` نیز فقط حالت فشرده‌شدن را هدف می‌گیرد و fill حالت عادی را تأمین نمی‌کند.
+- در نتیجه آیکون تیک/ضربدر تا hover روی سطح شفاف قابل تشخیص نبود؛ منشأ گزارش‌شده cascade تم است، نه نبودن توکن رنگ.
+
+### اصلاح
+
+- برای `.btn.no-text.btn-success` و `.btn.no-text.btn-danger` استثناهای مستقل اضافه شد؛ رنگ متن، زمینه و آیکون از توکن‌های موجود success/danger گرفته می‌شود.
+- حالت‌های hover و focus-visible از توکن‌های تعاملی همان variant و حالت active از همان فرمول تیره‌سازی موجود برای variant استفاده می‌کنند.
+- variantهای `.btn-flat` و `.btn-transparent` از این قاعده مستثنا هستند تا دکمه‌های عمداً تخت/شفاف تغییر نکنند. قاعدهٔ قبلی `.btn.no-text.btn-primary` نیز مستقل باقی می‌ماند.
+- دامنهٔ اصلاح بر اساس معنای کلاس‌های variant است، نه نام کامپوننت و نه صفحهٔ مدیریت؛ بنابراین هر دکمهٔ آیکونیِ success/danger با همین ساختار از fill معنایی خود استفاده می‌کند.
+
+### اعتبارسنجی و بازگشت
+
+- علت با DOM و cascade سورس گزارش‌شده و کد شاخهٔ `freebuff-3.1.0` تطبیق داده شد. تأیید نهایی ظاهر پس از به‌روزرسانی تم به آزمون زنده نیاز دارد.
+- ذخیره و لغو ویرایش عنوان در حالت عادی، hover، focus-visible با صفحه‌کلید و active در هر دو پوستهٔ روشن/تاریک بررسی شود؛ همچنین سایر دکمه‌های آیکونی success/danger و variantهای flat/transparent برای عدم رگرسیون کنترل شوند.
+- برای rollback، فقط دو بلوک `.btn.no-text.btn-success:not(...)` و `.btn.no-text.btn-danger:not(...)` افزوده‌شده در `stylesheets/app/buttons.scss` حذف شوند؛ قاعدهٔ عمومی no-text و اصلاح primary دست‌نخورده بمانند.
