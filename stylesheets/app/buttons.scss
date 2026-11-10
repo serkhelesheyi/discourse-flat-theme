@@ -171,6 +171,59 @@
   }
 }
 
+// Icon-only semantic actions (for example, title-edit save/cancel) must keep
+// their success/danger fills. The generic .btn.no-text rule above intentionally
+// clears neutral icon controls, but otherwise wins over the lower-specificity
+// core variant rules. Exclude flat/transparent variants so their link-like
+// treatment remains unchanged.
+.btn.no-text.btn-success:not(.btn-flat, .btn-transparent) {
+  color: var(--d-button-success-text-color);
+  background: var(--d-button-success-bg-color);
+
+  .d-icon {
+    color: var(--d-button-success-icon-color);
+    opacity: 1;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--d-button-success-text-color--hover);
+    background: var(--d-button-success-bg-color--hover);
+
+    .d-icon {
+      color: var(--d-button-success-icon-color--hover);
+    }
+  }
+
+  &:active {
+    background: color-mix(in srgb, var(--mf-success) 74%, #000);
+  }
+}
+
+.btn.no-text.btn-danger:not(.btn-flat, .btn-transparent):not(.btn-primary) {
+  color: var(--d-button-danger-text-color);
+  background: var(--d-button-danger-bg-color);
+
+  .d-icon {
+    color: var(--d-button-danger-icon-color);
+    opacity: 1;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--d-button-danger-text-color--hover);
+    background: var(--d-button-danger-bg-color--hover);
+
+    .d-icon {
+      color: var(--d-button-danger-icon-color--hover);
+    }
+  }
+
+  &:active {
+    background: color-mix(in srgb, var(--mf-danger) 78%, #000);
+  }
+}
+
 // Core renders the save/revert pair that appears beside a changed setting as two
 // icon-only neutral buttons — `class="ok setting-controls__ok"` with
 // @icon="check" and `class="cancel setting-controls__cancel"` with @icon="xmark"
